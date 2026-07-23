@@ -1,0 +1,16 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "skipToContent": "Aller au contenu principal"
+  },
+  "breadcrumb": {
+    "home": "Accueil"
+  },
+  "hero": {
+    "eyebrow": "Confédération Tunisienne des Juniors Entreprises",
+    "title": "Rejoignez le Mouvement des Juniors Entreprises",
+    "subtitle": "Un réseau dynamique d'étudiants-entrepreneurs partout en Tunisie, au service des JE et des futures Junior Créations.",
+    "ctaMap": "Voir la carte",
+    "ctaJoin": "Candidater"
+  }
+}

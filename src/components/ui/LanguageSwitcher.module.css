@@ -1,0 +1,48 @@
+.switcher {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  background: #f4f4f4;
+  border: 1px solid #e0e0e0;
+  border-radius: 9999px;
+  padding: 0.2rem;
+}
+
+.indicator {
+  position: absolute;
+  top: 0.2rem;
+  bottom: 0.2rem;
+  width: calc(50% - 0.2rem);
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #C8102E 0%, #A00D24 100%);
+  box-shadow: 0 4px 10px rgba(200, 16, 46, 0.3);
+  transition: transform 0.28s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.indicatorRight {
+  transform: translateX(100%);
+}
+
+.option {
+  position: relative;
+  z-index: 1;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.3rem 0.7rem;
+  border-radius: 9999px;
+  color: #666;
+  transition: color 0.25s ease;
+  min-width: 2.1rem;
+}
+
+.optionActive {
+  color: #ffffff;
+}
+
+.option:hover:not(.optionActive) {
+  color: #1A1A1A;
+}

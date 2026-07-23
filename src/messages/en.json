@@ -1,0 +1,16 @@
+{
+  "nav": {
+    "home": "Home",
+    "skipToContent": "Skip to main content"
+  },
+  "breadcrumb": {
+    "home": "Home"
+  },
+  "hero": {
+    "eyebrow": "Tunisian Confederation of Junior Enterprises",
+    "title": "Join the Junior Enterprise Movement",
+    "subtitle": "A dynamic network of student-entrepreneurs across Tunisia, serving JEs and future Junior Creations.",
+    "ctaMap": "View the map",
+    "ctaJoin": "Apply"
+  }
+}
