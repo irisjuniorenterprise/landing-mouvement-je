@@ -12,5 +12,9 @@
     "subtitle": "Un réseau dynamique d'étudiants-entrepreneurs partout en Tunisie, au service des JE et des futures Junior Créations.",
     "ctaMap": "Voir la carte",
     "ctaJoin": "Candidater"
+  },
+  "map": {
+    "legalText": "Fond de carte fourni par",
+    "legalLink": "OpenStreetMap France"
   }
 }

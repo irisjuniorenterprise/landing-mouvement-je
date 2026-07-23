@@ -1,5 +1,6 @@
 import { useTranslations } from 'next-intl';
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
+import Map from '@/components/map/Map';
 
 export default async function HomePage({ params }) {
   const { locale } = await params;
@@ -14,6 +15,7 @@ function HomeContent({ locale }) {
       <p>{t('eyebrow')}</p>
       <h1>{t('title')}</h1>
       <p>{t('subtitle')}</p>
+      <Map />
     </main>
   );
 }
