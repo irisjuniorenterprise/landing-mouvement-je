@@ -1,6 +1,17 @@
 {
   "nav": {
     "home": "Accueil",
+    "history": "Histoire",
+    "about": "Qui sommes-nous",
+    "map": "Carte",
+    "je": "Juniors Entreprises",
+    "jc": "Junior Créations",
+    "kpis": "Chiffres clés",
+    "apply": "Candidater",
+    "mainNavigation": "Navigation principale",
+    "mobileNavigation": "Navigation mobile",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
     "skipToContent": "Aller au contenu principal"
   },
   "breadcrumb": {

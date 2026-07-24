@@ -1,6 +1,17 @@
 {
   "nav": {
     "home": "Home",
+    "history": "History",
+    "about": "About Us",
+    "map": "Map",
+    "je": "Junior Enterprises",
+    "jc": "Junior Creations",
+    "kpis": "Key Figures",
+    "apply": "Apply",
+    "mainNavigation": "Main navigation",
+    "mobileNavigation": "Mobile navigation",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
     "skipToContent": "Skip to main content"
   },
   "breadcrumb": {

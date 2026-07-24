@@ -1,6 +1,7 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations } from 'next-intl/server';
 import { locales } from '@/i18n/config';
+import Header from '@/components/layout/Header';
 import '../globals.css';
 
 export function generateStaticParams() {
@@ -28,7 +29,10 @@ export default async function LocaleLayout({ children, params }) {
           <a href="#main-content" className="skip-link">
             {tNav('skipToContent')}
           </a>
-          <div className="page-offset">{children}</div>
+          <Header />
+          <div className="page-offset" style={{ paddingTop: 'var(--header-height)' }}>
+            {children}
+          </div>
         </NextIntlClientProvider>
       </body>
     </html>
