@@ -1,0 +1,549 @@
+[
+  {
+    "id": 1,
+    "nom": "Codex Junior Entreprise",
+    "region": "Tunis",
+    "etablissement": "Institut Supérieur d'Informatique",
+    "prestations": {
+      "fr": ["Développement Web", "Développement mobile", "Développement desktop"],
+      "en": ["Web development", "Mobile development", "Desktop development"]
+    },
+    "email": "",
+    "dateCreation": "2018",
+    "lat": 36.8615191203215,
+    "lng": 10.188930884657445,
+    "reseaux_sociaux": { "facebook": "", "instagram": "", "linkedin": "" }
+  },
+  {
+    "id": 2,
+    "nom": "Designers Junior Entreprise",
+    "region": "Tunis",
+    "etablissement": "École Supérieure des Sciences et Technologies du Design",
+    "prestations": {
+      "fr": [
+        "Branding", "Rebranding", "Identité visuelle", "UI design", "Communication",
+        "Photographie", "Cadrage", "Découpage", "Storyboard", "Montage", "Packshot produit",
+        "Architecture d'intérieur", "Scénographie", "Packaging", "Modélisation 3D"
+      ],
+      "en": [
+        "Branding", "Rebranding", "Visual identity", "UI design", "Communication",
+        "Photography", "Framing", "Editing", "Storyboard", "Video editing", "Product packshot",
+        "Interior design", "Scenography", "Packaging", "3D modeling"
+      ]
+    },
+    "email": "",
+    "dateCreation": "2015",
+    "lat": 36.80967398877817,
+    "lng": 10.11859560709279,
+    "reseaux_sociaux": { "facebook": "", "instagram": "", "linkedin": "" }
+  },
+  {
+    "id": 3,
+    "nom": "ENSI Junior Entreprise",
+    "region": "Tunis",
+    "etablissement": "ENSI",
+    "prestations": {
+      "fr": ["Développement web", "Développement mobile", "Agents Chatbots", "Développement desktop"],
+      "en": ["Web development", "Mobile development", "Chatbot agents", "Desktop development"]
+    },
+    "email": "",
+    "dateCreation": "2006",
+    "lat": 36.814272595846866,
+    "lng": 10.063784357671278,
+    "reseaux_sociaux": { "facebook": "", "instagram": "", "linkedin": "" }
+  },
+  {
+    "id": 4,
+    "nom": "ENSIT Junior Entreprise",
+    "region": "Tunis",
+    "etablissement": "ENSIT",
+    "prestations": {
+      "fr": ["Développement web", "Développement mobile", "Conception électrique", "Conception mécanique"],
+      "en": ["Web development", "Mobile development", "Electrical design", "Mechanical design"]
+    },
+    "email": "",
+    "dateCreation": "2013",
+    "lat": 36.784806496632726,
+    "lng": 10.17963051791093,
+    "reseaux_sociaux": { "facebook": "", "instagram": "", "linkedin": "" }
+  },
+  {
+    "id": 5,
+    "nom": "ENIT Junior Entreprise",
+    "region": "Tunis",
+    "etablissement": "ENIT",
+    "prestations": {
+      "fr": [
+        "Développement web", "Développement python", "Développement mobile",
+        "Étude de marché", "Business plan", "Gestion de stock",
+        "Étude et Conception mécanique", "Étude et Conception électrique"
+      ],
+      "en": [
+        "Web development", "Python development", "Mobile development",
+        "Market research", "Business plan", "Inventory management",
+        "Mechanical design", "Electrical design"
+      ]
+    },
+    "email": "",
+    "dateCreation": "1999",
+    "lat": 36.83137939145082,
+    "lng": 10.14593284232872,
+    "reseaux_sociaux": { "facebook": "", "instagram": "", "linkedin": "" }
+  },
+  {
+    "id": 6,
+    "nom": "JEENISO Junior Entreprise",
+    "region": "Sousse",
+    "etablissement": "ENISo",
+    "prestations": {
+      "fr": ["Conception mécanique", "Conception Electronique", "Développement Web", "Développement Mobile", "Prototypage"],
+      "en": ["Mechanical design", "Electronic design", "Web development", "Mobile development", "Prototyping"]
+    },
+    "email": "",
+    "dateCreation": "2011",
+    "lat": 35.820414741989076,
+    "lng": 10.592628984657443,
+    "reseaux_sociaux": { "facebook": "", "instagram": "", "linkedin": "" }
+  },
+  {
+    "id": 7,
+    "nom": "ENET'COM Junior Entreprise",
+    "region": "Sfax",
+    "etablissement": "ENET'COM",
+    "prestations": {
+      "fr": ["Développement web", "Développement mobile", "Développement desktop"],
+      "en": ["Web development", "Mobile development", "Desktop development"]
+    },
+    "email": "",
+    "dateCreation": "",
+    "lat": 34.83811305577608,
+    "lng": 10.755663005548417,
+    "reseaux_sociaux": { "facebook": "", "instagram": "", "linkedin": "" }
+  },
+  {
+    "id": 8,
+    "nom": "ESPRO Junior Entreprise",
+    "region": "Ariana",
+    "etablissement": "ESPRIT",
+    "prestations": {
+      "fr": [
+        "Solutions automatisées", "Ingénierie théorique", "Electronique", "Conception mécanique",
+        "Plans des chantiers", "Béton armé", "Conception DAO",
+        "Pilotage de processus", "Gestion documentaire", "Plans de qualité"
+      ],
+      "en": [
+        "Automated solutions", "Theoretical engineering", "Electronics", "Mechanical design",
+        "Construction plans", "Reinforced concrete", "CAD design",
+        "Process management", "Document management", "Quality plans"
+      ]
+    },
+    "email": "",
+    "dateCreation": "2015",
+    "lat": 36.85375299971749,
+    "lng": 10.207597671164363,
+    "reseaux_sociaux": { "facebook": "", "instagram": "", "linkedin": "" }
+  },
+  {
+    "id": 9,
+    "nom": "ETC Junior Entreprise",
+    "region": "Tunis",
+    "etablissement": "ENSTAB",
+    "prestations": {
+      "fr": [
+        "IOT", "Solutions industrielles basées sur l'IA", "Manipulation des capteurs", "Manipulation des cartes électroniques",
+        "Étude énergétique", "Audit thermique et énergétique", "Efficacité énergétique", "Valorisation des déchets"
+      ],
+      "en": [
+        "IoT", "AI-based industrial solutions", "Sensor handling", "Electronic board handling",
+        "Energy study", "Thermal and energy audit", "Energy efficiency", "Waste valorization"
+      ]
+    },
+    "email": "",
+    "dateCreation": "2018",
+    "lat": 36.71266067232233,
+    "lng": 10.426145822875446,
+    "reseaux_sociaux": { "facebook": "", "instagram": "", "linkedin": "" }
+  },
+  {
+    "id": 10,
+    "nom": "INAT Junior Entreprise",
+    "region": "Tunis",
+    "etablissement": "INAT",
+    "prestations": {
+      "fr": ["Étude de marché d'un projet agricole", "Évaluation d'un projet agricole", "Système hydroponique", "Compostage", "Mur végétal"],
+      "en": ["Agricultural market study", "Agricultural project evaluation", "Hydroponic system", "Composting", "Green wall"]
+    },
+    "email": "",
+    "dateCreation": "2012",
+    "lat": 36.83002112004729,
+    "lng": 10.181365646026295,
+    "reseaux_sociaux": { "facebook": "", "instagram": "", "linkedin": "" }
+  },
+  {
+    "id": 11,
+    "nom": "INCEPTUM Junior Entreprise",
+    "region": "Tunis",
+    "etablissement": "École Supérieure Privée d'Ingénierie et de Technologies",
+    "prestations": {
+      "fr": ["Développement mobile", "Développement web", "Développement desktop", "Graphic design", "Community management"],
+      "en": ["Mobile development", "Web development", "Desktop development", "Graphic design", "Community management"]
+    },
+    "email": "",
+    "dateCreation": "2015",
+    "lat": 36.89952770388358,
+    "lng": 10.190297158967004,
+    "reseaux_sociaux": { "facebook": "", "instagram": "", "linkedin": "" }
+  },
+  {
+    "id": 12,
+    "nom": "INSAT Junior Entreprise",
+    "region": "Tunis",
+    "etablissement": "INSAT",
+    "prestations": {
+      "fr": ["Développement Web", "Développement Mobile", "Référencement", "UI/UX Design"],
+      "en": ["Web development", "Mobile development", "SEO", "UI/UX design"]
+    },
+    "email": "",
+    "dateCreation": "2005",
+    "lat": 36.849263827666086,
+    "lng": 10.19731798225651,
+    "reseaux_sociaux": { "facebook": "", "instagram": "", "linkedin": "" }
+  },
+  {
+    "id": 13,
+    "nom": "IRIS Junior Entreprise",
+    "region": "Sfax",
+    "etablissement": "ENIS / ESCS",
+    "prestations": {
+      "fr": ["IT", "Marketing", "Business"],
+      "en": ["IT", "Marketing", "Business"]
+    },
+    "email": "",
+    "dateCreation": "2014",
+    "lat": 34.72611276252954,
+    "lng": 10.717786715342099,
+    "reseaux_sociaux": { "facebook": "", "instagram": "", "linkedin": "" }
+  },
+  {
+    "id": 14,
+    "nom": "ISG Gabès Junior Entreprise",
+    "region": "Gabès",
+    "etablissement": "ISG Gabès",
+    "prestations": {
+      "fr": ["Développement des sites web", "Développement des applications web", "Consulting", "Étude de notoriété", "Étude de satisfaction"],
+      "en": ["Website development", "Web application development", "Consulting", "Brand awareness study", "Satisfaction study"]
+    },
+    "email": "",
+    "dateCreation": "",
+    "lat": 33.88280891148068,
+    "lng": 10.091225512940706,
+    "reseaux_sociaux": { "facebook": "", "instagram": "", "linkedin": "" }
+  },
+  {
+    "id": 15,
+    "nom": "ISG Conseil Junior Entreprise",
+    "region": "Tunis",
+    "etablissement": "ISG Tunis",
+    "prestations": {
+      "fr": ["Étude de faisabilité", "Étude de satisfaction", "Business Plan"],
+      "en": ["Feasibility study", "Satisfaction study", "Business plan"]
+    },
+    "email": "",
+    "dateCreation": "",
+    "lat": 36.804637503304626,
+    "lng": 10.151194528282808,
+    "reseaux_sociaux": { "facebook": "", "instagram": "", "linkedin": "" }
+  },
+  {
+    "id": 16,
+    "nom": "Marketup Junior Entreprise",
+    "region": "Sfax",
+    "etablissement": "IHEC Sfax",
+    "prestations": {
+      "fr": ["Plan de communication", "Étude de marché", "Étude de faisabilité", "Branding", "Consulting en marketing"],
+      "en": ["Communication plan", "Market study", "Feasibility study", "Branding", "Marketing consulting"]
+    },
+    "email": "",
+    "dateCreation": "",
+    "lat": 34.79421585369993,
+    "lng": 10.83662604232895,
+    "reseaux_sociaux": { "facebook": "", "instagram": "", "linkedin": "" }
+  },
+  {
+    "id": 17,
+    "nom": "Melkart Junior Entreprise",
+    "region": "Tunis",
+    "etablissement": "ENICarthage",
+    "prestations": {
+      "fr": ["Développement web", "Développement mobile", "Développement desktop", "SEO"],
+      "en": ["Web development", "Mobile development", "Desktop development", "SEO"]
+    },
+    "email": "",
+    "dateCreation": "2012",
+    "lat": 36.85208455593022,
+    "lng": 10.2113411901617,
+    "reseaux_sociaux": { "facebook": "", "instagram": "", "linkedin": "" }
+  },
+  {
+    "id": 18,
+    "nom": "MMT Junior Entreprise",
+    "region": "Tunis",
+    "etablissement": "IHEC Carthage",
+    "prestations": {
+      "fr": ["Étude de marché", "Étude de lancement", "Étude de satisfaction", "Étude sectorielle", "Étude de notoriété / image", "Plan de communication", "Plan financier", "Benchmark", "Design"],
+      "en": ["Market study", "Launch study", "Satisfaction study", "Sector study", "Brand awareness/image study", "Communication plan", "Financial plan", "Benchmark", "Design"]
+    },
+    "email": "",
+    "dateCreation": "2005",
+    "lat": 36.82068910138731,
+    "lng": 10.180530253973705,
+    "reseaux_sociaux": { "facebook": "", "instagram": "", "linkedin": "" }
+  },
+  {
+    "id": 19,
+    "nom": "Métis Junior Entreprise",
+    "region": "Tunis",
+    "etablissement": "FSEGT",
+    "prestations": {
+      "fr": ["Développement web", "Étude de marché"],
+      "en": ["Web development", "Market study"]
+    },
+    "email": "",
+    "dateCreation": "2020",
+    "lat": 36.821354,
+    "lng": 10.179472,
+    "reseaux_sociaux": { "facebook": "", "instagram": "", "linkedin": "" }
+  },
+  {
+    "id": 20,
+    "nom": "Neapolis Marketing Consulting Junior Entreprise",
+    "region": "Nabeul",
+    "etablissement": "FSEG Nabeul",
+    "prestations": {
+      "fr": ["Étude de marché", "Étude de positionnement", "Étude d'image", "Étude de notoriété", "Étude de satisfaction", "Branding", "Stratégie de marketing", "Community management", "Création de contenu", "Plan de communication"],
+      "en": ["Market study", "Positioning study", "Image study", "Brand awareness study", "Satisfaction study", "Branding", "Marketing strategy", "Community management", "Content creation", "Communication plan"]
+    },
+    "email": "",
+    "dateCreation": "2018",
+    "lat": 36.4351329226501,
+    "lng": 10.689678613493427,
+    "reseaux_sociaux": { "facebook": "", "instagram": "", "linkedin": "" }
+  },
+  {
+    "id": 21,
+    "nom": "Orenda Junior Entreprise",
+    "region": "Tunis",
+    "etablissement": "ISAMM",
+    "prestations": {
+      "fr": ["Développement Web", "Design Graphique", "Montage Vidéo"],
+      "en": ["Web development", "Graphic design", "Video editing"]
+    },
+    "email": "",
+    "dateCreation": "2018",
+    "lat": 36.8165685212567,
+    "lng": 10.06102507301315,
+    "reseaux_sociaux": { "facebook": "", "instagram": "", "linkedin": "" }
+  },
+  {
+    "id": 22,
+    "nom": "Optima Junior Entreprise",
+    "region": "Tunis",
+    "etablissement": "Faculté des Sciences de Tunis",
+    "prestations": {
+      "fr": ["Site Web Vitrine", "Site Web Dynamique", "Plateforme web", "Chatbots", "ERP", "Applications mobiles natives", "Applications mobiles hybrides", "SEO"],
+      "en": ["Showcase website", "Dynamic website", "Web platform", "Chatbots", "ERP", "Native mobile apps", "Hybrid mobile apps", "SEO"]
+    },
+    "email": "",
+    "dateCreation": "2013",
+    "lat": 36.83333868850896,
+    "lng": 10.145225205546016,
+    "reseaux_sociaux": { "facebook": "", "instagram": "", "linkedin": "" }
+  },
+  {
+    "id": 23,
+    "nom": "Phoenix Consulting Junior Entreprise",
+    "region": "Tunis",
+    "etablissement": "ISCAE",
+    "prestations": {
+      "fr": ["Stratégie", "Finance", "Création d'entreprise", "Étude de marché", "Étude de satisfaction", "Analyse financière", "BMC", "Business plan"],
+      "en": ["Strategy", "Finance", "Business creation", "Market study", "Satisfaction study", "Financial analysis", "BMC", "Business plan"]
+    },
+    "email": "",
+    "dateCreation": "",
+    "lat": 36.815077565374075,
+    "lng": 10.061155805546019,
+    "reseaux_sociaux": { "facebook": "", "instagram": "", "linkedin": "" }
+  },
+  {
+    "id": 24,
+    "nom": "SMA Consulting Junior Entreprise",
+    "region": "Tunis",
+    "etablissement": "ISG Tunis",
+    "prestations": {
+      "fr": ["Développement Web", "Étude de marché"],
+      "en": ["Web development", "Market study"]
+    },
+    "email": "",
+    "dateCreation": "2015",
+    "lat": 36.804594551316455,
+    "lng": 10.150926307394691,
+    "reseaux_sociaux": { "facebook": "", "instagram": "", "linkedin": "" }
+  },
+  {
+    "id": 25,
+    "nom": "SUP'COM Junior Entreprise",
+    "region": "Tunis",
+    "etablissement": "SUP'COM",
+    "prestations": {
+      "fr": ["Développement web", "Développement mobile"],
+      "en": ["Web development", "Mobile development"]
+    },
+    "email": "",
+    "dateCreation": "2013",
+    "lat": 36.892055363262045,
+    "lng": 10.188567833828827,
+    "reseaux_sociaux": { "facebook": "", "instagram": "", "linkedin": "" }
+  },
+  {
+    "id": 26,
+    "nom": "TBS Junior Entreprise",
+    "region": "Tunis",
+    "etablissement": "Tunis Business School",
+    "prestations": {
+      "fr": ["Étude de marché", "Étude de potentiel", "Étude de Positionnement", "Étude de Notoriété et d'Image de Marque", "Étude de Satisfaction", "Étude Du Benchmarking", "Étude Documentaire"],
+      "en": ["Market study", "Potential study", "Positioning study", "Brand awareness and image study", "Satisfaction study", "Benchmarking study", "Desk research"]
+    },
+    "email": "",
+    "dateCreation": "2017",
+    "lat": 36.72095389598015,
+    "lng": 10.236189249170922,
+    "reseaux_sociaux": { "facebook": "", "instagram": "", "linkedin": "" }
+  },
+  {
+    "id": 27,
+    "nom": "TYM Junior Entreprise",
+    "region": "Tunis",
+    "etablissement": "ESCT",
+    "prestations": {
+      "fr": ["Community management", "Conception graphique", "Étude de notoriété", "Étude de faisabilité", "Étude de satisfaction", "Étude de perception", "Étude d'impact"],
+      "en": ["Community management", "Graphic design", "Brand awareness study", "Feasibility study", "Satisfaction study", "Perception study", "Impact study"]
+    },
+    "email": "",
+    "dateCreation": "",
+    "lat": 36.81419867603551,
+    "lng": 10.062160882164024,
+    "reseaux_sociaux": { "facebook": "", "instagram": "", "linkedin": "" }
+  },
+  {
+    "id": 28,
+    "nom": "MIT'COM Junior Entreprise",
+    "region": "Tunis",
+    "etablissement": "ISET'Com",
+    "prestations": {
+      "fr": [
+        "Branding",
+        "Analyse de données",
+        "Sécurisation et optimisation des infrastructures IT",
+        "Développement web"
+      ],
+      "en": [
+        "Branding",
+        "Data analysis",
+        "IT infrastructure security and optimization",
+        "Web development"
+      ]
+    },
+    "email": "",
+    "dateCreation": "2025",
+    "lat": 36.89109269250638,
+    "lng": 10.184338757515821,
+    "reseaux_sociaux": {
+      "facebook": "https://www.facebook.com/ISETCom",
+      "instagram": "",
+      "linkedin": ""
+    }
+  },
+  {
+    "id": 29,
+    "nom": "Fortum Junior Entreprise",
+    "region": "Tunis",
+    "etablissement": "Tek-Up University",
+    "prestations": {
+      "fr": [
+        "Développement d'applications mobiles",
+        "Développement web",
+        "Tests d'intrusion (Pentesting)",
+        "Cybersécurité",
+        "Consulting"
+      ],
+      "en": [
+        "Mobile application development",
+        "Web development",
+        "Penetration testing (Pentesting)",
+        "Cybersecurity",
+        "Consulting"
+      ]
+    },
+    "email": "",
+    "dateCreation": "2024",
+    "lat": 36.853048,
+    "lng": 10.199714,
+    "reseaux_sociaux": {
+      "facebook": "",
+      "instagram": "",
+      "linkedin": ""
+    }
+  },
+  {
+    "id": 30,
+    "nom": "Sesame Junior Entreprise",
+    "region": "Tunis",
+    "etablissement": "Université SESAME",
+    "prestations": {
+      "fr": [
+        "Conseil et Développement Stratégique",
+        "Design Graphique",
+        "Transformation Digitale"
+      ],
+      "en": [
+        "Strategic Consulting and Development",
+        "Graphic Design",
+        "Digital Transformation"
+      ]
+    },
+    "email": "",
+    "dateCreation": "2025",
+    "lat": 36.89821126514632,
+    "lng": 10.192335289210185,
+    "reseaux_sociaux": {
+      "facebook": "",
+      "instagram": "",
+      "linkedin": ""
+    }
+  },
+  {
+    "id": 31,
+    "nom": "BioTech Junior Entreprise",
+    "region": "Tunis",
+    "etablissement": "ISTMT",
+    "prestations": {
+      "fr": [
+        "Développement Mobile – Santé",
+        "Développement Web – Santéx"
+      ],
+      "en": [
+        "Mobile Development – Health",
+        "Web Development – Health"
+      ]
+    },
+    "email": "",
+    "dateCreation": "",
+    "lat": 36.80082692164171 ,
+    "lng": 10.160409641292302,
+    "reseaux_sociaux": {
+      "facebook": "",
+      "instagram": "",
+      "linkedin": ""
+    }
+  }
+]

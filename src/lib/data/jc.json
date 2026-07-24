@@ -1,0 +1,41 @@
+[
+  {
+    "id": 1,
+    "nom": "IRIS JC",
+    "region": "Sfax",
+    "etablissement": "ENISFax (École Nationale d'Ingénieurs de Sfax)",
+    "email": "iris.jc@je.tn",
+    "description": {
+      "fr": "Junior Création portée par des étudiants ingénieurs de l'ENISFax, accompagnée dans le cadre du programme d'Expansion & Intégration de la CTJE.",
+      "en": "Junior Creation led by engineering students from ENISFax, supported as part of the CTJE's Expansion & Integration program."
+    },
+    "lat": 34.7405,
+    "lng": 10.7603
+  },
+  {
+    "id": 2,
+    "nom": "Pristini JC",
+    "region": "Tunis",
+    "etablissement": "Pristini School of IA",
+    "email": "pristini.jc@je.tn",
+    "description": {
+      "fr": "Initiative étudiante de la Pristini School of IA, en cours de structuration pour devenir une Junior Entreprise à part entière.",
+      "en": "Student initiative from the Pristini School of AI, currently being structured into a fully-fledged Junior Entreprise."
+    },
+    "lat": 36.8065,
+    "lng": 10.1815
+  },
+  {
+    "id": 3,
+    "nom": "Élite JC",
+    "region": "Zaghouan",
+    "etablissement": "ESA Mograne (École Supérieure d'Agriculture de Mograne)",
+    "email": "elite.jc@je.tn",
+    "description": {
+      "fr": "Junior Création accompagnée par le Pôle Expansion de la CTJE, portée par les étudiants de l'ESA Mograne.",
+      "en": "Junior Creation supported by the CTJE's Expansion Hub, led by students from ESA Mograne."
+    },
+    "lat": 36.4167,
+    "lng": 10.1667
+  }
+]
