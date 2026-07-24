@@ -1,0 +1,219 @@
+.footer {
+  position: relative;
+  background: var(--color-secondary);
+  color: #d4d4d4;
+  padding: 3.5rem 0 1.5rem;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+}
+
+.footerInner {
+  display: block;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: "brand" "nav" "legal" "contact";
+  gap: 0;
+  margin-bottom: 2rem;
+}
+
+.grid > div:nth-child(1) { grid-area: brand; }
+.grid > div:nth-child(2) { grid-area: nav; }
+.grid > div:nth-child(3) { grid-area: legal; }
+.grid > div:nth-child(4) { grid-area: contact; }
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.logoImage {
+  height: 4rem;
+  width: auto;
+}
+
+.tagline {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  max-width: 22rem;
+  margin-bottom: 1rem;
+  color: #b8b8b8;
+}
+
+.colTitle {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.linkList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  font-size: 0.875rem;
+}
+
+.linkList a {
+  display: inline-flex;
+  width: fit-content;
+  color: #d4d4d4;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.linkList a:hover {
+  color: #ffffff;
+  transform: translateX(3px);
+}
+
+.linkList a:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 0.25rem;
+}
+
+.contactItem {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.875rem;
+  width: fit-content;
+  color: #d4d4d4;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.contactItem:hover {
+  color: #ffffff;
+  transform: translateX(3px);
+}
+
+.contactItem:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 0.25rem;
+}
+
+.socialSection {
+  margin-top: 1.5rem;
+}
+
+.socialTitle {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.socialLink {
+  color: #d4d4d4;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+
+.socialLink:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.socialLink:active {
+  transform: translateY(0px);
+}
+
+.bottomBar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35rem 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1.5rem;
+  font-size: 0.75rem;
+  color: #a3a3a3;
+  text-align: center;
+  line-height: 1.6;
+}
+
+@media (max-width: 639px) {
+  .footer { padding: 3rem 0 1.5rem; }
+  .grid { grid-template-areas: "brand" "nav" "legal" "contact"; gap: 0; }
+  .grid > div { padding: 1.75rem 0; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+  .grid > div:first-child { padding-top: 0; border-top: none; }
+  .brand { margin-bottom: 1.25rem; }
+  .tagline { max-width: none; }
+  .colTitle { margin-bottom: 0.85rem; }
+  .linkList { gap: 0.75rem; }
+  .contactItem { margin-top: 0.85rem; }
+  .contactItem:first-of-type { margin-top: 0; }
+  .socialLinks { gap: 0.6rem; }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "brand brand" "nav legal" "contact contact";
+    column-gap: 2.5rem;
+    row-gap: 0;
+  }
+  .grid > div:nth-child(1) {
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .grid > div:nth-child(2), .grid > div:nth-child(3) { padding-bottom: 2rem; }
+  .grid > div:nth-child(4) {
+    padding-top: 2rem;
+    margin-top: 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .tagline { max-width: 26rem; }
+  .socialSection { display: flex; align-items: center; gap: 1.25rem; margin-top: 1.5rem; }
+  .socialTitle { margin-bottom: 0; }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-areas: "brand nav legal contact";
+    gap: 3rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .linkList a, .contactItem, .socialLink { transition: none; }
+  .linkList a:hover, .contactItem:hover, .socialLink:hover { transform: none; }
+}

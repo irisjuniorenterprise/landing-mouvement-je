@@ -27,5 +27,23 @@
   "map": {
     "legalText": "Fond de carte fourni par",
     "legalLink": "contributeurs OpenStreetMap"
+  },
+  "footer": {
+    "tagline": "Le réseau des Juniors Entreprises et Junior Créations en Tunisie.",
+    "contactTitle": "Contact",
+    "linksTitle": "Liens utiles",
+    "legalTitle": "Légal",
+    "linkHome": "Accueil",
+    "linkAbout": "Qui sommes-nous",
+    "linkMap": "Carte",
+    "linkApply": "Candidater",
+    "linkLegal": "Mentions légales",
+    "linkPrivacy": "Politique de confidentialité",
+    "linkTerms": "Conditions d'utilisation",
+    "socialTitle": "Suivez-nous",
+    "orgName": "Confédération Tunisienne des Juniors Entreprises (CTJE)",
+    "email": "contact@jetunisie.com",
+    "phone": "+216 25 716 711",
+    "rights": "Tous droits réservés."
   }
 }

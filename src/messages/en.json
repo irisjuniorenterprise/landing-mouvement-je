@@ -27,5 +27,23 @@
   "map": {
     "legalText": "Base map provided by",
     "legalLink": "OpenStreetMap contributors"
+  },
+  "footer": {
+    "tagline": "The network of Junior Enterprises and Junior Startups in Tunisia.",
+    "contactTitle": "Contact",
+    "linksTitle": "Useful links",
+    "legalTitle": "Legal",
+    "linkHome": "Home",
+    "linkAbout": "About us",
+    "linkMap": "Network map",
+    "linkApply": "Apply",
+    "linkLegal": "Legal notice",
+    "linkPrivacy": "Privacy policy",
+    "linkTerms": "Terms of use",
+    "socialTitle": "Follow us",
+    "orgName": "Tunisian Confederation of Junior Enterprises (CTJE)",
+    "email": "contact@jetunisie.com",
+    "phone": "+216 25 716 711",
+    "rights": "All rights reserved."
   }
 }

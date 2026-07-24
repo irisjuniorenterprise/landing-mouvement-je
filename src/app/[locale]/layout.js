@@ -2,6 +2,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations } from 'next-intl/server';
 import { locales } from '@/i18n/config';
 import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 import '../globals.css';
 
 export function generateStaticParams() {
@@ -33,6 +34,7 @@ export default async function LocaleLayout({ children, params }) {
           <div className="page-offset" style={{ paddingTop: 'var(--header-height)' }}>
             {children}
           </div>
+          <Footer />
         </NextIntlClientProvider>
       </body>
     </html>
