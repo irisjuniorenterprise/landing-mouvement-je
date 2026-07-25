@@ -1,19 +1,11 @@
-import { useTranslations } from 'next-intl';
+import Hero from '@/components/sections/Hero';
 import Map from '@/components/map/Map';
 
-export default async function HomePage({ params }) {
-  const { locale } = await params;
-  return <HomeContent locale={locale} />;
-}
-
-function HomeContent() {
-  const t = useTranslations('hero');
+export default async function HomePage() {
   return (
-    <main id="main-content" style={{ padding: '2rem' }}>
-      <p>{t('eyebrow')}</p>
-      <h1>{t('title')}</h1>
-      <p>{t('subtitle')}</p>
-      <div id="map">
+    <main id="main-content">
+      <Hero />
+      <div id="map" className="container section-padding">
         <Map />
       </div>
     </main>
