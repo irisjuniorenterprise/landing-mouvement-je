@@ -59,5 +59,19 @@
     "email": "contact@jetunisie.com",
     "phone": "+216 25 716 711",
     "rights": "All rights reserved."
+  },
+  "je": {
+    "title": "Junior Enterprises",
+    "subtitle": "Discover the JEs active in the network and their areas of expertise.",
+    "since": "Since",
+    "viewMore": "View more",
+    "contact": "Contact",
+    "empty": "No Junior Enterprise matches this filter.",
+    "modal": {
+      "servicesTitle": "Services offered",
+      "contactTitle": "Contact",
+      "socialTitle": "Social media",
+      "close": "Close"
+    }
   }
 }
