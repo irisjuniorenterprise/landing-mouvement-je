@@ -122,4 +122,57 @@ export const Icons = {
       <path d="M9 22v-4h6v4M8 6h.01M16 6h.01M8 10h.01M16 10h.01M8 14h.01M16 14h.01" />
     </IconWrapper>
   ),
+  Briefcase: (props) => (
+    <IconWrapper {...props}>
+      <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+      <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+    </IconWrapper>
+  ),
+
+  Users: (props) => (
+    <IconWrapper {...props}>
+      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+    </IconWrapper>
+  ),
+
+  FileCheck: (props) => (
+    <IconWrapper {...props}>
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+      <path d="M14 2v6h6" />
+      <path d="m9 15 2 2 4-4" />
+    </IconWrapper>
+  ),
+
+  Coin: (props) => (
+    <IconWrapper {...props}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M14.8 9a2.5 2.5 0 0 0-2.3-1.5h-1a2 2 0 0 0 0 4h1a2 2 0 0 1 0 4h-1A2.5 2.5 0 0 1 9.2 14" />
+      <path d="M12 6v2M12 16v2" />
+    </IconWrapper>
+  ),
+
+  ServicePro: (props) => (
+    <IconWrapper {...props}>
+      <path d="m12 15 3.5-3.5" />
+      <path d="M20.42 4.58a5 5 0 0 0-7.08 0L12 5.92l-1.34-1.34a5 5 0 1 0-7.08 7.08l1.34 1.34L12 20.42l7.08-7.08 1.34-1.34a5 5 0 0 0 0-7.08Z" />
+    </IconWrapper>
+  ),
+
+  GraduationCap: (props) => (
+    <IconWrapper {...props}>
+      <path d="M22 10 12 5 2 10l10 5 10-5Z" />
+      <path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5" />
+    </IconWrapper>
+  ),
+
+  WalletMoney: (props) => (
+    <IconWrapper {...props}>
+      <path d="M20 12V8a2 2 0 0 0-2-2H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v3" />
+      <path d="M20 12v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7" />
+      <circle cx="16" cy="15" r="1.5" />
+    </IconWrapper>
+  ),
 };

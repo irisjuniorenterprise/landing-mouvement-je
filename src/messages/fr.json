@@ -79,5 +79,23 @@
     "subtitle": "Structures étudiantes en phase de lancement, accompagnées dans le cadre du programme d'Expansion & Intégration de la CTJE, en vue de devenir de futures Juniors Entreprises.",
     "establishment": "Établissement",
     "empty": "Aucune Junior Création enregistrée pour le moment."
+  },
+  "kpis": {
+    "title": "Le mouvement en chiffres",
+    "subtitle": "Un réseau en constante expansion, en Tunisie comme dans le monde.",
+    "worldTitle": "Le mouvement JE dans le monde",
+    "worldCountries": "Pays",
+    "worldJE": "Junior Entreprises",
+    "worldMembers": "Junior Entrepreneurs",
+    "worldProjects": "Projets par an",
+    "worldRevenue": "de CA annuel",
+    "tunisiaTitle": "La CTJE en Tunisie",
+    "totalRegions": "Gouvernorats couverts",
+    "totalJE": "Junior Entreprises",
+    "totalMembers": "Junior Entrepreneurs",
+    "totalServices": "Prestations de service référencées",
+    "totalTrainings": "Formations par an",
+    "totalProjects": "Projets par an",
+    "totalRevenue": "de CA annuel"
   }
 }

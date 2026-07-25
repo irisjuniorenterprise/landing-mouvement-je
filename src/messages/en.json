@@ -79,5 +79,23 @@
     "subtitle": "Student-led structures currently launching, supported through the CTJE's Expansion & Integration program, on their way to becoming future Junior Enterprises.",
     "establishment": "Institution",
     "empty": "No Junior Creation registered yet."
+  },
+  "kpis": {
+    "title": "The movement in numbers",
+    "subtitle": "A network in constant growth, in Tunisia and around the world.",
+    "worldTitle": "The JE movement worldwide",
+    "worldCountries": "Countries",
+    "worldJE": "Junior Enterprises",
+    "worldMembers": "Junior Entrepreneurs",
+    "worldProjects": "Projects per year",
+    "worldRevenue": "annual revenue",
+    "tunisiaTitle": "CTJE in Tunisia",
+    "totalRegions": "Governorates covered",
+    "totalJE": "Junior Enterprises",
+    "totalMembers": "Junior Entrepreneurs",
+    "totalServices": "Services referenced",
+    "totalTrainings": "Trainings per year",
+    "totalProjects": "Projects per year",
+    "totalRevenue": "annual revenue"
   }
 }
