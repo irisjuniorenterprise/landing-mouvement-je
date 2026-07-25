@@ -25,7 +25,20 @@
     "ctaJoin": "Apply"
   },
   "map": {
-    "legalText": "Base map provided by",
+    "title": "The JE/JC network in Tunisia",
+    "subtitle": "Click on a region to discover the Junior Enterprises and Junior Creations based there.",
+    "legendTitle": "Legend",
+    "legendJE": "Junior Enterprise",
+    "legendJC": "Junior Creation",
+    "legendInactive": "Not covered",
+    "hint": "Click on a region to filter the list below",
+    "resetFilter": "Reset filter",
+    "loading": "Loading map...",
+    "filteredBy": "Selected region: {region}",
+    "selectLabel": "Filter by region",
+    "selectPlaceholder": "All regions",
+    "viewSheet": "View profile",
+    "legalText": "Map data ©",
     "legalLink": "OpenStreetMap contributors"
   },
   "footer": {

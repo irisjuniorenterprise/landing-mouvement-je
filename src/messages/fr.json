@@ -25,7 +25,20 @@
     "ctaJoin": "Candidater"
   },
   "map": {
-    "legalText": "Fond de carte fourni par",
+    "title": "Le réseau JE/JC en Tunisie",
+    "subtitle": "Cliquez sur une région pour découvrir les Juniors Entreprises et Junior Créations qui y sont implantées.",
+    "legendTitle": "Légende",
+    "legendJE": "Junior Entreprise",
+    "legendJC": "Junior Création",
+    "legendInactive": "Non couverte",
+    "hint": "Cliquez sur une région pour filtrer la liste ci-dessous",
+    "resetFilter": "Réinitialiser le filtre",
+    "loading": "Chargement de la carte...",
+    "filteredBy": "Région sélectionnée : {region}",
+    "selectLabel": "Filtrer par région",
+    "selectPlaceholder": "Toutes les régions",
+    "viewSheet": "Voir la fiche",
+    "legalText": "Données cartographiques ©",
     "legalLink": "contributeurs OpenStreetMap"
   },
   "footer": {
