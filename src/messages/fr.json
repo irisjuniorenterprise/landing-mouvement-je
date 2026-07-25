@@ -73,5 +73,11 @@
       "socialTitle": "Réseaux sociaux",
       "close": "Fermer"
     }
+  },
+  "jc": {
+    "title": "Les Junior Créations",
+    "subtitle": "Structures étudiantes en phase de lancement, accompagnées dans le cadre du programme d'Expansion & Intégration de la CTJE, en vue de devenir de futures Juniors Entreprises.",
+    "establishment": "Établissement",
+    "empty": "Aucune Junior Création enregistrée pour le moment."
   }
 }

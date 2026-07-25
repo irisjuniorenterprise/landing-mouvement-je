@@ -73,5 +73,11 @@
       "socialTitle": "Social media",
       "close": "Close"
     }
+  },
+  "jc": {
+    "title": "Junior Creations",
+    "subtitle": "Student-led structures currently launching, supported through the CTJE's Expansion & Integration program, on their way to becoming future Junior Enterprises.",
+    "establishment": "Institution",
+    "empty": "No Junior Creation registered yet."
   }
 }

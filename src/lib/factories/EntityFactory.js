@@ -1,4 +1,5 @@
 import JuniorEntreprise from '@/lib/entities/JuniorEntreprise';
+import JuniorCreation from '@/lib/entities/JuniorCreation';
 
 /**
  * Fabrique responsable de la conversion des données JSON brutes
@@ -13,6 +14,14 @@ class EntityFactory {
 
   static createManyJE(rawList = []) {
     return rawList.map(EntityFactory.createJE);
+  }
+
+  static createJC(raw) {
+    return new JuniorCreation(raw);
+  }
+
+  static createManyJC(rawList = []) {
+    return rawList.map(EntityFactory.createJC);
   }
 }
 

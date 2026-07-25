@@ -116,4 +116,10 @@ export const Icons = {
       <line x1="3" y1="10" x2="21" y2="10" />
     </IconWrapper>
   ),
+  Building: (props) => (
+    <IconWrapper {...props}>
+      <rect x="4" y="2" width="16" height="20" rx="1" />
+      <path d="M9 22v-4h6v4M8 6h.01M16 6h.01M8 10h.01M16 10h.01M8 14h.01M16 14h.01" />
+    </IconWrapper>
+  ),
 };
