@@ -97,5 +97,32 @@
     "totalTrainings": "Formations par an",
     "totalProjects": "Projets par an",
     "totalRevenue": "de CA annuel"
+  },
+  "form": {
+    "title": "Candidater au mouvement",
+    "subtitle": "Vous souhaitez rejoindre ou créer une Junior Entreprise ? Remplissez ce formulaire, notre Pôle Expansion vous recontactera.",
+    "personalInfoTitle": "Informations personnelles",
+    "motivationTitle": "Votre motivation",
+    "name": "Nom complet",
+    "namePlaceholder": "Votre nom et prénom",
+    "email": "Adresse email",
+    "emailPlaceholder": "vous@exemple.com",
+    "region": "Région",
+    "regionPlaceholder": "Sélectionnez votre région",
+    "establishment": "Établissement",
+    "establishmentPlaceholder": "Votre établissement d'enseignement supérieur",
+    "motivation": "Motivation",
+    "motivationPlaceholder": "Expliquez-nous votre projet et votre motivation à rejoindre le mouvement JE...",
+    "submit": "Envoyer ma candidature",
+    "submitting": "Envoi en cours...",
+    "success": "Votre candidature a bien été reçue par le Pôle Expansion & Intégration de la CTJE. Nous vous contacterons dans les meilleurs délais. Bienvenue dans le mouvement des Junior Entreprises Tunisie !",
+    "error": "Une erreur est survenue lors de l'envoi. Merci de réessayer.",
+    "acceptTerms": "J'ai lu et j'accepte les <terms>conditions générales d'utilisation</terms> et la <privacy>politique de confidentialité</privacy> de la CTJE.",
+    "errors": {
+      "required": "Ce champ est requis",
+      "invalidEmail": "Merci de saisir une adresse email valide",
+      "tooShort": "Merci de fournir une réponse plus détaillée (10 caractères minimum)",
+      "requiredCheckbox": "Merci d'accepter les conditions pour continuer"
+    }
   }
 }

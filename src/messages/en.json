@@ -97,5 +97,32 @@
     "totalTrainings": "Trainings per year",
     "totalProjects": "Projects per year",
     "totalRevenue": "annual revenue"
+  },
+  "form": {
+    "title": "Apply to join the movement",
+    "subtitle": "Want to join or found a Junior Enterprise? Fill out this form and our Expansion team will get back to you.",
+    "personalInfoTitle": "Personal information",
+    "motivationTitle": "Your motivation",
+    "name": "Full name",
+    "namePlaceholder": "Your first and last name",
+    "email": "Email address",
+    "emailPlaceholder": "you@example.com",
+    "region": "Region",
+    "regionPlaceholder": "Select your region",
+    "establishment": "Institution",
+    "establishmentPlaceholder": "Your higher education institution",
+    "motivation": "Motivation",
+    "motivationPlaceholder": "Tell us about your project and your motivation to join the JE movement...",
+    "submit": "Send my application",
+    "submitting": "Sending...",
+    "success": "Your application has been received by the CTJE's Expansion & Integration team. We will contact you as soon as possible. Welcome to the Junior Enterprises Tunisia movement!",
+    "error": "Something went wrong while sending. Please try again.",
+    "acceptTerms": "I have read and accept the CTJE's <terms>terms of use</terms> and <privacy>privacy policy</privacy>.",
+    "errors": {
+      "required": "This field is required",
+      "invalidEmail": "Please enter a valid email address",
+      "tooShort": "Please provide a more detailed answer (10 characters minimum)",
+      "requiredCheckbox": "Please accept the terms to continue"
+    }
   }
 }

@@ -175,4 +175,57 @@ export const Icons = {
       <circle cx="16" cy="15" r="1.5" />
     </IconWrapper>
   ),
+  PenDraw: (props) => (
+    <IconWrapper {...props}>
+      <path d="M17 3a2.85 2.85 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z" />
+    </IconWrapper>
+  ),
+
+  User: (props) => (
+    <IconWrapper {...props}>
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+      <circle cx="12" cy="7" r="4" />
+    </IconWrapper>
+  ),
+
+  AlertCircle: (props) => (
+    <IconWrapper strokeWidth={2} {...props}>
+      <circle cx="12" cy="12" r="10" />
+      <line x1="12" y1="8" x2="12" y2="12" />
+      <line x1="12" y1="16" x2="12.01" y2="16" />
+    </IconWrapper>
+  ),
+
+  Heart: (props) => (
+    <IconWrapper {...props}>
+      <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z" />
+    </IconWrapper>
+  ),
+
+  Edit: (props) => (
+    <IconWrapper {...props}>
+      <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+      <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4Z" />
+    </IconWrapper>
+  ),
+
+  LawScale: (props) => (
+    <IconWrapper {...props}>
+      <path d="M12 3v18M6 8l-4 8a4 4 0 0 0 8 0ZM18 8l-4 8a4 4 0 0 0 8 0Z" />
+      <path d="M4 21h16M6 8h12" />
+    </IconWrapper>
+  ),
+
+  Check: (props) => (
+    <IconWrapper strokeWidth={2.5} {...props}>
+      <path d="M20 6 9 17l-5-5" />
+    </IconWrapper>
+  ),
+
+  Send: (props) => (
+    <IconWrapper {...props}>
+      <path d="m22 2-7 20-4-9-9-4Z" />
+      <path d="M22 2 11 13" />
+    </IconWrapper>
+  ),
 };
