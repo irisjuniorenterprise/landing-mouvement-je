@@ -8,7 +8,7 @@ import jeData from '@/lib/data/je.json';
 import jcData from '@/lib/data/jc.json';
 
 const DEFAULT_CENTER = [34.5, 9.8];
-const DEFAULT_ZOOM = 6;
+const BREAKPOINT = 800;
 
 function MapReadyBridge({ onReady }) {
   const map = useMap();
@@ -27,6 +27,56 @@ function MapReadyBridge({ onReady }) {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [map]);
+
+  return null;
+}
+
+/**
+ * Détermine le niveau de zoom par défaut selon la largeur d'écran (5 en
+ * dessous de 800px, 6 au-dessus).
+ */
+function useResponsiveZoom() {
+  const [zoom, setZoom] = useState(() => {
+    if (typeof window === 'undefined') return 6;
+    return window.innerWidth < BREAKPOINT ? 5 : 6;
+  });
+
+  useEffect(() => {
+    const mql = window.matchMedia(`(max-width: ${BREAKPOINT - 1}px)`);
+    const handleChange = (e) => setZoom(e.matches ? 5 : 6);
+    handleChange(mql);
+    mql.addEventListener('change', handleChange);
+    return () => mql.removeEventListener('change', handleChange);
+  }, []);
+
+  return zoom;
+}
+
+/**
+ * Pilote le "zoom sur la région" : cadre la vue sur les limites du
+ * gouvernorat sélectionné. Revient à la vue par défaut si aucune région
+ * n'est sélectionnée.
+ */
+function RegionFocus({ geoData, selectedRegion, defaultZoom }) {
+  const map = useMap();
+
+  useEffect(() => {
+    if (selectedRegion && geoData?.features?.length) {
+      const target = selectedRegion.normalize('NFC').trim();
+      const feature = geoData.features.find(
+        (f) => (f.properties?.gouv_fr || '').normalize('NFC').trim() === target
+      );
+      if (feature) {
+        const bounds = L.geoJSON(feature).getBounds();
+        if (bounds.isValid()) {
+          map.fitBounds(bounds, { padding: [24, 24] });
+          return;
+        }
+      }
+    }
+    map.setView(DEFAULT_CENTER, defaultZoom);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedRegion, geoData, map, defaultZoom]);
 
   return null;
 }
@@ -50,9 +100,10 @@ const getMarkerIcon = (type) => {
 
 const normalizeRegionName = (value = '') => value.normalize('NFC').trim();
 
-export default function MapClient({ onReady }) {
+export default function MapClient({ onRegionSelect, selectedRegion, onMarkerSelect, onReady }) {
   const [geoData, setGeoData] = useState(null);
   const readyCalledRef = useRef(false);
+  const zoom = useResponsiveZoom();
 
   const notifyReady = () => {
     if (readyCalledRef.current) return;
@@ -84,21 +135,47 @@ export default function MapClient({ onReady }) {
     [allPoints]
   );
 
+  const REGION_RED = '#C8102E';
+  const REGION_NEUTRAL = '#D1D5DB';
+  const REGION_OPACITY_DEFAULT = 0.12;
+  const REGION_OPACITY_HOVER = 0.45;
+  const REGION_OPACITY_SELECTED = 0.55;
+
   const styleFeature = (feature) => {
     const name = feature?.properties?.gouv_fr || '';
-    const isCovered = coveredRegions.has(normalizeRegionName(name));
+    const normalizedName = normalizeRegionName(name);
+    const isCovered = coveredRegions.has(normalizedName);
+    const isSelected = selectedRegion && normalizedName === normalizeRegionName(selectedRegion);
     return {
-      fillColor: isCovered ? '#C8102E' : '#D1D5DB',
-      fillOpacity: 0.12,
+      fillColor: isCovered ? REGION_RED : REGION_NEUTRAL,
+      fillOpacity: isSelected ? REGION_OPACITY_SELECTED : REGION_OPACITY_DEFAULT,
       color: '#FFFFFF',
       weight: 1.5,
     };
   };
 
+  const onEachFeature = (feature, layer) => {
+    const name = feature.properties?.gouv_fr || '';
+    const isCovered = coveredRegions.has(normalizeRegionName(name));
+    layer.bindTooltip(name, { direction: 'center', className: 'font-sans text-xs' });
+    layer.on({
+      mouseover: (e) => e.target.setStyle({
+        fillColor: isCovered ? REGION_RED : REGION_NEUTRAL,
+        fillOpacity: REGION_OPACITY_HOVER,
+      }),
+      mouseout: (e) => e.target.setStyle(styleFeature(feature)),
+      click: () => onRegionSelect && onRegionSelect(name),
+    });
+  };
+
+  const points = selectedRegion
+    ? allPoints.filter((p) => normalizeRegionName(p.region) === normalizeRegionName(selectedRegion))
+    : allPoints;
+
   return (
     <MapContainer
       center={DEFAULT_CENTER}
-      zoom={DEFAULT_ZOOM}
+      zoom={zoom}
       scrollWheelZoom={false}
       attributionControl={false}
       className="w-full h-full"
@@ -108,11 +185,24 @@ export default function MapClient({ onReady }) {
         attribution='&copy; <a href="https://www.openstreetmap.fr/">OpenStreetMap France</a>'
       />
       <MapReadyBridge onReady={notifyReady} />
+      <RegionFocus geoData={geoData} selectedRegion={selectedRegion} defaultZoom={zoom} />
       {geoData?.features?.length > 0 && (
-        <GeoJSON data={geoData} style={styleFeature} />
+        <GeoJSON
+          key={`tunisia-regions-${selectedRegion || 'all'}`}
+          data={geoData}
+          style={styleFeature}
+          onEachFeature={onEachFeature}
+        />
       )}
-      {allPoints.map((p) => (
-        <Marker key={`${p.type}-${p.id}`} position={[p.lat, p.lng]} icon={getMarkerIcon(p.type)} />
+      {points.map((p) => (
+        <Marker
+          key={`${p.type}-${p.id}`}
+          position={[p.lat, p.lng]}
+          icon={getMarkerIcon(p.type)}
+          eventHandlers={{
+            click: () => onMarkerSelect && onMarkerSelect({ type: p.type, id: p.id }),
+          }}
+        />
       ))}
     </MapContainer>
   );

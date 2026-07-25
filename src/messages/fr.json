@@ -39,7 +39,8 @@
     "selectPlaceholder": "Toutes les régions",
     "viewSheet": "Voir la fiche",
     "legalText": "Données cartographiques ©",
-    "legalLink": "contributeurs OpenStreetMap"
+    "legalLink": "contributeurs OpenStreetMap",
+    "noResults": "Aucune Junior Entreprise ou Junior Création n'est encore implantée dans cette région."
   },
   "footer": {
     "tagline": "Le réseau des Juniors Entreprises et Junior Créations en Tunisie.",

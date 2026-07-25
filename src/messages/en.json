@@ -39,7 +39,8 @@
     "selectPlaceholder": "All regions",
     "viewSheet": "View profile",
     "legalText": "Map data ©",
-    "legalLink": "OpenStreetMap contributors"
+    "legalLink": "OpenStreetMap contributors",
+    "noResults": "No Junior Enterprise or Junior Creation is established in this region yet."
   },
   "footer": {
     "tagline": "The network of Junior Enterprises and Junior Startups in Tunisia.",

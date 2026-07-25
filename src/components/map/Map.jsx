@@ -14,7 +14,7 @@ const MapClient = dynamic(() => import('./MapClient'), {
   ),
 });
 
-export default function Map() {
+export default function Map({ onRegionSelect, selectedRegion, onMarkerSelect }) {
   const [isReady, setIsReady] = useState(false);
   const handleReady = useCallback(() => setIsReady(true), []);
   const t = useTranslations('map');
@@ -25,7 +25,12 @@ export default function Map() {
       role="region"
       aria-label="Carte interactive des Juniors Entreprises et Junior Créations en Tunisie."
     >
-      <MapClient onReady={handleReady} />
+      <MapClient
+        onRegionSelect={onRegionSelect}
+        selectedRegion={selectedRegion}
+        onMarkerSelect={onMarkerSelect}
+        onReady={handleReady}
+      />
 
       <div className={styles.attribution}>
         {t('legalText').concat(' ')}

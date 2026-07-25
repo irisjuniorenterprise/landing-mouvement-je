@@ -96,4 +96,16 @@ export const Icons = {
       <path d="M9 3.236v15" />
     </IconWrapper>
   ),
+  MapPin: (props) => (
+    <IconWrapper {...props}>
+      <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+      <circle cx="12" cy="10" r="3" />
+    </IconWrapper>
+  ),
+
+  ChevronDown: (props) => (
+    <IconWrapper strokeWidth={2} {...props}>
+      <path d="m6 9 6 6 6-6" />
+    </IconWrapper>
+  ),
 };
