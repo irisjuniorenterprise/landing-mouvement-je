@@ -210,21 +210,6 @@
     "reseaux_sociaux": { "facebook": "", "instagram": "", "linkedin": "" }
   },
   {
-    "id": 13,
-    "nom": "IRIS Junior Entreprise",
-    "region": "Sfax",
-    "etablissement": "ENIS / ESCS",
-    "prestations": {
-      "fr": ["IT", "Marketing", "Business"],
-      "en": ["IT", "Marketing", "Business"]
-    },
-    "email": "",
-    "dateCreation": "2014",
-    "lat": 34.72611276252954,
-    "lng": 10.717786715342099,
-    "reseaux_sociaux": { "facebook": "", "instagram": "", "linkedin": "" }
-  },
-  {
     "id": 14,
     "nom": "ISG Gabès Junior Entreprise",
     "region": "Gabès",
@@ -538,7 +523,7 @@
     },
     "email": "",
     "dateCreation": "",
-    "lat": 36.80082692164171 ,
+    "lat": 36.80082692164171,
     "lng": 10.160409641292302,
     "reseaux_sociaux": {
       "facebook": "",
