@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
 import { Icons } from '../icons/Icons';
 import LanguageSwitcher from '../ui/LanguageSwitcher';
@@ -16,9 +17,12 @@ export default function Header() {
     <header className={styles.header}>
       <div className={styles.inner}>
         <Link href="/" className={styles.logo}>
-          <img
+          <Image
             src="/images/logo.png"
             alt="CTJE Logo"
+            width={2376}
+            height={1323}
+            priority
             className={styles.logoImage}
           />
         </Link>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import JERepository from '@/lib/repositories/JERepository';
 import JCRepository from '@/lib/repositories/JCRepository';
@@ -25,6 +25,14 @@ export default function NetworkEntityModal({ selection, onClose }) {
   const tJC = useTranslations('jc');
   const locale = useLocale();
   const [showDetail, setShowDetail] = useState(false);
+  // Repart toujours sur l'aperçu quand on sélectionne un nouvel élément.
+  // Ajustement pendant le rendu (plutôt qu'un useEffect) pour éviter un
+  // rendu en cascade inutile : https://react.dev/learn/you-might-not-need-an-effect
+  const [prevSelection, setPrevSelection] = useState(selection);
+  if (selection !== prevSelection) {
+    setPrevSelection(selection);
+    setShowDetail(false);
+  }
 
   const allJE = useMemo(() => JERepository.getAll(), []);
   const allJC = useMemo(() => JCRepository.getAll(), []);
@@ -34,11 +42,6 @@ export default function NetworkEntityModal({ selection, onClose }) {
     const source = selection.type === 'JE' ? allJE : allJC;
     return source.find((item) => item.id === selection.id) || null;
   }, [selection, allJE, allJC]);
-
-  // Repart toujours sur l'aperçu quand on sélectionne un nouvel élément.
-  useEffect(() => {
-    setShowDetail(false);
-  }, [selection]);
 
   const handleClose = () => {
     setShowDetail(false);

@@ -103,7 +103,7 @@ function RegionFocus({ geoData, selectedRegion, defaultZoom }) {
       }
     }
     map.setView(DEFAULT_CENTER, defaultZoom);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+     
   }, [selectedRegion, geoData, map, defaultZoom]);
 
   return null;
