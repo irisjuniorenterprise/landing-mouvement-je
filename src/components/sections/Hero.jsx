@@ -7,7 +7,7 @@ export default function Hero() {
   const t = useTranslations('hero');
 
   return (
-    <section className={styles.hero}>
+    <section className={`${styles.hero} section-animate`}>
       <div className={`container ${styles.inner}`}>
         <span className={styles.eyebrow}>
           <span className={styles.eyebrowDot} aria-hidden="true" />

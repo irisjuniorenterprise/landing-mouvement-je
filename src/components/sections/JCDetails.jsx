@@ -23,7 +23,7 @@ export default function JCDetails({ region }) {
   );
 
   return (
-    <section id="jc" className="section-padding">
+    <section id="jc" className="section-padding section-animate">
       <div className="container">
         <h2 className="section-title">{t('title')}</h2>
         <p className="section-subtitle">{t('subtitle')}</p>
@@ -31,7 +31,7 @@ export default function JCDetails({ region }) {
         {filtered.length === 0 ? (
           <p className={styles.empty}>{t('empty')}</p>
         ) : (
-          <div className={styles.grid}>
+          <div className={`${styles.grid} stagger-grid`}>
             {filtered.map((jc) => (
               <Card key={jc.id} badge={jc.region} title={jc.nom}>
                 <p className={styles.establishment}>

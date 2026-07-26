@@ -32,13 +32,13 @@ export default function KPIs() {
   ];
 
   return (
-    <section id="kpis" className="section-padding">
+    <section id="kpis" className="section-padding section-animate">
       <div className="container">
         <h2 className="section-title">{t('title')}</h2>
         <p className="section-subtitle">{t('subtitle')}</p>
 
         <h3 className={styles.blockTitle}>{t('worldTitle')}</h3>
-        <div className={styles.grid}>
+        <div className={`${styles.grid} stagger-grid`}>
           {worldStats.map(({ icon: Icon, value, suffix, label }, index) => (
             <div key={label} className={styles.stat}>
               <div className={styles.iconWrap}>

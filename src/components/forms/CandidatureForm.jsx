@@ -76,7 +76,7 @@ export default function CandidatureForm() {
   const fieldError = (field) => errors[field] && t(`errors.${errors[field]}`);
 
   return (
-    <section id="apply" className="section-padding bg-surface">
+    <section id="apply" className="section-padding bg-surface section-animate">
       <div className="container">
         <h2 className="section-title">{t('title')}</h2>
         <p className="section-subtitle">{t('subtitle')}</p>

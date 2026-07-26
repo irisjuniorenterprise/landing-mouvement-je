@@ -21,7 +21,7 @@ export default function JECards({ region }) {
   );
 
   return (
-    <section id="je" className="section-padding bg-surface">
+    <section id="je" className="section-padding bg-surface section-animate">
       <div className="container">
         <h2 className="section-title">{t('title')}</h2>
         <p className="section-subtitle">{t('subtitle')}</p>
@@ -29,7 +29,7 @@ export default function JECards({ region }) {
         {filtered.length === 0 ? (
           <p className={styles.empty}>{t('empty')}</p>
         ) : (
-          <div className={styles.grid}>
+          <div className={`${styles.grid} stagger-grid`}>
             {filtered.map((je) => (
               <Card
                 key={je.id}

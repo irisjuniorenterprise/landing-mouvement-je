@@ -306,3 +306,44 @@ button:focus:not(:focus-visible) {
 .page-offset {
   padding-top: var(--header-height);
 }
+
+/* ============================================================
+   ANIMATIONS GSAP — États initiaux (piloté par ClientSideEffects.jsx)
+   ============================================================ */
+
+.section-animate {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.stagger-grid > * {
+  opacity: 0;
+  transform: translateY(20px) scale(0.97);
+}
+
+.fade-in-item,
+.fade-in-soft {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.footer-reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.footer-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-animate,
+  .stagger-grid > *,
+  .fade-in-item,
+  .fade-in-soft,
+  .footer-reveal {
+    transition: none;
+  }
+}

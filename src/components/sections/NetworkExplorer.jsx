@@ -33,7 +33,7 @@ export default function NetworkExplorer() {
   }, [selectedRegion]);
 
   return (
-    <section id="map" className={`section-padding ${styles.mapSection}`}>
+    <section id="map" className={`section-padding section-animate ${styles.mapSection}`}>
       <div className="container">
         <h2 className="section-title">{t('title')}</h2>
         <p className="section-subtitle">{t('subtitle')}</p>

@@ -4,6 +4,7 @@ import { Montserrat } from 'next/font/google';
 import { locales } from '@/i18n/config';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import ClientSideEffects from '@/components/ClientSideEffects';
 import '../globals.css';
 
 const montserrat = Montserrat({
@@ -44,6 +45,7 @@ export default async function LocaleLayout({ children, params }) {
               contenu passe sous le header fixe. */}
           <div className="page-offset">{children}</div>
           <Footer />
+          <ClientSideEffects />
         </NextIntlClientProvider>
       </body>
     </html>
