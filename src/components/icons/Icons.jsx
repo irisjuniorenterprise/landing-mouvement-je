@@ -228,4 +228,17 @@ export const Icons = {
       <path d="M22 2 11 13" />
     </IconWrapper>
   ),
+  
+  ChevronRight: (props) => (
+    <IconWrapper strokeWidth={2} {...props}>
+      <path d="m9 18 6-6-6-6" />
+    </IconWrapper>
+  ),
+
+  Home: (props) => (
+    <IconWrapper {...props}>
+      <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z" />
+      <path d="M9 22V12h6v10" />
+    </IconWrapper>
+  ),
 };
