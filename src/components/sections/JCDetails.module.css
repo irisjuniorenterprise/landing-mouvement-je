@@ -31,6 +31,7 @@
   margin-bottom: 0.75rem;
 }
 
+/* --- Lien de contact en pied de card (children de Card, pas de prop footer) --- */
 .contactLink {
   display: inline-flex;
   align-items: center;

@@ -2,46 +2,11 @@
   position: relative;
 }
 
-.legendBar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1.5rem;
-  margin-top: 1.25rem;
-  padding: 1rem 1.25rem;
-  background: #ffffff;
-  border: 1px solid var(--color-border);
-  border-radius: 0.75rem;
-}
-
-.legendItem {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.8125rem;
-  color: var(--color-secondary);
-  font-weight: 500;
-}
-
-.dot {
-  width: 0.65rem;
-  height: 0.65rem;
-  border-radius: 9999px;
-  flex-shrink: 0;
-}
-
-.dotJE { background: var(--color-primary); }
-.dotJC { background: #f59e0b; }
-.dotInactive { background: #d1d5db; }
-
-.filterNotice {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 0.8125rem;
-  color: var(--color-text-muted);
-}
+/* ============================================================
+   SÉLECTEUR DE RÉGION — repris à l'identique du champ "Région" de
+   CandidatureForm.module.css (label fixe + micro-label flottant +
+   icône) pour garder une cohérence visuelle avec le reste du site.
+   ============================================================ */
 
 .field {
   display: flex;
@@ -76,6 +41,7 @@
   color: var(--color-secondary);
   opacity: 0.4;
   pointer-events: none;
+  transition: color 0.2s ease, opacity 0.2s ease;
   z-index: 2;
 }
 
@@ -89,7 +55,7 @@
   cursor: pointer;
   border: 1.5px solid var(--color-border);
   border-radius: 0.85rem;
-  padding: 0.8rem 2.65rem;
+  padding: 1.2rem 2.65rem 0.45rem 2.65rem;
   font-size: 0.9375rem;
   font-family: inherit;
   color: var(--color-secondary);
@@ -100,23 +66,174 @@
   box-sizing: border-box;
 }
 
+.select option {
+  padding: 0.5rem;
+  color: var(--color-secondary);
+}
+
 .select:focus {
   border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.12);
 }
 
-.noResults {
-  margin-top: 1rem;
-  padding: 0.85rem 1.1rem;
-  background: #fff7f0;
-  border: 1px solid #fde3d0;
-  border-radius: 0.6rem;
-  color: #92400e;
-  font-size: 0.875rem;
-  text-align: center;
+.inputWrapper:focus-within .inputIcon {
+  color: var(--color-primary);
+  opacity: 1;
+}
+
+.floatingLabel {
+  position: absolute;
+  left: 2.65rem;
+  right: 0.9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: calc(100% - 2.65rem - 0.9rem);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-secondary);
+  opacity: 0.5;
+  pointer-events: none;
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: left center;
+  background: transparent;
+  padding: 0 2px;
+  z-index: 3;
+}
+
+/* Le micro-label du select est masqué au repos (le texte de l'option
+   occupe déjà la zone basse du champ, aucun chevauchement possible) */
+.floatingLabelSelect {
+  opacity: 0;
+  transform: translateY(3px);
+}
+
+.select:focus ~ .floatingLabelSelect,
+.select.hasValue ~ .floatingLabelSelect {
+  top: -0.55rem;
+  left: 2.25rem;
+  right: 0.75rem;
+  max-width: calc(100% - 2.25rem - 0.75rem);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--color-primary);
+  opacity: 1;
+  transform: translateY(0);
+  background: #ffffff;
+  padding: 0 6px;
+}
+
+/* ============================================================
+   LÉGENDE (inchangé)
+   ============================================================ */
+
+.legendBar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1.25rem;
+  padding: 1rem 1.25rem;
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--color-secondary);
+  font-weight: 500;
+}
+
+.dot {
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 9999px;
+  flex-shrink: 0;
+}
+
+.dotJE {
+  background: var(--color-primary);
+}
+
+.dotJC {
+  background: #f59e0b;
+}
+
+.dotInactive {
+  background: #d1d5db;
+}
+
+.filterNotice {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.resetBtn {
+  border: none;
+  background: var(--color-surface);
+  color: var(--color-secondary);
+  font-weight: 600;
+  font-size: 0.75rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.resetBtn:hover {
+  background: #e5e7eb;
 }
 
 @media (max-width: 640px) {
-  .legendBar { gap: 0.9rem; }
-  .filterNotice { margin-left: 0; width: 100%; }
+  .field {
+    max-width: 100%;
+  }
+  .legendBar {
+    gap: 0.9rem;
+  }
+  .filterNotice {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .select {
+    padding: 1.1rem 2.35rem 0.4rem 2.35rem;
+    font-size: 0.9rem;
+  }
+  .inputIcon {
+    left: 0.7rem;
+    width: 18px;
+    height: 18px;
+  }
+  .selectChevron {
+    left: auto;
+    right: 0.7rem;
+  }
+  .floatingLabel {
+    left: 2.3rem;
+    right: 0.7rem;
+    max-width: calc(100% - 2.3rem - 0.7rem);
+    font-size: 0.85rem;
+  }
+  .select:focus ~ .floatingLabelSelect,
+  .select.hasValue ~ .floatingLabelSelect {
+    left: 2rem;
+    right: 0.6rem;
+    max-width: calc(100% - 2rem - 0.6rem);
+    top: -0.5rem;
+    font-size: 0.62rem;
+  }
 }

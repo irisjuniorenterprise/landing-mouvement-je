@@ -24,6 +24,73 @@
     "ctaMap": "Voir la carte",
     "ctaJoin": "Candidater"
   },
+  "history": {
+    "title": "Histoire du mouvement",
+    "subtitle": "Une aventure commencée en 1967 en France, aujourd'hui déployée dans le monde entier et en Tunisie.",
+    "items": [
+      {
+        "year": "1967",
+        "text": "Création de la première JE au sein d'ESSEC Paris."
+      },
+      {
+        "year": "1969",
+        "text": "Création de la CNJE (Confédération Nationale des JE françaises)."
+      },
+      {
+        "year": "1988",
+        "text": "Stratégie de développement massif des JE sur plus de 10 ans."
+      },
+      {
+        "year": "1992",
+        "text": "Création de JADE (Junior Enterprises Europe)."
+      },
+      {
+        "year": "2006",
+        "text": "Accord de coopération global Europe–Brésil, création du JEWC."
+      },
+      {
+        "year": "2012",
+        "text": "Création de la CTJE, annonce parue au JORT n°59 du 16/05/2013."
+      },
+      {
+        "year": "2016",
+        "text": "Création du JE Global Council lors du Global Forum."
+      },
+      {
+        "year": "2020–2021",
+        "text": "Finalisation du projet juridique de la CTJE."
+      },
+      {
+        "year": "2022",
+        "text": "Certification ISO 9001:2015 de la CTJE dans 4 prestations de service."
+      }
+    ]
+  },
+  "about": {
+    "title": "Qui sommes-nous",
+    "subtitle": "Un mouvement étudiant au service de l'insertion professionnelle et de l'entrepreneuriat.",
+    "missionTitle": "Mission",
+    "mission": "Faciliter l'initiation à la vie professionnelle aux jeunes étudiants et favoriser leur montée en compétence à travers la réalisation de projets concrets dans leurs domaines d'étude.",
+    "visionTitle": "Vision",
+    "vision": "Être un mouvement de référence qui œuvre pour l'accompagnement des jeunes étudiants dans leur intégration à la vie active en créant de la valeur dans leur écosystème professionnel ou entrepreneurial.",
+    "valuesTitle": "Valeurs",
+    "values": [
+      "Engagement",
+      "Professionnalisme",
+      "Intégrité",
+      "Diversité"
+    ],
+    "howTitle": "Fonctionnement",
+    "how": "Les Junior Entreprises sont des associations étudiantes à but non lucratif fonctionnant selon le modèle des cabinets de conseil professionnels. Elles mettent les compétences de leurs membres au service de clients réels à travers des prestations compétitives, permettant aux étudiants d'acquérir une expérience pratique valorisante dès leur cursus universitaire.",
+    "domainsTitle": "Domaines d'activité de la CTJE",
+    "domains": [
+      "Formation et développement",
+      "Intégration professionnelle et employabilité",
+      "Renforcement de l'esprit d'entreprise",
+      "Soutien aux organisations à travers des projets",
+      "Promotion nationale et internationale"
+    ]
+  },
   "map": {
     "title": "Le réseau JE/JC en Tunisie",
     "subtitle": "Cliquez sur une région pour découvrir les Juniors Entreprises et Junior Créations qui y sont implantées.",
@@ -39,26 +106,7 @@
     "selectPlaceholder": "Toutes les régions",
     "viewSheet": "Voir la fiche",
     "legalText": "Données cartographiques ©",
-    "legalLink": "contributeurs OpenStreetMap",
-    "noResults": "Aucune Junior Entreprise ou Junior Création n'est encore implantée dans cette région."
-  },
-  "footer": {
-    "tagline": "Le réseau des Juniors Entreprises et Junior Créations en Tunisie.",
-    "contactTitle": "Contact",
-    "linksTitle": "Liens utiles",
-    "legalTitle": "Légal",
-    "linkHome": "Accueil",
-    "linkAbout": "Qui sommes-nous",
-    "linkMap": "Carte",
-    "linkApply": "Candidater",
-    "linkLegal": "Mentions légales",
-    "linkPrivacy": "Politique de confidentialité",
-    "linkTerms": "Conditions d'utilisation",
-    "socialTitle": "Suivez-nous",
-    "orgName": "Confédération Tunisienne des Juniors Entreprises (CTJE)",
-    "email": "contact@jetunisie.com",
-    "phone": "+216 25 716 711",
-    "rights": "Tous droits réservés."
+    "legalLink": "contributeurs OpenStreetMap"
   },
   "je": {
     "title": "Les Juniors Entreprises",
@@ -124,5 +172,49 @@
       "tooShort": "Merci de fournir une réponse plus détaillée (10 caractères minimum)",
       "requiredCheckbox": "Merci d'accepter les conditions pour continuer"
     }
+  },
+  "satisfaction": {
+    "title": "Votre avis compte",
+    "subtitle": "Aidez-nous à améliorer cette page en évaluant votre expérience (navigation, clarté, esthétique, ergonomie).",
+    "ratingLabel": "Votre note sur l'expérience de navigation",
+    "commentLabel": "Un commentaire ? (facultatif)",
+    "commentPlaceholder": "Ce que vous avez aimé, ou ce qu'on pourrait améliorer...",
+    "submit": "Envoyer mon avis",
+    "submitting": "Envoi en cours...",
+    "success": "Merci pour votre avis, il a bien été transmis à l'équipe !",
+    "error": "Une erreur est survenue lors de l'envoi. Merci de réessayer.",
+    "errors": {
+      "required": "Merci de sélectionner une note avant d'envoyer",
+      "invalidRating": "Note invalide",
+      "tooLong": "Commentaire trop long (1000 caractères maximum)"
+    }
+  },
+  "notFound": {
+    "title": "Page introuvable",
+    "subtitle": "La page que vous recherchez n'existe pas ou a été déplacée.",
+    "cta": "Retour à l'accueil"
+  },
+  "footer": {
+    "tagline": "Le réseau des Juniors Entreprises et Junior Créations en Tunisie.",
+    "contactTitle": "Contact",
+    "linksTitle": "Liens utiles",
+    "legalTitle": "Légal",
+    "linkHome": "Accueil",
+    "linkAbout": "Qui sommes-nous",
+    "linkMap": "Carte",
+    "linkApply": "Candidater",
+    "linkLegal": "Mentions légales",
+    "linkPrivacy": "Politique de confidentialité",
+    "linkTerms": "Conditions d'utilisation",
+    "socialTitle": "Suivez-nous",
+    "orgName": "Confédération Tunisienne des Juniors Entreprises (CTJE)",
+    "email": "contact@jetunisie.com",
+    "phone": "+216 25 716 711",
+    "rights": "Tous droits réservés."
+  },
+  "legalPages": {
+    "termsTitle": "Conditions Générales d'Utilisation",
+    "privacyTitle": "Politique de Confidentialité",
+    "placeholder": "Ce texte est en cours de finalisation avec notre partenaire juridique et sera mis à jour prochainement."
   }
 }

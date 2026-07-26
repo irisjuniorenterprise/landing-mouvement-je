@@ -1,5 +1,10 @@
 /* components/forms/CandidatureForm.module.css */
 
+/* ============================================================
+   CANDIDATURE FORM - Styles (charte graphique conservée)
+   Double label : label fixe au-dessus + micro-label flottant
+   ============================================================ */
+
 .form {
   max-width: 40rem;
   margin: 0 auto;
@@ -17,9 +22,15 @@
 }
 
 @keyframes fadeUp {
-  to { opacity: 1; transform: translateY(0); }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
+/* ============================================================
+   FIELDSET & LEGEND
+   ============================================================ */
 .fieldset {
   border: 1px solid var(--color-border);
   border-radius: 1rem;
@@ -28,7 +39,9 @@
   transition: border-color 0.3s ease;
 }
 
-.fieldset:focus-within { border-color: var(--color-primary); }
+.fieldset:focus-within {
+  border-color: var(--color-primary);
+}
 
 .legend {
   display: flex;
@@ -43,13 +56,36 @@
   margin-bottom: 0.75rem;
 }
 
-.legend svg { color: var(--color-primary); flex-shrink: 0; }
+.legend svg {
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
 
-.grid { display: flex; flex-direction: column; gap: 1.35rem; }
+/* ============================================================
+   GRID (une seule colonne — une ligne = un label, la ligne
+   suivante = son champ)
+   ============================================================ */
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+}
 
-.field { display: flex; flex-direction: column; gap: 0.65rem; margin-bottom: 1rem; }
-.field:last-child { margin-bottom: 0; }
+/* ============================================================
+   CHAMPS
+   ============================================================ */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem; /* distance label fixe -> champ */
+  margin-bottom: 1rem;
+}
 
+.field:last-child {
+  margin-bottom: 0;
+}
+
+/* --- Label fixe (toujours visible, ligne dédiée) --- */
 .fixedLabel {
   display: flex;
   align-items: center;
@@ -62,9 +98,20 @@
   opacity: 0.85;
 }
 
-.required { color: var(--color-primary); }
+.required {
+  color: var(--color-primary);
+}
 
-.inputWrapper { position: relative; width: 100%; }
+/* --- Champ + icône + micro-label flottant ---
+   IMPORTANT : pas d'`overflow: hidden` ici. Le label flottant doit
+   pouvoir sortir légèrement de la boîte (il se pose sur la bordure du
+   champ, en `top: -0.55rem`, une fois réduit) sans être rogné. Le
+   débordement horizontal est géré directement sur le label via
+   max-width + ellipsis, pas via un clip du conteneur. */
+.inputWrapper {
+  position: relative;
+  width: 100%;
+}
 
 .inputIcon {
   position: absolute;
@@ -78,10 +125,19 @@
   z-index: 2;
 }
 
-.textareaWrapper .inputIcon { top: 1.15rem; transform: none; }
-.selectChevron { left: auto; right: 0.9rem; }
+.textareaWrapper .inputIcon {
+  top: 1.15rem;
+  transform: none;
+}
 
-.input, .select, .textarea {
+.selectChevron {
+  left: auto;
+  right: 0.9rem;
+}
+
+.input,
+.select,
+.textarea {
   width: 100%;
   border: 1.5px solid var(--color-border);
   border-radius: 0.85rem;
@@ -96,25 +152,50 @@
   box-sizing: border-box;
 }
 
-.input::placeholder, .textarea::placeholder { color: transparent; }
+.input::placeholder,
+.textarea::placeholder {
+  color: transparent;
+}
 
-.select { cursor: pointer; padding-right: 2.65rem; }
-.select option { padding: 0.5rem; color: var(--color-secondary); }
+.select {
+  cursor: pointer;
+  padding-right: 2.65rem;
+}
 
-.textarea { resize: vertical; min-height: 8rem; padding-top: 1.5rem; padding-left: 2.65rem; }
+.select option {
+  padding: 0.5rem;
+  color: var(--color-secondary);
+}
 
-.input:focus, .select:focus, .textarea:focus {
+.textarea {
+  resize: vertical;
+  min-height: 8rem;
+  padding-top: 1.5rem;
+  padding-left: 2.65rem;
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
   border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.12);
 }
 
-.inputWrapper:focus-within .inputIcon { color: var(--color-primary); opacity: 1; }
+.inputWrapper:focus-within .inputIcon {
+  color: var(--color-primary);
+  opacity: 1;
+}
 
 .inputError {
   border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.12);
 }
 
+/* --- Micro-label flottant (décoratif, aria-hidden) ---
+   Responsive : la largeur est bornée par max-width (et non par un clip
+   du parent), avec troncature propre en "…" si le texte est trop long.
+   z-index élevé pour rester lisible au-dessus du champ quand il migre
+   sur la bordure. */
 .floatingLabel {
   position: absolute;
   left: 2.65rem;
@@ -137,8 +218,18 @@
   z-index: 3;
 }
 
-.textareaWrapper .floatingLabel { top: 1.15rem; transform: none; transform-origin: left top; }
+/* Dans le textarea, l'icône est alignée en haut (non centrée sur toute
+   la hauteur) : le label flottant doit suivre le même repère */
+.textareaWrapper .floatingLabel {
+  top: 1.15rem;
+  transform: none;
+  transform-origin: left top;
+}
 
+/* État "réduit" : input/textarea rempli ou focus.
+   Le label remonte pile sur la bordure du champ (top négatif) : comme
+   .inputWrapper n'a plus d'overflow:hidden, il reste entièrement
+   visible, non tronqué verticalement. */
 .input:focus ~ .floatingLabel,
 .input:not(:placeholder-shown) ~ .floatingLabel,
 .textarea:focus ~ .floatingLabel,
@@ -157,7 +248,12 @@
   transform: translateY(0);
 }
 
-.floatingLabelSelect { opacity: 0; transform: translateY(3px); }
+/* Le micro-label du select est masqué au repos (le texte de l'option
+   occupe déjà la zone basse du champ, aucun chevauchement possible) */
+.floatingLabelSelect {
+  opacity: 0;
+  transform: translateY(3px);
+}
 
 .select:focus ~ .floatingLabelSelect,
 .select.hasValue ~ .floatingLabelSelect {
@@ -175,10 +271,24 @@
   padding: 0 6px;
 }
 
-.inputError ~ .floatingLabel { color: var(--color-primary); }
+.inputError ~ .floatingLabel {
+  color: var(--color-primary);
+}
 
-.honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+/* ============================================================
+   HONEYPOT (anti-spam)
+   ============================================================ */
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
 
+/* ============================================================
+   ERREURS
+   ============================================================ */
 .errorText {
   display: flex;
   align-items: center;
@@ -189,11 +299,21 @@
 }
 
 @keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-6px); }
-  75% { transform: translateX(6px); }
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-6px);
+  }
+  75% {
+    transform: translateX(6px);
+  }
 }
 
+/* ============================================================
+   CONSENTEMENT LÉGAL (checkbox CGU + politique de confidentialité)
+   ============================================================ */
 .consentBox {
   display: flex;
   align-items: flex-start;
@@ -205,14 +325,45 @@
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.consentBox:focus-within { border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.12); }
-.consentBoxError { border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.12); }
+.consentBox:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.12);
+}
 
-.consentIcon { flex-shrink: 0; color: var(--color-primary); margin-top: 0.15rem; }
-.consentContent { display: flex; flex-direction: column; gap: 0.5rem; width: 100%; }
-.consentLabel { display: flex; align-items: flex-start; gap: 0.7rem; cursor: pointer; user-select: none; }
+.consentBoxError {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.12);
+}
 
-.checkboxWrapper { position: relative; flex-shrink: 0; display: inline-flex; margin-top: 0.15rem; }
+.consentIcon {
+  flex-shrink: 0;
+  color: var(--color-primary);
+  margin-top: 0.15rem;
+}
+
+.consentContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.consentLabel {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* --- Checkbox custom : input natif masqué visuellement mais
+   accessible (clavier, lecteurs d'écran), boîte stylée par-dessus --- */
+.checkboxWrapper {
+  position: relative;
+  flex-shrink: 0;
+  display: inline-flex;
+  margin-top: 0.15rem;
+}
 
 .checkboxInput {
   position: absolute;
@@ -237,14 +388,36 @@
   transition: background-color 0.18s ease, border-color 0.18s ease, transform 0.12s ease;
 }
 
-.checkboxMark { color: #ffffff; opacity: 0; transform: scale(0.6); transition: opacity 0.15s ease, transform 0.15s ease; }
+.checkboxMark {
+  color: #ffffff;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
 
-.checkboxInput:checked ~ .checkboxBox { background: var(--color-primary); border-color: var(--color-primary); }
-.checkboxInput:checked ~ .checkboxBox .checkboxMark { opacity: 1; transform: scale(1); }
-.checkboxInput:focus-visible ~ .checkboxBox { box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.18); }
-.checkboxInput:hover ~ .checkboxBox { border-color: var(--color-primary); }
+.checkboxInput:checked ~ .checkboxBox {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
 
-.consentText { font-size: 0.85rem; line-height: 1.5; color: var(--color-secondary); }
+.checkboxInput:checked ~ .checkboxBox .checkboxMark {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.checkboxInput:focus-visible ~ .checkboxBox {
+  box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.18);
+}
+
+.checkboxInput:hover ~ .checkboxBox {
+  border-color: var(--color-primary);
+}
+
+.consentText {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--color-secondary);
+}
 
 .consentLink {
   color: var(--color-primary);
@@ -254,12 +427,38 @@
   transition: opacity 0.15s ease;
 }
 
-.consentLink:hover { opacity: 0.75; }
+.consentLink:hover {
+  opacity: 0.75;
+}
 
-.submitRow { margin-top: 0.25rem; display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; }
-.submitButton { display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease; }
-.submitButton:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 20px var(--color-shadow); }
-.submitButton:disabled { opacity: 0.7; cursor: not-allowed; transform: none !important; }
+/* ============================================================
+   ENVOI / STATUT
+   ============================================================ */
+.submitRow {
+  margin-top: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.submitButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.submitButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px var(--color-shadow);
+}
+
+.submitButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none !important;
+}
 
 .spinner {
   display: inline-block;
@@ -271,7 +470,11 @@
   animation: spin 0.7s linear infinite;
 }
 
-@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 .statusMessage {
   display: flex;
@@ -284,26 +487,85 @@
   animation: fadeUp 0.4s ease-out forwards;
 }
 
-.statusSuccess { background: rgba(34, 197, 94, 0.1); color: #15803d; border: 1px solid rgba(34, 197, 94, 0.35); }
-.statusError { background: rgba(200, 16, 46, 0.08); color: var(--color-primary); border: 1px solid rgba(200, 16, 46, 0.35); }
+.statusSuccess {
+  background: rgba(34, 197, 94, 0.1);
+  color: #15803d;
+  border: 1px solid rgba(34, 197, 94, 0.35);
+}
 
+.statusError {
+  background: rgba(200, 16, 46, 0.08);
+  color: var(--color-primary);
+  border: 1px solid rgba(200, 16, 46, 0.35);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
 @media (max-width: 480px) {
-  .form { padding: 1.5rem; gap: 1.25rem; }
-  .fieldset { padding: 1.1rem 1rem 0.5rem 1rem; }
-  .legend { font-size: 0.85rem; }
-  .input, .select, .textarea { padding: 1.1rem 0.7rem 0.4rem 2.35rem; font-size: 0.9rem; }
-  .textarea { padding-left: 2.35rem; }
-  .inputIcon { left: 0.7rem; width: 18px; height: 18px; }
-  .selectChevron { left: auto; right: 0.7rem; }
-  .floatingLabel { left: 2.3rem; right: 0.7rem; max-width: calc(100% - 2.3rem - 0.7rem); font-size: 0.85rem; }
+  .form {
+    padding: 1.5rem;
+    gap: 1.25rem;
+  }
+
+  .fieldset {
+    padding: 1.1rem 1rem 0.5rem 1rem;
+  }
+
+  .legend {
+    font-size: 0.85rem;
+  }
+
+  .input,
+  .select,
+  .textarea {
+    padding: 1.1rem 0.7rem 0.4rem 2.35rem;
+    font-size: 0.9rem;
+  }
+
+  .textarea {
+    padding-left: 2.35rem;
+  }
+
+  .inputIcon {
+    left: 0.7rem;
+    width: 18px;
+    height: 18px;
+  }
+
+  .selectChevron {
+    left: auto;
+    right: 0.7rem;
+  }
+
+  .floatingLabel {
+    left: 2.3rem;
+    right: 0.7rem;
+    max-width: calc(100% - 2.3rem - 0.7rem);
+    font-size: 0.85rem;
+  }
+
   .input:focus ~ .floatingLabel,
   .input:not(:placeholder-shown) ~ .floatingLabel,
   .textarea:focus ~ .floatingLabel,
   .textarea:not(:placeholder-shown) ~ .floatingLabel,
   .select:focus ~ .floatingLabelSelect,
   .select.hasValue ~ .floatingLabelSelect {
-    left: 2rem; right: 0.6rem; max-width: calc(100% - 2rem - 0.6rem); top: -0.5rem; font-size: 0.62rem;
+    left: 2rem;
+    right: 0.6rem;
+    max-width: calc(100% - 2rem - 0.6rem);
+    top: -0.5rem;
+    font-size: 0.62rem;
   }
-  .submitButton { width: 100%; justify-content: center; }
-  .statusMessage { flex-direction: column; align-items: center; text-align: center; }
+
+  .submitButton {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .statusMessage {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 }

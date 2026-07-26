@@ -13,6 +13,7 @@
   border-radius: 1rem;
 }
 
+/* --- Lien "Contacter" (dans le footer de la Card) --- */
 .contactLink {
   display: inline-flex;
   align-items: center;
@@ -35,12 +36,6 @@
   outline: 2px solid var(--color-primary);
   outline-offset: 3px;
   border-radius: 0.25rem;
-}
-.modalTitle {
-  font-size: 1.25rem;
-  font-weight: 800;
-  color: var(--color-secondary);
-  margin-bottom: 0.25rem;
 }
 
 .modalMeta {

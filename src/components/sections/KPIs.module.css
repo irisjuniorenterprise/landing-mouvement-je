@@ -9,6 +9,10 @@
   margin-top: 0.5rem;
 }
 
+/* Isolation de layout : garantit que rien à l'intérieur de la grille
+   KPI (notamment les chiffres qui s'incrémentent pendant ~2s après le
+   chargement) ne peut influencer la position des sections suivantes
+   (ex. la carte juste en dessous), même en cas de micro-reflow. */
 .grid {
   display: flex;
   flex-wrap: wrap;
@@ -18,6 +22,7 @@
   contain: layout style;
 }
 
+/* --- Cards KPI : même hover que les cards JE/JC --- */
 .stat {
   position: relative;
   flex: 1 1 calc(50% - 0.625rem);
@@ -118,6 +123,10 @@
   .stat, .stat::before, .stat::after, .iconWrap {
     transition: none;
   }
-  .stat:hover { transform: none; }
-  .stat:hover .iconWrap { transform: none; }
+  .stat:hover {
+    transform: none;
+  }
+  .stat:hover .iconWrap {
+    transform: none;
+  }
 }

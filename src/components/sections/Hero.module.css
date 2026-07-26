@@ -66,12 +66,22 @@
 }
 
 @media (max-width: 768px) {
-  .hero { padding: 5rem 0 3.5rem; }
-  .title { font-size: 2.25rem; }
-  .subtitle { font-size: 1rem; }
+  .hero {
+    padding: 5rem 0 3.5rem;
+  }
+  .title {
+    font-size: 2.25rem;
+  }
+  .subtitle {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 400px) {
-  .hero { padding: 4rem 0 3rem; }
-  .title { font-size: 1.85rem; }
+  .hero {
+    padding: 4rem 0 3rem;
+  }
+  .title {
+    font-size: 1.85rem;
+  }
 }

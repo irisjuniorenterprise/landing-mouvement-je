@@ -49,7 +49,7 @@ function escapeHtml(value = '') {
  * fond blanc, police sans-serif pour le corps, accent serif pour l'entête,
  * interligne aéré, largeur fixe adaptée aux clients email.
  */
-function wrapEmail({ title, bodyHtml }) {
+function wrapEmail({ eyebrow, title, bodyHtml }) {
   return `
   <!DOCTYPE html>
   <html lang="fr">
@@ -59,7 +59,14 @@ function wrapEmail({ title, bodyHtml }) {
           <td align="center">
             <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="background-color:${THEME.colorBg}; border-radius:8px; overflow:hidden; max-width:600px; width:100%;">
 
-              
+              <!-- En-tête -->
+              <tr>
+                <td style="padding:28px 32px 8px 32px;">
+                  <div style="font-family:${THEME.fontAccent}; font-weight:bold; font-size:18px; color:${THEME.colorText};">
+                    ${escapeHtml(eyebrow)}
+                  </div>
+                </td>
+              </tr>
 
               <!-- Corps -->
               <tr>
@@ -139,6 +146,50 @@ export async function sendCandidatureEmail(data) {
     replyTo: data.email,
     subject: `[Candidature JE/JC] – ${data.name} – ${data.region}`,
     html: buildHtmlBody(data),
+  });
+
+  return { success: true, messageId: info.messageId };
+}
+
+function buildSatisfactionHtmlBody({ rating, comment, page }) {
+  const filled = Math.round(Number(rating) * 4) / 4; // sécurité, quarts d'étoile
+  const starsDisplay = '★'.repeat(Math.floor(filled)) + (filled % 1 !== 0 ? '½' : '') +
+    '☆'.repeat(5 - Math.ceil(filled));
+
+  const infoList = bulletList([
+    { label: 'Note', value: `${escapeHtml(String(filled))} / 5 (${escapeHtml(starsDisplay)})` },
+    page ? { label: 'Page', value: escapeHtml(page) } : null,
+  ]);
+
+  const body = `
+    ${subtitle('Détails :')}
+    ${infoList}
+    ${comment ? `${subtitle('Commentaire :')}<p style="margin:0; white-space:pre-wrap;">${escapeHtml(comment)}</p>` : ''}
+    <p style="margin:20px 0 0 0; font-size:12px; color:${THEME.colorMuted};">Envoyé automatiquement — KPI 4 (Taux de satisfaction UX/UI).</p>
+  `;
+
+  return wrapEmail({
+    title: 'Nouvel avis de satisfaction UX/UI - Mouvement JE',
+    bodyHtml: body,
+  });
+}
+
+/**
+ * Envoie une notification par email au client à chaque soumission du
+ * formulaire de satisfaction UX/UI (KPI 4). C'est le canal de transmission
+ * "temps réel" et fiable en production (contrairement à un fichier JSON
+ * local, qui n'est pas persistant sur les fonctions serverless Vercel).
+ * @returns {Promise<{ success: boolean, messageId?: string }>}
+ */
+export async function sendSatisfactionEmail(data) {
+  const transporter = createTransporter();
+  const recipient = process.env.SATISFACTION_RECIPIENT || process.env.CANDIDATURE_RECIPIENT || DEFAULT_RECIPIENT;
+
+  const info = await transporter.sendMail({
+    from: process.env.SMTP_FROM || '"Mouvement JE" <no-reply@ctje.tn>',
+    to: recipient,
+    subject: `[Satisfaction UX/UI] Note : ${data.rating}/5`,
+    html: buildSatisfactionHtmlBody(data),
   });
 
   return { success: true, messageId: info.messageId };

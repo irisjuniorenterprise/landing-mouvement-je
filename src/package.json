@@ -1,27 +1,37 @@
 {
-  "name": "src",
+  "name": "landing-mouvement-je",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "gsap": "^3.15.0",
     "leaflet": "^1.9.4",
-    "next": "^16.2.11",
-    "next-intl": "^4.13.4",
-    "nodemailer": "^7.0.13",
+    "next": "16.2.10",
+    "next-intl": "^4.13.2",
+    "nodemailer": "^6.9.16",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "react-leaflet": "^5.0.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.49.0",
     "@tailwindcss/postcss": "^4",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
+    "dotenv": "^17.4.2",
     "eslint": "^9",
     "eslint-config-next": "16.2.10",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
     "tailwindcss": "^4"
   }
 }

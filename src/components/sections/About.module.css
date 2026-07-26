@@ -1,0 +1,275 @@
+.mvGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+/* --- Cards Mission / Vision : même langage visuel que les cards JE/JC --- */
+.mvCard {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: 1.25rem;
+  padding: 1.85rem 1.75rem 1.75rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 20px -6px var(--color-shadow);
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.mvCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+
+.mvCard::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 60% at 100% 0%, rgba(200, 16, 46, 0.05), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: -1;
+}
+
+.mvCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04), 0 24px 44px -14px rgba(200, 16, 46, 0.2);
+  border-color: rgba(200, 16, 46, 0.22);
+}
+
+.mvCard:hover::before { transform: scaleX(1); }
+.mvCard:hover::after { opacity: 1; }
+
+.mvIcon {
+  width: 3rem;
+  height: 3rem;
+  margin: 0 auto 1rem;
+  border-radius: 9999px;
+  background: rgba(200, 16, 46, 0.08);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.25s ease;
+}
+
+.mvCard:hover .mvIcon {
+  background: rgba(200, 16, 46, 0.14);
+}
+
+.mvTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.mvText {
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.subheading {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  margin: 2rem 0 1rem;
+}
+
+/* --- Cards Valeurs : même hover que les cards JE/JC --- */
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.valueCard {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 0;
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: 0.85rem;
+  padding: 0.9rem 1rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-secondary);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 20px -6px var(--color-shadow);
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.valueCard span {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+@media (max-width: 380px) {
+  .valuesGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 381px) {
+  .valueCard {
+    font-size: 1rem;
+    padding: 1rem 1.1rem;
+  }
+}
+
+.valueCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+
+.valueCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04), 0 24px 44px -14px rgba(200, 16, 46, 0.2);
+  border-color: rgba(200, 16, 46, 0.22);
+}
+
+.valueCard:hover::before { transform: scaleX(1); }
+
+.valueCard svg {
+  color: var(--color-primary);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.valueCard:hover svg {
+  transform: scale(1.1);
+}
+
+.howBlock {
+  position: relative;
+  background: var(--color-surface, #f7f7f8);
+  border: 1px solid var(--color-border);
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+  margin: 0.5rem 0;
+  overflow: hidden;
+  isolation: isolate;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.howBlock:hover {
+  box-shadow: 0 8px 20px -6px var(--color-shadow);
+  border-color: rgba(200, 16, 46, 0.18);
+}
+
+.howText {
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* --- Cards Domaines d'activité : même hover que les cards JE/JC --- */
+.domainsGrid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+}
+
+.domainCard {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: 0.85rem;
+  padding: 0.9rem 1.1rem;
+  color: var(--color-secondary);
+  font-weight: 500;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 20px -6px var(--color-shadow);
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.domainCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+
+.domainCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04), 0 24px 44px -14px rgba(200, 16, 46, 0.2);
+  border-color: rgba(200, 16, 46, 0.22);
+}
+
+.domainCard:hover::before { transform: scaleX(1); }
+
+.domainCard svg {
+  color: var(--color-primary);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.domainCard:hover svg {
+  transform: scale(1.1);
+}
+
+@media (min-width: 768px) {
+  .mvGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .valuesGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .domainsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mvCard, .mvCard::before, .mvCard::after,
+  .valueCard, .valueCard::before, .valueCard svg,
+  .domainCard, .domainCard::before, .domainCard svg,
+  .howBlock {
+    transition: none;
+  }
+  .mvCard:hover, .valueCard:hover, .domainCard:hover {
+    transform: none;
+  }
+}

@@ -9,24 +9,33 @@
   -webkit-backdrop-filter: blur(14px) saturate(180%);
   border-bottom: 1px solid var(--color-border);
   transition: box-shadow 0.3s ease;
+
+  /* Animation d'apparition au chargement */
   animation: slideFadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 @keyframes slideFadeIn {
-  0% { opacity: 0; transform: translateY(-16px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0.75rem 1.5rem;
-  min-height: var(--header-height);
+  padding: 0.75rem 1.5rem; /* ajout de padding vertical */
+  min-height: var(--header-height); /* hauteur minimale conservée */
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
+/* --- Logo --- */
 .logo {
   display: flex;
   align-items: center;
@@ -34,15 +43,16 @@
 }
 
 .logoImage {
-  height: 4.2rem;
+  height: 4.2rem; /* agrandi */
   width: auto;
   transition: transform 0.3s ease;
 }
 
 .logo:hover .logoImage {
-  transform: scale(1.08);
+  transform: scale(1.08); /* zoom uniquement */
 }
 
+/* --- Navigation desktop --- */
 .nav {
   display: none;
   align-items: center;
@@ -50,7 +60,9 @@
 }
 
 @media (min-width: 768px) {
-  .nav { display: flex; }
+  .nav {
+    display: flex;
+  }
 }
 
 .navLink {
@@ -74,8 +86,13 @@
   transition: width 0.25s ease;
 }
 
-.navLink:hover { color: var(--color-primary); }
-.navLink:hover::after { width: 100%; }
+.navLink:hover {
+  color: var(--color-primary);
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
 
 .navCta {
   display: inline-flex;
@@ -99,6 +116,7 @@
   box-shadow: 0 10px 24px rgba(200, 16, 46, 0.35);
 }
 
+/* --- Mobile --- */
 .mobileActions {
   display: flex;
   align-items: center;
@@ -106,7 +124,9 @@
 }
 
 @media (min-width: 768px) {
-  .mobileActions { display: none; }
+  .mobileActions {
+    display: none;
+  }
 }
 
 .menuBtn {
@@ -139,8 +159,14 @@
 }
 
 @keyframes dropIn {
-  from { opacity: 0; transform: translateY(-8px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .mobileNavLink {
@@ -157,6 +183,11 @@
   color: var(--color-primary);
 }
 
+/* Respect des préférences de mouvement réduit */
 @media (prefers-reduced-motion: reduce) {
-  .header { animation: none; opacity: 1; transform: none; }
+  .header {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
 }

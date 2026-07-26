@@ -9,6 +9,11 @@ import { Icons } from '@/components/icons/Icons';
 import cardStyles from '@/components/ui/Card.module.css';
 import styles from './JECards.module.css';
 
+/**
+ * Grille des fiches synthétiques de Juniors Entreprises, filtrable par
+ * région (pilotée par la carte via NetworkExplorer). Chaque fiche ouvre
+ * une modale détaillée listant l'ensemble des prestations et le contact.
+ */
 export default function JECards({ region }) {
   const t = useTranslations('je');
   const locale = useLocale();
@@ -61,7 +66,7 @@ export default function JECards({ region }) {
       <Modal isOpen={Boolean(selected)} onClose={() => setSelected(null)} title={selected?.nom} closeLabel={t('modal.close')}>
         {selected && (
           <>
-            <h3 className={styles.modalTitle}>{selected.nom}</h3>
+            <h3 className="text-xl font-bold text-secondary mb-1">{selected.nom}</h3>
             <p className={styles.modalMeta}>
               <Icons.MapPin size={14} /> {selected.region}
               <span aria-hidden="true">·</span>
@@ -69,11 +74,11 @@ export default function JECards({ region }) {
             </p>
 
             <h4 className={styles.modalSectionTitle}>{t('modal.servicesTitle')}</h4>
-            <ul className={styles.modalTags}>
+            <div className={styles.modalTags}>
               {selected.getPrestations(locale).map((p) => (
-                <li key={p} className={styles.modalTag}>{p}</li>
+                <span key={p} className={styles.modalTag}>{p}</span>
               ))}
-            </ul>
+            </div>
 
             <h4 className={styles.modalSectionTitle}>{t('modal.contactTitle')}</h4>
             <a href={`mailto:${selected.email}`} className={styles.modalContact}>

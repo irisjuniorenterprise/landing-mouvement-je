@@ -56,7 +56,7 @@ export default function KPIs() {
         </div>
 
         <h3 className={styles.blockTitle}>{t('tunisiaTitle')}</h3>
-        <div className={styles.grid}>
+        <div className={`${styles.grid} stagger-grid`}>
           {tunisiaStats.map(({ icon: Icon, value, suffix, label }, index) => (
             <div key={label} className={styles.stat}>
               <div className={styles.iconWrap}>

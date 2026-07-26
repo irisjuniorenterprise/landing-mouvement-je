@@ -23,6 +23,7 @@ export async function POST(request) {
     region: sanitize(body.region),
     establishment: sanitize(body.establishment),
     motivation: sanitize(body.motivation),
+    // Consentement CGU + politique de confidentialité, requis avant envoi.
     acceptTerms: Boolean(body.acceptTerms),
     // Honeypot anti-spam : champ invisible côté UI, doit rester vide.
     website: sanitize(body.website),

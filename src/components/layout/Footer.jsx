@@ -1,3 +1,4 @@
+// Footer.jsx
 import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
@@ -14,6 +15,7 @@ export default function Footer() {
         <div className="container">
           <div className={styles.grid}>
 
+            {/* ================= BRAND ================= */}
             <div>
               <div className={styles.brand}>
                 <Image
@@ -25,8 +27,10 @@ export default function Footer() {
                 />
               </div>
 
-              <p className={styles.tagline}>{t('tagline')}</p>
-            
+              <p className={styles.tagline}>
+                {t('tagline')}
+              </p>
+
               <a
                 href="https://www.jetunisie.com"
                 target="_blank"
@@ -36,39 +40,78 @@ export default function Footer() {
               >
                 <Icons.Globe size={16} /> www.jetunisie.com
               </a>
+
+              {/* CTA */}
+              {/* <Link href="#apply" className={styles.ctaFooter}>
+                {t('linkApply')}
+              </Link> */}
             </div>
 
+            {/* ================= SECTIONS (LANDING) ================= */}
             <div>
-              <h3 id="footer-nav" className={styles.colTitle}>{t('linksTitle')}</h3>
-              <nav className={styles.linkList} aria-labelledby="footer-nav">
+              <h3 id="footer-nav" className={styles.colTitle}>
+                {t('linksTitle')}
+              </h3>
+
+              <nav
+                className={styles.linkList}
+                aria-labelledby="footer-nav"
+              >
                 <a href="#about">{t('linkAbout')}</a>
                 <a href="#map">{t('linkMap')}</a>
                 <a href="#apply">{t('linkApply')}</a>
               </nav>
             </div>
 
+            {/* ================= LEGAL ================= */}
             <div>
-              <h3 id="footer-legal" className={styles.colTitle}>{t('legalTitle')}</h3>
-              <nav className={styles.linkList} aria-labelledby="footer-legal">
-                <Link href="/legal">{t('linkLegal')}</Link>
-                <Link href="/privacy">{t('linkPrivacy')}</Link>
-                <Link href="/terms">{t('linkTerms')}</Link>
+              <h3 id="footer-legal" className={styles.colTitle}>
+                {t('legalTitle')}
+              </h3>
+
+              <nav
+                className={styles.linkList}
+                aria-labelledby="footer-legal"
+              >
+                <Link href="/legal">
+                  {t('linkLegal')}
+                </Link>
+
+                <Link href="/privacy">
+                  {t('linkPrivacy')}
+                </Link>
+
+                <Link href="/terms">
+                  {t('linkTerms')}
+                </Link>
               </nav>
             </div>
 
+            {/* ================= CONTACT + SOCIAL ================= */}
             <div>
-              <h3 className={styles.colTitle}>{t('contactTitle')}</h3>
+              <h3 className={styles.colTitle}>
+                {t('contactTitle')}
+              </h3>
+
               <div className={styles.linkList}>
                 <a href={`tel:${t('phone')}`} className={styles.contactItem}>
                   <Icons.Phone size={16} /> {t('phone')}
                 </a>
-                <a href={`mailto:${t('email')}`} className={styles.contactItem}>
+
+                <a
+                  href={`mailto:${t('email')}`}
+                  className={styles.contactItem}
+                >
                   <Icons.Mail size={16} /> {t('email')}
                 </a>
               </div>
 
+              {/* Social */}
               <div className={styles.socialSection}>
-                <h4 className={styles.socialTitle}>{t('socialTitle')}</h4>
+                <h4 className={styles.socialTitle}>
+                  {t('socialTitle')}
+                </h4>
+
                 <div className={styles.socialLinks}>
                   <a
                     href="https://www.linkedin.com/company/jet-junior-enterprises-tunisia/"
@@ -79,6 +122,7 @@ export default function Footer() {
                   >
                     <Icons.Linkedin size={20} />
                   </a>
+
                   <a
                     href="https://www.instagram.com/je.tunisia?igsh=ZHBqcG44NWlrejA3"
                     target="_blank"
@@ -88,6 +132,7 @@ export default function Footer() {
                   >
                     <Icons.Instagram size={20} />
                   </a>
+
                   <a
                     href="https://www.facebook.com/JuniorEnterprisesOfTunisia"
                     target="_blank"
@@ -103,6 +148,7 @@ export default function Footer() {
 
           </div>
 
+          {/* ================= BOTTOM BAR ================= */}
           <div className={styles.bottomBar}>
             <span>{t('orgName')}</span>
             <span aria-hidden="true">—</span>

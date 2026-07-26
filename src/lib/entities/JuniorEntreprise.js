@@ -20,6 +20,10 @@ export default class JuniorEntreprise {
     this.nom = nom;
     this.region = region;
     this.etablissement = etablissement;
+    // Les prestations sont bilingues ({ fr: [...], en: [...] }) dans
+    // je.json. On accepte aussi l'ancien format (tableau simple, toujours
+    // en français) par sécurité, pour ne pas casser si une donnée n'a pas
+    // encore été migrée.
     this.prestationsByLocale = Array.isArray(prestations)
       ? { fr: prestations, en: [] }
       : { fr: prestations.fr || [], en: prestations.en || [] };
@@ -35,23 +39,28 @@ export default class JuniorEntreprise {
     this.type = 'JE';
   }
 
+  /** Liste des prestations dans la langue demandée (repli sur le français). */
   getPrestations(locale = 'fr') {
     const list = this.prestationsByLocale[locale];
     return list && list.length ? list : this.prestationsByLocale.fr;
   }
 
+  /** Nombre de prestations proposées par la JE (identique quelle que soit la langue). */
   get prestationsCount() {
     return this.prestationsByLocale.fr.length;
   }
 
+  /** Résumé court utilisé sur les fiches synthétiques (2 prestations max), dans la langue demandée. */
   getShortPrestations(locale = 'fr') {
     return this.getPrestations(locale).slice(0, 2);
   }
 
+  /** Coordonnées géographiques au format [lat, lng] attendu par Leaflet. */
   get position() {
     return [this.lat, this.lng];
   }
 
+  /** Vrai si au moins un réseau social a été renseigné (pour l'affichage conditionnel). */
   get hasSocialLinks() {
     return Object.values(this.reseauxSociaux).some((url) => Boolean(url));
   }

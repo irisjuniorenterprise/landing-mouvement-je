@@ -1,11 +1,8 @@
 'use client';
 
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname, useRouter } from '@/i18n/navigation';
 import { locales } from '@/i18n/config';
 import styles from './LanguageSwitcher.module.css';
-
-const LOCALE_COOKIE_NAME = 'NEXT_LOCALE';
-const LOCALE_COOKIE_MAX_AGE = 60 * 60 * 24 * 365;
 
 const LOCALE_LABELS = {
   fr: 'Français',
@@ -19,15 +16,7 @@ export default function LanguageSwitcher({ currentLocale }) {
 
   const switchTo = (locale) => {
     if (locale === currentLocale) return;
-
-    document.cookie = `${LOCALE_COOKIE_NAME}=${locale}; path=/; max-age=${LOCALE_COOKIE_MAX_AGE}; samesite=lax`;
-
-    const segments = pathname.split('/').filter(Boolean);
-    if (locales.includes(segments[0])) segments.shift();
-    const newPath = locale === 'fr' ? `/${segments.join('/')}` : `/${locale}/${segments.join('/')}`;
-
-    router.push(newPath || '/');
-    router.refresh();
+    router.replace(pathname, { locale });
   };
 
   return (

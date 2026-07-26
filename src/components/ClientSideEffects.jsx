@@ -58,7 +58,7 @@ export default function ClientSideEffects() {
     }
 
     // ---------------------------------------------------------------
-    // Reste des animations — piloté par GSAP/ScrollTrigger.
+    // Reste des animations — inchangé, piloté par GSAP/ScrollTrigger.
     // ---------------------------------------------------------------
     if (prefersReducedMotion) {
       sections.forEach((el) => {

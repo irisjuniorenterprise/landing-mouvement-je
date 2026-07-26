@@ -1,3 +1,7 @@
+/* ============================================================
+   MAP (Carte interactive)
+   ============================================================ */
+
 .mapWrapper {
   width: 100%;
   height: 400px;
@@ -7,6 +11,9 @@
   border: 1px solid var(--color-border);
   position: relative;
   background: var(--color-surface);
+  /* Fondu isolé du système GSAP/ScrollTrigger : uniquement l'opacité,
+     jamais de transform, pour ne jamais initialiser Leaflet pendant
+     qu'un déplacement CSS est en cours sur ce conteneur (voir Map.jsx). */
   opacity: 0;
   transition: opacity 0.5s ease;
 }
@@ -21,6 +28,15 @@
   }
 }
 
+/* Conteneur Leaflet */
+.mapContainer {
+  width: 100%;
+  height: 100%;
+}
+
+/* Squelette affiché pendant le chargement du chunk de la carte (avant
+   même l'initialisation de Leaflet) : cohérent avec le reste du design
+   system plutôt qu'un simple texte brut. */
 .mapSkeleton {
   width: 100%;
   height: 100%;
@@ -45,6 +61,116 @@
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .mapSkeletonPulse {
+    animation: none;
+  }
+}
+
+/* ============================================================
+   PERSONNALISATION DES BOUTONS ZOOM (Leaflet)
+   ============================================================ */
+
+/* Cacher les contrôles par défaut de Leaflet */
+.mapWrapper :global(.leaflet-control-zoom) {
+  border: none !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12) !important;
+  border-radius: 0.75rem !important;
+  overflow: hidden;
+}
+
+.mapWrapper :global(.leaflet-control-zoom a) {
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+  line-height: 2.5rem !important;
+  background: #ffffff !important;
+  color: var(--color-secondary) !important;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  border: none !important;
+  transition: all 0.2s ease !important;
+}
+
+.mapWrapper :global(.leaflet-control-zoom a:hover) {
+  background: var(--color-primary) !important;
+  color: #ffffff !important;
+}
+
+.mapWrapper :global(.leaflet-control-zoom a:first-child) {
+  border-bottom: 1px solid var(--color-border) !important;
+  border-radius: 0.75rem 0.75rem 0 0 !important;
+}
+
+.mapWrapper :global(.leaflet-control-zoom a:last-child) {
+  border-radius: 0 0 0.75rem 0.75rem !important;
+}
+
+.mapWrapper :global(.leaflet-control-zoom a:active) {
+  transform: scale(0.92) !important;
+}
+
+/* ============================================================
+   LÉGENDE
+   ============================================================ */
+
+.legend {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 1000;
+  background: #ffffff;
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border: 1px solid var(--color-border);
+  min-width: 140px;
+}
+
+.legendTitle {
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: var(--color-secondary);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--color-secondary);
+  padding: 0.2rem 0;
+}
+
+.legendDot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 9999px;
+  flex-shrink: 0;
+}
+
+.legendDotActive {
+  background: var(--color-primary);
+}
+
+.legendDotInactive {
+  background: #d1d5db;
+}
+
+.legendHint {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  margin-top: 0.5rem;
+  border-top: 1px solid var(--color-border);
+  padding-top: 0.5rem;
+}
+
+/* ============================================================
+   ATTRIBUTION PERSONNALISÉE (bas à droite)
+   ============================================================ */
+
 .attribution {
   position: absolute;
   bottom: 0.5rem;
@@ -67,6 +193,14 @@
   pointer-events: auto;
 }
 
+.attribution a:hover {
+  color: #000;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
 @media (min-width: 768px) {
   .mapWrapper {
     height: 600px;
@@ -77,5 +211,26 @@
   .mapWrapper {
     height: 320px;
     border-radius: 0.75rem;
+  }
+  .legend {
+    padding: 0.75rem 1rem;
+    min-width: 120px;
+    bottom: 0.75rem;
+    left: 0.75rem;
+  }
+  .legendItem {
+    font-size: 0.75rem;
+  }
+  .mapWrapper :global(.leaflet-control-zoom a) {
+    width: 2rem !important;
+    height: 2rem !important;
+    line-height: 2rem !important;
+    font-size: 0.9rem !important;
+  }
+  .attribution {
+    font-size: 0.5rem;
+    bottom: 0.35rem;
+    right: 0.35rem;
+    padding: 0.15rem 0.4rem;
   }
 }

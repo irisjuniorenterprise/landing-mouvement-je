@@ -15,6 +15,7 @@
   isolation: isolate;
 }
 
+/* Liseré supérieur qui se révèle au survol */
 .card::before {
   content: '';
   position: absolute;
@@ -28,6 +29,7 @@
   transition: transform 0.35s ease;
 }
 
+/* Lueur douce en fond, très subtile, pour donner de la profondeur */
 .card::after {
   content: '';
   position: absolute;
@@ -52,6 +54,7 @@
   box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.12), 0 8px 20px -6px var(--color-shadow);
 }
 
+/* --- Badge --- */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -82,6 +85,7 @@
   background: rgba(200, 16, 46, 0.12);
 }
 
+/* --- Titre --- */
 .title {
   font-size: 1.2rem;
   font-weight: 800;
@@ -89,12 +93,14 @@
   letter-spacing: -0.01em;
   line-height: 1.35;
   margin-bottom: 0.3rem;
+  /* Empêche les titres longs de désaligner la grille de cards */
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
+/* --- Meta --- */
 .meta {
   display: flex;
   align-items: center;
@@ -105,13 +111,14 @@
   margin-bottom: 1.1rem;
 }
 
+/* --- Tags --- */
 .tagList {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.45rem;
   margin-bottom: 1.4rem;
-  list-style: none;
+  list-style: none; /* correctif : supprime les puces du <ul> */
   padding: 0;
 }
 
@@ -131,6 +138,7 @@
   background: #fff;
 }
 
+/* --- Footer / actions --- */
 .footer {
   margin-top: auto;
   display: flex;
@@ -178,14 +186,29 @@
   border-radius: 0.25rem;
 }
 
+/* --- Responsive --- */
 @media (max-width: 480px) {
-  .card { padding: 1.5rem 1.35rem 1.35rem; border-radius: 1rem; }
-  .title { font-size: 1.1rem; }
+  .card {
+    padding: 1.5rem 1.35rem 1.35rem;
+    border-radius: 1rem;
+  }
+  .title {
+    font-size: 1.1rem;
+  }
 }
 
+/* --- Accessibilité : respecte les préférences de mouvement réduit --- */
 @media (prefers-reduced-motion: reduce) {
-  .card, .card::before, .card::after, .badge, .tag, .linkButton, .linkButton::after {
+  .card,
+  .card::before,
+  .card::after,
+  .badge,
+  .tag,
+  .linkButton,
+  .linkButton::after {
     transition: none;
   }
-  .card:hover { transform: none; }
+  .card:hover {
+    transform: none;
+  }
 }

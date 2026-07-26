@@ -25,3 +25,29 @@ export function validateCandidature(data = {}) {
 
   return { isValid: Object.keys(errors).length === 0, errors };
 }
+
+/**
+ * Règles de validation du formulaire de satisfaction UX/UI (KPI 4 — voir
+ * section "Impact" du cahier des charges).
+ * La note est un score sur 5, saisi par quarts d'étoile (0.25, 0.5, ... 5).
+ * Le commentaire est optionnel.
+ */
+export function validateSatisfaction(data = {}) {
+  const errors = {};
+  const rating = Number(data.rating);
+
+  if (data.rating === undefined || data.rating === null || data.rating === '') {
+    errors.rating = 'required';
+  } else if (Number.isNaN(rating) || rating < 0.25 || rating > 5) {
+    errors.rating = 'invalidRating';
+  } else if (Math.round(rating * 4) !== rating * 4) {
+    // Doit être un multiple de 0.25 (quart d'étoile).
+    errors.rating = 'invalidRating';
+  }
+
+  if (data.comment && data.comment.length > 1000) {
+    errors.comment = 'tooLong';
+  }
+
+  return { isValid: Object.keys(errors).length === 0, errors };
+}

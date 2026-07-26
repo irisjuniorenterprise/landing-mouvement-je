@@ -28,6 +28,9 @@ export default function CandidatureForm() {
   const [status, setStatus] = useState(STATUS.IDLE);
 
   const handleChange = (field) => (e) => {
+    // KPI 1 (Taux de complétion) : marque le début de saisie, une seule
+    // fois par visite, dès la première interaction avec un champ réel
+    // (le honeypot n'est volontairement pas inclus ici).
     if (field !== 'website') trackOnce('candidature_form_started');
     setValues((prev) => ({ ...prev, [field]: e.target.value }));
     if (errors[field]) setErrors((prev) => ({ ...prev, [field]: undefined }));
@@ -67,6 +70,8 @@ export default function CandidatureForm() {
 
       setStatus(STATUS.SUCCESS);
       setValues(INITIAL_STATE);
+      // KPI 1 (Taux de complétion) : numérateur. Ratio calculé côté
+      // client (dashboard Vercel) = form_submitted / form_started.
       trackEvent('candidature_form_submitted');
     } catch {
       setStatus(STATUS.ERROR);
@@ -82,6 +87,7 @@ export default function CandidatureForm() {
         <p className="section-subtitle">{t('subtitle')}</p>
 
         <form className={styles.form} onSubmit={handleSubmit} noValidate>
+          {/* GROUPE 1 : Informations personnelles */}
           <fieldset className={styles.fieldset}>
             <legend className={styles.legend}>
               <Icons.PenDraw size={30} />
@@ -89,6 +95,7 @@ export default function CandidatureForm() {
             </legend>
 
             <div className={styles.grid}>
+              {/* NOM */}
               <div className={styles.field}>
                 <label className={styles.fixedLabel} htmlFor="cf-name">
                   {t('name')} <span className={styles.required}>*</span>
@@ -116,6 +123,7 @@ export default function CandidatureForm() {
                 )}
               </div>
 
+              {/* EMAIL */}
               <div className={styles.field}>
                 <label className={styles.fixedLabel} htmlFor="cf-email">
                   {t('email')} <span className={styles.required}>*</span>
@@ -143,6 +151,7 @@ export default function CandidatureForm() {
                 )}
               </div>
 
+              {/* RÉGION */}
               <div className={styles.field}>
                 <label className={styles.fixedLabel} htmlFor="cf-region">
                   {t('region')} <span className={styles.required}>*</span>
@@ -177,6 +186,7 @@ export default function CandidatureForm() {
                 )}
               </div>
 
+              {/* ÉTABLISSEMENT */}
               <div className={styles.field}>
                 <label className={styles.fixedLabel} htmlFor="cf-establishment">
                   {t('establishment')} <span className={styles.required}>*</span>
@@ -205,6 +215,7 @@ export default function CandidatureForm() {
             </div>
           </fieldset>
 
+          {/* GROUPE 2 : Motivation */}
           <fieldset className={styles.fieldset}>
             <legend className={styles.legend}>
               <Icons.Heart size={18} />
@@ -236,6 +247,7 @@ export default function CandidatureForm() {
               )}
             </div>
 
+            {/* Honeypot anti-spam : champ masqué, invisible et ignoré par les humains */}
             <div className={styles.honeypot} aria-hidden="true">
               <label htmlFor="cf-website">Website</label>
               <input
@@ -249,6 +261,7 @@ export default function CandidatureForm() {
             </div>
           </fieldset>
 
+          {/* GROUPE 3 : Consentement légal */}
           <div className={`${styles.consentBox} ${errors.acceptTerms ? styles.consentBoxError : ''}`}>
             <Icons.LawScale size={20} className={styles.consentIcon} />
             <div className={styles.consentContent}>

@@ -1,10 +1,11 @@
 import { useTranslations } from 'next-intl';
 import Hero from '@/components/sections/Hero';
-import KPIs from '@/components/sections/KPIs';
+import History from '@/components/sections/History';
+import About from '@/components/sections/About';
 import NetworkExplorer from '@/components/sections/NetworkExplorer';
-import JECards from '@/components/sections/JECards';
-import JCDetails from '@/components/sections/JCDetails';
+import KPIs from '@/components/sections/KPIs';
 import CandidatureForm from '@/components/forms/CandidatureForm';
+import SatisfactionForm from '@/components/forms/SatisfactionForm';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 
 export default function HomePage() {
@@ -16,11 +17,12 @@ export default function HomePage() {
         <Breadcrumb items={[{ label: tBreadcrumb('home') }]} />
       </div>
       <Hero />
+      <History />
+      <About />
       <KPIs />
       <NetworkExplorer />
-      <JECards />
-      <JCDetails />
       <CandidatureForm />
+      <SatisfactionForm />
     </main>
   );
 }

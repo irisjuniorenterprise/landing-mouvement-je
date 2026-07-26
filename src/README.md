@@ -1,36 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Landing Page — Mouvement des Juniors Entreprises (CTJE)
 
-## Getting Started
+Landing page publique, bilingue (FR/EN) et responsive, développée pour la
+Confédération Tunisienne des Juniors Entreprises (CTJE) — Pôle Expansion et
+Intégration. Elle centralise la présentation du réseau JE/JC, une carte
+interactive de la Tunisie, les indicateurs clés du mouvement et un
+formulaire de candidature envoyé par email.
 
-First, run the development server:
+## Stack technique
+
+| Composant | Techno |
+|---|---|
+| Framework | Next.js 16 (App Router) |
+| Langage | JavaScript (JSX) |
+| Styling | Tailwind CSS 4 + CSS Modules |
+| Animations | GSAP (ScrollTrigger) |
+| Carte | React-Leaflet |
+| i18n | next-intl (FR/EN) |
+| Données | Fichiers JSON statiques (`lib/data`) |
+| Email | Nodemailer (route API `/api/candidature`) |
+| Tests | Jest (unitaire / intégration) + Playwright (e2e) |
+
+## Démarrage
 
 ```bash
+npm install
+cp .env.example .env.local   # configuration SMTP optionnelle, voir plus bas
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ouvrir [http://localhost:3000](http://localhost:3000). Les routes localisées
+sont accessibles via `/` (français, langue par défaut) et `/en` (anglais).
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Scripts disponibles
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run dev        # serveur de développement
+npm run build      # build de production
+npm run start      # lancer le build de production
+npm run lint       # ESLint
+npm run test       # tests unitaires et d'intégration (Jest)
+npm run test:watch # Jest en mode watch
+npm run test:e2e   # tests end-to-end (Playwright, nécessite un build)
+```
 
-## Learn More
+## Configuration de l'envoi d'email
 
-To learn more about Next.js, take a look at the following resources:
+La route `POST /api/candidature` envoie chaque candidature par email via
+Nodemailer. Sans configuration SMTP (`.env.local` absent ou incomplet),
+l'application utilise un transport `jsonTransport` : le formulaire fonctionne
+normalement mais aucun email n'est réellement envoyé — pratique en local et
+en CI. Voir `.env.example` pour les variables `SMTP_HOST`, `SMTP_PORT`,
+`SMTP_USER`, `SMTP_PASS`, `SMTP_FROM` et `CANDIDATURE_RECIPIENT`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Gestion des données JE / JC
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Les Juniors Entreprises et Junior Créations sont gérées via deux fichiers
+JSON statiques, sans base de données ni panneau d'administration (hors
+périmètre du projet) :
 
-## Deploy on Vercel
+- `lib/data/je.json`
+- `lib/data/jc.json`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Voir `docs/guide-utilisateur.md` pour le détail des champs et la marche à
+suivre pour ajouter ou modifier une entrée.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Structure du projet
+
+```
+app/[locale]/        Pages et layout (App Router, routes FR/EN)
+app/api/candidature/  Route API d'envoi de candidature
+components/           Composants React (layout, sections, ui, map, forms)
+lib/entities/          Classes métier (JuniorEntreprise, JuniorCreation)
+lib/factories/         Fabrique de conversion JSON -> entités
+lib/repositories/      Accès aux données JE/JC
+lib/services/          Logique métier (calcul des KPIs)
+lib/utils/             Validation du formulaire, envoi d'email
+messages/              Traductions FR/EN (next-intl)
+__tests__/             Tests unitaires et d'intégration (Jest)
+e2e/                   Tests end-to-end (Playwright)
+```
+
+## Tests
+
+```bash
+npm run test       # JuniorEntreprise, KPIService, validation, route API
+npm run test:e2e   # parcours utilisateur (navigation, i18n, formulaire)
+```
+
+## Licence
+
+MIT — voir `LICENSE`.

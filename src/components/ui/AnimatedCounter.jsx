@@ -56,6 +56,7 @@ export default function AnimatedCounter({
       const tick = (now) => {
         const elapsed = now - start;
         const progress = Math.min(elapsed / duration, 1);
+        // easeOutExpo : démarrage rapide, ralentit en douceur vers la valeur finale
         const eased = progress === 1 ? 1 : 1 - 2 ** (-10 * progress);
         const current = Math.round(from + (to - from) * eased);
 

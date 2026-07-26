@@ -28,6 +28,7 @@ export default function Modal({ isOpen, onClose, title, closeLabel = 'Fermer', c
         return;
       }
 
+      // Focus trap : Tab / Shift+Tab restent confinés dans la modale.
       if (e.key === 'Tab' && dialogRef.current) {
         const focusables = Array.from(dialogRef.current.querySelectorAll(FOCUSABLE_SELECTOR)).filter(
           (el) => el.offsetParent !== null

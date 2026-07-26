@@ -2,7 +2,7 @@
  * Service métier responsable du calcul des indicateurs clés de performance
  * (KPIs) affichés sur la landing page, à partir des listes de JE et de JC.
  * Isoler ce calcul dans un service dédié le rend testable indépendamment
- * de l'UI (voir __tests__/unit/KPIService.test.js, US-21).
+ * de l'UI (voir __tests__/unit/KPIService.test.js).
  */
 class KPIService {
   /**

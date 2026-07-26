@@ -9,6 +9,8 @@ export default class JuniorCreation {
     this.region = region;
     this.etablissement = etablissement;
     this.email = email;
+    // Description bilingue ({ fr, en) dans jc.json ; on accepte aussi
+    // l'ancien format (chaîne simple, toujours en français) par sécurité.
     this.descriptionByLocale =
       typeof description === 'string'
         ? { fr: description, en: '' }
@@ -18,6 +20,7 @@ export default class JuniorCreation {
     this.type = 'JC';
   }
 
+  /** Description dans la langue demandée (repli sur le français). */
   getDescription(locale = 'fr') {
     return this.descriptionByLocale[locale] || this.descriptionByLocale.fr;
   }
