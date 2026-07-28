@@ -80,6 +80,40 @@ export default function CandidatureForm() {
 
   const fieldError = (field) => errors[field] && t(`errors.${errors[field]}`);
 
+  // Rendu du consentement RGPD/CGU : on n'utilise volontairement PAS
+  // t.rich() ici. Sur cette stack (next-intl@4.13.2 + Next.js 16.2.10 +
+  // React 19.2.4), t.rich() lève INVALID_MESSAGE ("Incorrect locale
+  // information provided (undefined)") de façon systématique et
+  // reproductible, MÊME quand useLocale() renvoie une locale valide
+  // ('fr'/'en') — donc le souci vient de la résolution interne de la
+  // locale par t.rich() lui-même (probable incompatibilité de lib), pas
+  // du contexte next-intl côté app. t.raw() n'a pas besoin de construire
+  // de formateur ICU/Intl et n'est donc pas affecté : on récupère le
+  // texte brut et on remplace nous-mêmes les balises <terms>/<privacy>.
+  const renderAcceptTerms = () => {
+    const raw = t.raw('acceptTerms');
+    const parts = raw.split(/(<terms>.*?<\/terms>|<privacy>.*?<\/privacy>)/g);
+    return parts.map((part, i) => {
+      const termsMatch = part.match(/^<terms>(.*?)<\/terms>$/);
+      if (termsMatch) {
+        return (
+          <Link key={i} href="/mentions-legales" target="_blank" rel="noopener noreferrer" className={styles.consentLink}>
+            {termsMatch[1]}
+          </Link>
+        );
+      }
+      const privacyMatch = part.match(/^<privacy>(.*?)<\/privacy>$/);
+      if (privacyMatch) {
+        return (
+          <Link key={i} href="/politique-confidentialite" target="_blank" rel="noopener noreferrer" className={styles.consentLink}>
+            {privacyMatch[1]}
+          </Link>
+        );
+      }
+      return <span key={i}>{part}</span>;
+    });
+  };
+
   return (
     <section id="apply" className="section-padding bg-surface section-animate">
       <div className="container">
@@ -281,18 +315,7 @@ export default function CandidatureForm() {
                   </span>
                 </span>
                 <span className={styles.consentText}>
-                  {t.rich('acceptTerms', {
-                    terms: (chunks) => (
-                      <Link href="/mentions-legales" target="_blank" rel="noopener noreferrer" className={styles.consentLink}>
-                        {chunks}
-                      </Link>
-                    ),
-                    privacy: (chunks) => (
-                      <Link href="/politique-confidentialite" target="_blank" rel="noopener noreferrer" className={styles.consentLink}>
-                        {chunks}
-                      </Link>
-                    ),
-                  })}
+                  {renderAcceptTerms()}
                   <span className={styles.required}> *</span>
                 </span>
               </label>

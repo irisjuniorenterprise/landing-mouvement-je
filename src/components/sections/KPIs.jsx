@@ -3,13 +3,6 @@ import { Icons } from '@/components/icons/Icons';
 import AnimatedCounter from '@/components/ui/AnimatedCounter';
 import styles from './KPIs.module.css';
 
-/**
- * Chiffres clés officiels communiqués par la CTJE :
- * - un premier bloc pour le mouvement JE mondial,
- * - un second bloc pour la CTJE en Tunisie.
- * Valeurs statiques (données officielles du client), volontairement
- * indépendantes du JERepository/JCRepository qui alimente la carte.
- */
 export default function KPIs() {
   const t = useTranslations('kpis');
 
@@ -32,7 +25,7 @@ export default function KPIs() {
   ];
 
   return (
-    <section id="kpis" className="section-padding section-animate">
+    <section id="kpis" className="section-padding section-animate section-dark">
       <div className="container">
         <h2 className="section-title">{t('title')}</h2>
         <p className="section-subtitle">{t('subtitle')}</p>

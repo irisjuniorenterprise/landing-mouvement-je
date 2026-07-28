@@ -1,0 +1,365 @@
+/* ============================================================
+   CONTENU PARTAGÉ (EntityDetails) — identique desktop / mobile
+   ============================================================ */
+
+/* Les 3 blocs (haut / milieu / bas) sont les enfants directs distribués par
+   .desktopPanel { justify-content: space-between }. Sur mobile (sheet), le
+   panneau n'a pas cette propriété : ces blocs restent alors en flux normal,
+   sans effet visuel indésirable. */
+.topBlock,
+.middleBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.3rem 0.7rem;
+  border-radius: 9999px;
+  margin-bottom: 0.5rem;
+}
+
+.badgeJE {
+  background: rgba(200, 16, 46, 0.1);
+  color: var(--color-primary);
+}
+
+.badgeJC {
+  background: rgba(245, 158, 11, 0.14);
+  color: #b45309;
+}
+
+.title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  line-height: 1.25;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1.25rem;
+}
+
+.sectionTitle {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-primary);
+  margin-bottom: 0.6rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tag {
+  font-size: 0.8125rem;
+  background: var(--color-surface);
+  color: var(--color-secondary);
+  padding: 0.35rem 0.75rem;
+  border-radius: 0.5rem;
+}
+
+.establishment {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.875rem;
+  color: var(--color-secondary);
+  margin-bottom: 0.75rem;
+}
+
+.description {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+  text-decoration: none;
+  padding-top: 1rem;
+  margin-top: 0.5rem;
+  border-top: 1px solid var(--color-border);
+  transition: color 0.2s ease;
+}
+
+.contact:hover {
+  color: var(--color-primary);
+}
+
+.socialRow {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  background: var(--color-surface);
+  color: var(--color-secondary);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.socialLink:hover {
+  background: var(--color-primary);
+  color: #ffffff;
+}
+
+/* ============================================================
+   DESKTOP — panneau latéral fixe, toujours affiché à droite de la carte
+   ============================================================ */
+
+.desktopPanel {
+  display: none; /* réactivé ≥ 960px, voir media query plus bas */
+  flex-direction: column;
+  /* Répartit les blocs (en-tête, contenu, contact) sur toute la hauteur
+     du panneau plutôt que de les laisser s'empiler en haut — évite le
+     vide en bas quand une carte a peu de contenu (ex: JC sans réseaux
+     sociaux). Sans effet quand le contenu dépasse 600px : le panneau
+     défile normalement (overflow-y: auto). */
+  justify-content: space-between;
+  width: 25rem;
+  flex-shrink: 0;
+  /* Alignée sur la vraie hauteur de .mapWrapper à cette largeur d'écran
+     (voir Map.module.css : 600px dès 768px de large, donc déjà actif au
+     seuil desktop de 960px ci-dessous) — un panneau plus court donnait
+     l'impression d'un panneau "raccourci" par rapport à la carte. */
+  height: 600px;
+  padding: 1.5rem;
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  overflow-y: auto;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.desktopPanel:hover {
+  border-color: rgba(200, 16, 46, 0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .desktopPanel {
+    transition: none;
+  }
+
+  .desktopPanel:hover {
+    transform: none;
+  }
+}
+
+.placeholder {
+  margin: auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1rem 1.25rem;
+}
+
+/* Badge circulaire teinté qui accueille l'icône — reprend la palette
+   "rosé" déjà utilisée pour les fonds de section (voir globals.css),
+   pour donner un point focal plus doux et plus en phase avec la charte
+   qu'une simple icône grise flottant dans le vide. */
+.placeholderIconWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.75rem;
+  height: 3.75rem;
+  border-radius: 9999px;
+  background: var(--color-primary-tint);
+  margin-bottom: 1.25rem;
+}
+
+.placeholderIcon {
+  position: relative;
+  z-index: 1;
+  color: var(--color-primary);
+}
+
+/* Anneau qui "respire" derrière l'icône — évoque un point localisé sur
+   une carte (un peu comme un pin GPS qui pulse) et signale discrètement
+   que le panneau attend une interaction avec la carte, sans être aussi
+   intrusif qu'une animation en boucle sur tout le bloc. */
+.placeholderPing {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: var(--color-primary-tint-strong);
+  animation: placeholder-ping 2.4s cubic-bezier(0.2, 0.7, 0.4, 1) infinite;
+}
+
+@keyframes placeholder-ping {
+  0% {
+    transform: scale(0.85);
+    opacity: 1;
+  }
+  70%,
+  100% {
+    transform: scale(1.65);
+    opacity: 0;
+  }
+}
+
+.placeholderTitle {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  margin-bottom: 0.4rem;
+}
+
+.placeholderText {
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  max-width: 17rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .placeholderPing {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+@media (min-width: 960px) {
+  .desktopPanel {
+    display: flex;
+  }
+}
+
+/* ============================================================
+   MOBILE / TABLETTE — bottom sheet
+   ============================================================ */
+
+.sheetBackdrop {
+  display: none;
+}
+
+.sheet {
+  display: none;
+}
+
+@media (max-width: 959px) {
+  .sheetBackdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    /* Doit dépasser tous les éléments internes de la carte (attribution
+       et contrôles Leaflet utilisent z-index: 1000, voir Map.module.css),
+       sinon ils restent visibles par-dessus le panneau/le fond. */
+    z-index: 1100;
+    background: rgba(0, 0, 0, 0.35);
+    border: none;
+    padding: 0;
+    cursor: default;
+    animation: sheet-backdrop-in 0.25s ease;
+  }
+
+  .sheet {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1101;
+    max-height: min(78vh, 34rem);
+    background: #ffffff;
+    border-radius: 1.25rem 1.25rem 0 0;
+    box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.25);
+    padding: 0.6rem 1.35rem calc(1.35rem + env(safe-area-inset-bottom, 0px));
+    animation: sheet-in 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .sheetHandle {
+    width: 2.5rem;
+    height: 0.28rem;
+    border-radius: 9999px;
+    background: var(--color-border);
+    margin: 0.35rem auto 0.75rem;
+    flex-shrink: 0;
+  }
+
+  .sheetClose {
+    position: absolute;
+    top: 0.85rem;
+    right: 0.9rem;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 9999px;
+    background: var(--color-surface);
+    color: var(--color-secondary);
+    cursor: pointer;
+  }
+
+  .sheetContent {
+    overflow-y: auto;
+    padding-top: 0.25rem;
+  }
+}
+
+@keyframes sheet-in {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes sheet-backdrop-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sheet,
+  .sheetBackdrop {
+    animation: none;
+  }
+}

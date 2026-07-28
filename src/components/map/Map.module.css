@@ -34,6 +34,21 @@
   height: 100%;
 }
 
+/* ============================================================
+   CONTRASTE TUNISIE / RESTE DU MONDE
+   ============================================================ */
+
+/* La couche de tuiles (fond de carte OSM) est volontairement désaturée
+   et légèrement assombrie : ça ne touche que le raster de fond (routes,
+   pays voisins, mer...), jamais la couche GeoJSON des gouvernorats ni
+   les marqueurs, qui restent au-dessus dans un pane Leaflet séparé.
+   Résultat : la Tunisie (rouge institutionnel / blanc) ressort
+   nettement sur un fond neutre, sans introduire de nouvelle couleur
+   hors charte graphique. */
+.mapWrapper :global(.leaflet-tile-pane) {
+  filter: grayscale(85%) brightness(0.8) contrast(1.05);
+}
+
 /* Squelette affiché pendant le chargement du chunk de la carte (avant
    même l'initialisation de Leaflet) : cohérent avec le reste du design
    system plutôt qu'un simple texte brut. */

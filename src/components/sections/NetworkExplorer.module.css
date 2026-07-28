@@ -2,11 +2,26 @@
   position: relative;
 }
 
-/* ============================================================
-   SÉLECTEUR DE RÉGION — repris à l'identique du champ "Région" de
-   CandidatureForm.module.css (label fixe + micro-label flottant +
-   icône) pour garder une cohérence visuelle avec le reste du site.
-   ============================================================ */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.filters .field {
+  flex: 1 1 16rem;
+}
+
+.explorerRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.mapColumn {
+  flex: 1;
+  min-width: 0;
+}
 
 .field {
   display: flex;
@@ -103,8 +118,6 @@
   z-index: 3;
 }
 
-/* Le micro-label du select est masqué au repos (le texte de l'option
-   occupe déjà la zone basse du champ, aucun chevauchement possible) */
 .floatingLabelSelect {
   opacity: 0;
   transform: translateY(3px);
@@ -125,10 +138,6 @@
   background: #ffffff;
   padding: 0 6px;
 }
-
-/* ============================================================
-   LÉGENDE (inchangé)
-   ============================================================ */
 
 .legendBar {
   display: flex;

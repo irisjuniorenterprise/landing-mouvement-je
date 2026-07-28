@@ -11,36 +11,17 @@ import { trackOnce } from '@/lib/utils/analytics';
 const DEFAULT_CENTER = [34.5, 9.8];
 const BREAKPOINT = 800;
 
-/**
- * Garantit un calcul de taille/position correct de la carte, y compris
- * quand son conteneur apparaît via une animation (fade/translate) du
- * parent : sans ce filet de sécurité, Leaflet peut figer sa grille de
- * tuiles sur des dimensions incorrectes si le layout bouge juste après
- * l'initialisation, produisant des tuiles grises/décalées au premier
- * chargement tant qu'on n'interagit pas avec la carte (drag/zoom).
- */
 function MapReadyBridge({ onReady }) {
   const map = useMap();
 
   useEffect(() => {
     const container = map.getContainer();
-
-    // Un premier recalcul juste après le montage (laisse le temps au
-    // navigateur de finaliser le layout de la section environnante).
     const initialTimer = setTimeout(() => map.invalidateSize(), 250);
-
-    // Recalcule à chaque changement de taille du conteneur (fin de
-    // transition d'entrée, redimensionnement de fenêtre, orientation...).
     const resizeObserver = new ResizeObserver(() => map.invalidateSize());
     resizeObserver.observe(container);
 
-    // Signale au composant parent que la carte est prête à être révélée
-    // (tuiles de base chargées) : on peut alors afficher le fondu.
     const handleFirstTilesLoaded = () => onReady?.();
     map.whenReady(() => {
-      // whenReady garantit que le pane/les tuiles sont attachés au DOM ;
-      // un léger délai supplémentaire absorbe le temps de premier rendu
-      // des tuiles réseau avant de déclencher le fondu visuel.
       const revealTimer = setTimeout(handleFirstTilesLoaded, 120);
       return () => clearTimeout(revealTimer);
     });
@@ -55,11 +36,6 @@ function MapReadyBridge({ onReady }) {
   return null;
 }
 
-/**
- * Détermine le niveau de zoom par défaut selon la largeur d'écran (5 en
- * dessous de 800px, 6 au-dessus), et le met à jour dynamiquement si la
- * fenêtre franchit ce seuil.
- */
 function useResponsiveZoom() {
   const [zoom, setZoom] = useState(() => {
     if (typeof window === 'undefined') return 6;
@@ -70,7 +46,7 @@ function useResponsiveZoom() {
     const mql = window.matchMedia(`(max-width: ${BREAKPOINT - 1}px)`);
     const handleChange = (e) => setZoom(e.matches ? 5 : 6);
 
-    handleChange(mql); // valeur initiale (au cas où le SSR/CSR diffère)
+    handleChange(mql);
     mql.addEventListener('change', handleChange);
     return () => mql.removeEventListener('change', handleChange);
   }, []);
@@ -78,13 +54,6 @@ function useResponsiveZoom() {
   return zoom;
 }
 
-/**
- * Pilote le "zoom sur la région" : que la région soit choisie en cliquant
- * sur le contour dans la carte OU via le <select> externe (formulaire),
- * ce composant cadre la vue sur les limites du gouvernorat correspondant.
- * Quand aucune région n'est sélectionnée, revient à la vue par défaut
- * (centre Tunisie + zoom responsive).
- */
 function RegionFocus({ geoData, selectedRegion, defaultZoom }) {
   const map = useMap();
 
@@ -103,13 +72,31 @@ function RegionFocus({ geoData, selectedRegion, defaultZoom }) {
       }
     }
     map.setView(DEFAULT_CENTER, defaultZoom);
-     
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedRegion, geoData, map, defaultZoom]);
 
   return null;
 }
 
-// Couleurs alignées sur la légende
+/**
+ * Pilote le "zoom sur une Junior précise" : quand `focusEntity`
+ * ({ type, id }) est renseigné (sélection via le filtre JE/JC), centre
+ * la carte sur ce point avec un zoom rapproché.
+ */
+function EntityFocus({ focusEntity, points, defaultZoom }) {
+  const map = useMap();
+
+  useEffect(() => {
+    if (!focusEntity) return;
+    const target = points.find((p) => p.type === focusEntity.type && p.id === focusEntity.id);
+    if (!target) return;
+    map.flyTo([target.lat, target.lng], Math.max(defaultZoom, 11), { duration: 0.8 });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [focusEntity, map]);
+
+  return null;
+}
+
 const MARKER_COLORS = {
   JE: '#C8102E',
   JC: '#F59E0B',
@@ -117,37 +104,46 @@ const MARKER_COLORS = {
 
 const markerIconCache = {};
 
-const getMarkerIcon = (type) => {
-  if (markerIconCache[type]) return markerIconCache[type];
+const getMarkerIcon = (type, isActive) => {
+  const cacheKey = `${type}-${isActive ? 'active' : 'default'}`;
+  if (markerIconCache[cacheKey]) return markerIconCache[cacheKey];
 
   const color = MARKER_COLORS[type] || '#6B7280';
+  const size = isActive ? 28 : 22;
   const icon = L.divIcon({
     className: 'custom-marker-icon',
     html: `<div style="
-      width: 22px;
-      height: 22px;
+      width: ${size}px;
+      height: ${size}px;
       background: ${color};
       border: 3px solid #ffffff;
       border-radius: 50% 50% 50% 0;
       transform: rotate(-45deg);
-      box-shadow: 0 3px 8px rgba(0,0,0,0.35);
+      box-shadow: 0 3px 8px rgba(0,0,0,${isActive ? 0.5 : 0.35});
+      ${isActive ? `outline: 2px solid ${color}; outline-offset: 2px;` : ''}
     "></div>`,
-    iconSize: [22, 22],
-    iconAnchor: [11, 22],
-    popupAnchor: [0, -22],
+    iconSize: [size, size],
+    iconAnchor: [size / 2, size],
+    popupAnchor: [0, -size],
   });
 
-  markerIconCache[type] = icon;
+  markerIconCache[cacheKey] = icon;
   return icon;
 };
 
-// Normalise une chaîne (accents/espaces) pour fiabiliser la comparaison
-// entre le nom de région du GeoJSON (`gouv_fr`) et celui des données
-// JE/JC (`region`), au cas où l'une des deux sources contiendrait des
-// espaces superflus ou une forme Unicode différente des accents.
 const normalizeRegionName = (value = '') => value.normalize('NFC').trim();
 
-export default function MapClient({ onRegionSelect, selectedRegion, onMarkerSelect, onReady }) {
+export default function MapClient({
+  onRegionSelect,
+  selectedRegion,
+  selectedType,
+  onMarkerSelect,
+  onMarkerHover,
+  onMarkerLeave,
+  activeEntity,
+  focusEntity,
+  onReady,
+}) {
   const [geoData, setGeoData] = useState(null);
   const readyCalledRef = useRef(false);
   const zoom = useResponsiveZoom();
@@ -159,17 +155,11 @@ export default function MapClient({ onRegionSelect, selectedRegion, onMarkerSele
   };
 
   useEffect(() => {
-    // cache: 'no-store' évite qu'un navigateur (ou le cache HTTP du dev
-    // server) ne continue de servir une ancienne version du GeoJSON après
-    // sa mise à jour côté fichier statique.
     fetch('/geojson/tunisia.geojson', { cache: 'no-store' })
       .then((r) => r.json())
       .then(setGeoData)
       .catch(() => setGeoData(null));
 
-    // Filet de sécurité : si le signal "ready" tarde (réseau lent,
-    // tuiles indisponibles...), la carte reste visible malgré tout au
-    // bout d'un délai raisonnable plutôt que de rester invisible.
     const fallbackTimer = setTimeout(notifyReady, 2000);
     return () => clearTimeout(fallbackTimer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -183,26 +173,16 @@ export default function MapClient({ onRegionSelect, selectedRegion, onMarkerSele
     []
   );
 
-  // Régions couvertes par au moins une JE ou JC (§5.3 du cahier des
-  // charges : "les régions contenant des Juniors Entreprises seront mises
-  // en évidence... colorées en rouge"). Les autres régions restent
-  // neutres : elles demeurent cliquables/filtrables, mais ne doivent pas
-  // laisser croire qu'une Junior y est implantée.
   const coveredRegions = useMemo(
     () => new Set(allPoints.map((p) => normalizeRegionName(p.region))),
     [allPoints]
   );
 
-  // Rouge institutionnel (#C8102E, charte graphique CTJE) réservé aux
-  // régions couvertes ; gris neutre pour les autres. Dans les deux cas,
-  // l'opacité augmente pour distinguer "région cliquable" (subtile) →
-  // "survolée" → "sélectionnée" (persiste même après que la souris quitte
-  // la région), sans jamais couvrir la carte d'une couleur pleine.
   const REGION_RED = '#C8102E';
   const REGION_NEUTRAL = '#D1D5DB';
-  const REGION_OPACITY_DEFAULT = 0.12;
-  const REGION_OPACITY_HOVER = 0.45;
-  const REGION_OPACITY_SELECTED = 0.55;
+  const REGION_OPACITY_DEFAULT = 0.22;
+  const REGION_OPACITY_HOVER = 0.5;
+  const REGION_OPACITY_SELECTED = 0.6;
 
   const styleFeature = (feature) => {
     const name = feature?.properties?.gouv_fr || '';
@@ -213,7 +193,7 @@ export default function MapClient({ onRegionSelect, selectedRegion, onMarkerSele
       fillColor: isCovered ? REGION_RED : REGION_NEUTRAL,
       fillOpacity: isSelected ? REGION_OPACITY_SELECTED : REGION_OPACITY_DEFAULT,
       color: '#FFFFFF',
-      weight: 1.5,
+      weight: 2,
     };
   };
 
@@ -227,8 +207,6 @@ export default function MapClient({ onRegionSelect, selectedRegion, onMarkerSele
           fillColor: isCovered ? REGION_RED : REGION_NEUTRAL,
           fillOpacity: REGION_OPACITY_HOVER,
         });
-        // KPI 2 (Taux d'interaction avec la carte) : une seule fois par
-        // visite, dès le premier survol/clic sur la carte.
         trackOnce('map_interaction', { trigger: 'region_hover' });
       },
       mouseout: (e) => e.target.setStyle(styleFeature(feature)),
@@ -239,25 +217,27 @@ export default function MapClient({ onRegionSelect, selectedRegion, onMarkerSele
     });
   };
 
-  const points = selectedRegion
-    ? allPoints.filter((p) => normalizeRegionName(p.region) === normalizeRegionName(selectedRegion))
-    : allPoints;
+  const points = allPoints.filter(
+    (p) =>
+      (!selectedRegion || normalizeRegionName(p.region) === normalizeRegionName(selectedRegion)) &&
+      (!selectedType || p.type === selectedType)
+  );
 
   return (
     <MapContainer
       center={DEFAULT_CENTER}
       zoom={zoom}
       scrollWheelZoom={false}
-      attributionControl={false} // ← désactive l'attribution par défaut
+      attributionControl={false}
       className="w-full h-full"
     >
-      {/* Tuiles OpenStreetMap France → noms en français */}
       <TileLayer
         url="https://tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.fr/">OpenStreetMap France</a>'
       />
       <MapReadyBridge onReady={notifyReady} />
       <RegionFocus geoData={geoData} selectedRegion={selectedRegion} defaultZoom={zoom} />
+      <EntityFocus focusEntity={focusEntity} points={allPoints} defaultZoom={zoom} />
       {geoData?.features?.length > 0 && (
         <GeoJSON
           key={`tunisia-regions-${selectedRegion || 'all'}`}
@@ -266,19 +246,27 @@ export default function MapClient({ onRegionSelect, selectedRegion, onMarkerSele
           onEachFeature={onEachFeature}
         />
       )}
-      {points.map((p) => (
-        <Marker
-          key={`${p.type}-${p.id}`}
-          position={[p.lat, p.lng]}
-          icon={getMarkerIcon(p.type)}
-          eventHandlers={{
-            click: () => {
-              trackOnce('map_interaction', { trigger: 'marker_click' });
-              onMarkerSelect && onMarkerSelect({ type: p.type, id: p.id });
-            },
-          }}
-        />
-      ))}
+      {points.map((p) => {
+        const isActive = activeEntity && activeEntity.type === p.type && activeEntity.id === p.id;
+        return (
+          <Marker
+            key={`${p.type}-${p.id}`}
+            position={[p.lat, p.lng]}
+            icon={getMarkerIcon(p.type, isActive)}
+            eventHandlers={{
+              click: () => {
+                trackOnce('map_interaction', { trigger: 'marker_click' });
+                onMarkerSelect && onMarkerSelect({ type: p.type, id: p.id });
+              },
+              mouseover: () => {
+                trackOnce('map_interaction', { trigger: 'marker_hover' });
+                onMarkerHover && onMarkerHover({ type: p.type, id: p.id });
+              },
+              mouseout: () => onMarkerLeave && onMarkerLeave(),
+            }}
+          />
+        );
+      })}
     </MapContainer>
   );
 }

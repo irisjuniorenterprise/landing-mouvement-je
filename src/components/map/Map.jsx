@@ -26,9 +26,18 @@ const MapClient = dynamic(() => import('./MapClient'), {
  * uniquement une fois la carte réellement prête (tuiles + GeoJSON
  * chargés), ce qui garantit un rendu correct dès la première image.
  */
-export default function Map({ onRegionSelect, selectedRegion, onMarkerSelect }) {
+export default function Map({
+  onRegionSelect,
+  selectedRegion,
+  selectedType,
+  onMarkerSelect,
+  onMarkerHover,
+  onMarkerLeave,
+  activeEntity,
+  focusEntity,
+}) {
   const [isReady, setIsReady] = useState(false);
-  
+
   const handleReady = useCallback(() => setIsReady(true), []);
 
   const t = useTranslations('map');
@@ -42,7 +51,12 @@ export default function Map({ onRegionSelect, selectedRegion, onMarkerSelect }) 
       <MapClient
         onRegionSelect={onRegionSelect}
         selectedRegion={selectedRegion}
+        selectedType={selectedType}
         onMarkerSelect={onMarkerSelect}
+        onMarkerHover={onMarkerHover}
+        onMarkerLeave={onMarkerLeave}
+        activeEntity={activeEntity}
+        focusEntity={focusEntity}
         onReady={handleReady}
       />
 

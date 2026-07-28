@@ -1,13 +1,20 @@
+import { hasLocale } from 'next-intl';
 import { getRequestConfig } from 'next-intl/server';
-import { locales, defaultLocale } from './config';
+import { routing } from './routing';
+
+// Imports statiques : les fichiers de messages sont résolus au build par le
+// bundler (webpack/Turbopack), et non lus dynamiquement à chaque requête.
+import fr from '../messages/fr.json';
+import en from '../messages/en.json';
+
+const messagesByLocale = { fr, en };
 
 export default getRequestConfig(async ({ requestLocale }) => {
-  let locale = await requestLocale;
+  const requested = await requestLocale;
+  const locale = hasLocale(routing.locales, requested) ? requested : routing.defaultLocale;
 
-  if (!locale || !locales.includes(locale)) {
-    locale = defaultLocale;
-  }
-
-  const messages = (await import(`../messages/${locale}.json`)).default;
-  return { locale, messages };
+  return {
+    locale,
+    messages: messagesByLocale[locale],
+  };
 });
