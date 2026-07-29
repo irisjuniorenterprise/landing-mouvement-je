@@ -42,10 +42,17 @@ function Star({ fill }) {
  * Notation par étoiles avec granularité au quart (0.25), pilotable au
  * clavier et à la souris/tactile. `value` et `onChange` portent un nombre
  * entre 0 et 5 (multiple de 0.25).
+ *
+ * UX : chaque étoile reprend le même "ping" (anneau qui pulse) que le
+ * badge placeholder du panneau réseau (voir NetworkEntityPanel), pour une
+ * cohérence visuelle avec le reste du site. Lorsque la note atteint le
+ * maximum, le groupe déclenche un effet de célébration (halo, rebond,
+ * étincelles) pour récompenser visuellement la note maximale.
  */
 export default function StarRating({
   value = 0,
   onChange,
+  onHoverChange,
   max = STAR_COUNT,
   label,
   disabled = false,
@@ -53,6 +60,7 @@ export default function StarRating({
   const [hoverValue, setHoverValue] = useState(null);
   const groupId = useId();
   const displayValue = hoverValue !== null ? hoverValue : value;
+  const isFullRating = !disabled && displayValue === max;
 
   const computeValueFromPointer = (index, e, target) => {
     const rect = target.getBoundingClientRect();
@@ -63,12 +71,19 @@ export default function StarRating({
 
   const handleMove = (index) => (e) => {
     if (disabled) return;
-    setHoverValue(computeValueFromPointer(index, e, e.currentTarget));
+    const next = computeValueFromPointer(index, e, e.currentTarget);
+    setHoverValue(next);
+    onHoverChange?.(next);
   };
 
   const handleClick = (index) => (e) => {
     if (disabled) return;
     onChange?.(computeValueFromPointer(index, e, e.currentTarget));
+  };
+
+  const handleLeave = () => {
+    setHoverValue(null);
+    onHoverChange?.(null);
   };
 
   const handleKeyDown = (e) => {
@@ -91,7 +106,7 @@ export default function StarRating({
 
   return (
     <div
-      className={`${styles.group} ${disabled ? styles.disabled : ''}`}
+      className={`${styles.group} ${disabled ? styles.disabled : ''} ${isFullRating ? styles.fullRating : ''}`}
       role="slider"
       aria-label={label}
       aria-valuemin={0.25}
@@ -101,7 +116,7 @@ export default function StarRating({
       aria-disabled={disabled}
       tabIndex={disabled ? -1 : 0}
       onKeyDown={handleKeyDown}
-      onMouseLeave={() => setHoverValue(null)}
+      onMouseLeave={handleLeave}
     >
       {Array.from({ length: max }, (_, index) => {
         const fill = displayValue - index;
@@ -116,6 +131,18 @@ export default function StarRating({
           </span>
         );
       })}
+
+      {isFullRating && (
+        <span className={styles.sparkles} aria-hidden="true">
+          {Array.from({ length: 6 }, (_, i) => (
+            <span
+              key={i}
+              className={styles.sparkle}
+              style={{ '--i': i, left: `${8 + i * 16}%` }}
+            />
+          ))}
+        </span>
+      )}
     </div>
   );
 }
