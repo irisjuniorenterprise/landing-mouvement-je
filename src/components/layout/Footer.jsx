@@ -94,7 +94,11 @@ export default function Footer() {
               </h3>
 
               <div className={styles.linkList}>
-                <a href={`tel:${t('phone')}`} className={styles.contactItem}>
+                {/* href="tel:" doit être un numéro "brut" (sans espaces ni
+                    séparateurs) pour être valide au sens W3C/HTML — le
+                    texte affiché, lui, garde le format lisible fourni par
+                    la traduction (avec espaces). */}
+                <a href={`tel:${t('phone').replace(/\s+/g, '')}`} className={styles.contactItem}>
                   <Icons.Phone size={16} /> {t('phone')}
                 </a>
 
@@ -122,8 +126,8 @@ export default function Footer() {
                   >
                     <Icons.Linkedin size={20} />
                   </a>
-
                   <a
+                  
                     href="https://www.instagram.com/je.tunisia?igsh=ZHBqcG44NWlrejA3"
                     target="_blank"
                     rel="noopener noreferrer"
