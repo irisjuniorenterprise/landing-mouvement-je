@@ -8,6 +8,12 @@ import { useEffect, useRef, useState } from 'react';
  * IntersectionObserver, une seule fois). Respecte `prefers-reduced-motion`
  * en affichant directement la valeur finale sans animation.
  *
+ * Accessibilité : la version animée (`display`) est masquée aux
+ * technologies d'assistance (`aria-hidden`), et une version statique
+ * contenant directement la valeur finale (`value`) est fournie en
+ * parallèle via `.sr-only` — un lecteur d'écran n'a donc jamais à
+ * "attraper" une valeur intermédiaire pendant le comptage.
+ *
  * Usage : <AnimatedCounter value={128} suffix="+" className={styles.value} />
  */
 export default function AnimatedCounter({
@@ -29,9 +35,6 @@ export default function AnimatedCounter({
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (prefersReducedMotion) {
-      // setState appelé depuis un callback (requestAnimationFrame) plutôt
-      // que de façon synchrone dans le corps de l'effet, pour rester
-      // cohérent avec le reste du composant et éviter un rendu en cascade.
       const raf = requestAnimationFrame(() => setDisplay(value));
       return () => cancelAnimationFrame(raf);
     }
@@ -59,7 +62,6 @@ export default function AnimatedCounter({
       const tick = (now) => {
         const elapsed = now - start;
         const progress = Math.min(elapsed / duration, 1);
-        // easeOutExpo : démarrage rapide, ralentit en douceur vers la valeur finale
         const eased = progress === 1 ? 1 : 1 - 2 ** (-10 * progress);
         const current = Math.round(from + (to - from) * eased);
 
@@ -78,9 +80,16 @@ export default function AnimatedCounter({
 
   return (
     <Tag ref={ref} className={className}>
-      {prefix}
-      {display.toLocaleString('fr-FR')}
-      {suffix}
+      <span aria-hidden="true">
+        {prefix}
+        {display.toLocaleString('fr-FR')}
+        {suffix}
+      </span>
+      <span className="sr-only">
+        {prefix}
+        {value.toLocaleString('fr-FR')}
+        {suffix}
+      </span>
     </Tag>
   );
 }

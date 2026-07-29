@@ -22,6 +22,14 @@
   opacity: 1;
 }
 
+/* Anneau de focus visible sur les marqueurs, désormais focusables au
+   clavier (voir MapClient.jsx). Leaflet ne stylise pas ça par défaut. */
+.mapWrapper :global(.custom-marker-icon:focus-visible) {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+  filter: drop-shadow(0 0 0 2px var(--color-primary));
+}
+
 @media (prefers-reduced-motion: reduce) {
   .mapWrapper {
     transition: none;

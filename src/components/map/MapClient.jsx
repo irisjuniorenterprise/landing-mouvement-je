@@ -78,11 +78,6 @@ function RegionFocus({ geoData, selectedRegion, defaultZoom }) {
   return null;
 }
 
-/**
- * Pilote le "zoom sur une Junior précise" : quand `focusEntity`
- * ({ type, id }) est renseigné (sélection via le filtre JE/JC), centre
- * la carte sur ce point avec un zoom rapproché.
- */
 function EntityFocus({ focusEntity, points, defaultZoom }) {
   const map = useMap();
 
@@ -248,12 +243,48 @@ export default function MapClient({
       )}
       {points.map((p) => {
         const isActive = activeEntity && activeEntity.type === p.type && activeEntity.id === p.id;
+        const entityLabel = `${p.type === 'JE' ? 'Junior Entreprise' : 'Junior Création'}${p.nom ? ` — ${p.nom}` : ''}`;
+
         return (
           <Marker
             key={`${p.type}-${p.id}`}
             position={[p.lat, p.lng]}
             icon={getMarkerIcon(p.type, isActive)}
             eventHandlers={{
+              // Rend le marqueur atteignable/activable au clavier : Leaflet
+              // ne le fait pas nativement pour un divIcon. On attache un
+              // tabindex + role + label + un handler Entrée/Espace dès que
+              // le DOM du marqueur est créé, et on nettoie à sa suppression.
+              add: (e) => {
+                const el = e.target.getElement();
+                if (!el) return;
+                el.setAttribute('tabindex', '0');
+                el.setAttribute('role', 'button');
+                el.setAttribute('aria-label', entityLabel);
+
+                const handleKeyDown = (evt) => {
+                  if (evt.key === 'Enter' || evt.key === ' ') {
+                    evt.preventDefault();
+                    trackOnce('map_interaction', { trigger: 'marker_click' });
+                    onMarkerSelect && onMarkerSelect({ type: p.type, id: p.id });
+                  }
+                };
+                const handleFocus = () => onMarkerHover && onMarkerHover({ type: p.type, id: p.id });
+                const handleBlur = () => onMarkerLeave && onMarkerLeave();
+
+                el.addEventListener('keydown', handleKeyDown);
+                el.addEventListener('focus', handleFocus);
+                el.addEventListener('blur', handleBlur);
+                el._a11yCleanup = () => {
+                  el.removeEventListener('keydown', handleKeyDown);
+                  el.removeEventListener('focus', handleFocus);
+                  el.removeEventListener('blur', handleBlur);
+                };
+              },
+              remove: (e) => {
+                const el = e.target.getElement();
+                el?._a11yCleanup?.();
+              },
               click: () => {
                 trackOnce('map_interaction', { trigger: 'marker_click' });
                 onMarkerSelect && onMarkerSelect({ type: p.type, id: p.id });

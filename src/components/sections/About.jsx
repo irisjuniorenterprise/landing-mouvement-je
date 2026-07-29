@@ -28,17 +28,22 @@ export default function About() {
 
         <div className={`${styles.mvGrid} stagger-grid`}>
           <div className={styles.mvCard}>
-            <div className={styles.mvIcon}>
-              <Icons.Target size={22} />
-            </div>
+            <span className={styles.mvIconWrap} aria-hidden="true">
+              <span className={styles.mvIconPing} />
+              <Icons.Target size={22} className={styles.mvIcon} />
+            </span>
             <h3 className={styles.mvTitle}>{t('missionTitle')}</h3>
             <p className={styles.mvText}>{t('mission')}</p>
           </div>
 
           <div className={styles.mvCard}>
-            <div className={styles.mvIcon}>
-              <Icons.Eye size={22} />
-            </div>
+            <span className={styles.mvIconWrap} aria-hidden="true">
+              <span
+                className={styles.mvIconPing}
+                style={{ animationDelay: '0.3s' }}
+              />
+              <Icons.Eye size={22} className={styles.mvIcon} />
+            </span>
             <h3 className={styles.mvTitle}>{t('visionTitle')}</h3>
             <p className={styles.mvText}>{t('vision')}</p>
           </div>
@@ -50,7 +55,12 @@ export default function About() {
             const Icon = VALUE_ICONS[index] || Icons.Check;
             return (
               <div key={value} className={styles.valueCard}>
-                <Icon size={20} />
+                <div
+                  className={styles.valueIconWrap}
+                  style={{ animationDelay: `${index * 0.25}s` }}
+                >
+                  <Icon size={22} />
+                </div>
                 <span>{value}</span>
               </div>
             );

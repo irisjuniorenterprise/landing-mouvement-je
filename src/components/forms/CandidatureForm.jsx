@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { validateCandidature } from '@/lib/utils/validation';
@@ -21,11 +21,80 @@ const INITIAL_STATE = {
 
 const STATUS = { IDLE: 'idle', SUBMITTING: 'submitting', SUCCESS: 'success', ERROR: 'error' };
 
+// Champs textuels autorisés dans le brouillon. `acceptTerms` (consentement,
+// doit rester un acte volontaire à chaque visite) et `website` (honeypot)
+// sont volontairement exclus de la sauvegarde.
+const DRAFT_FIELDS = ['name', 'email', 'region', 'establishment', 'motivation'];
+const DRAFT_KEY = 'ctje_candidature_draft';
+
+/**
+ * Persiste un brouillon dans sessionStorage (jamais localStorage : les
+ * données restent le temps de l'onglet, pas indéfiniment sur l'appareil —
+ * compromis vie privée / confort pour un formulaire qui contient des
+ * données personnelles). Se vide automatiquement après un envoi réussi.
+ */
+function readDraft() {
+  if (typeof window === 'undefined') return null;
+  try {
+    const raw = window.sessionStorage.getItem(DRAFT_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch {
+    return null;
+  }
+}
+
+function writeDraft(values) {
+  if (typeof window === 'undefined') return;
+  try {
+    const draft = DRAFT_FIELDS.reduce((acc, field) => {
+      acc[field] = values[field];
+      return acc;
+    }, {});
+    const hasContent = Object.values(draft).some((v) => v && v.trim?.());
+    if (hasContent) {
+      window.sessionStorage.setItem(DRAFT_KEY, JSON.stringify(draft));
+    } else {
+      window.sessionStorage.removeItem(DRAFT_KEY);
+    }
+  } catch {
+    // Stockage indisponible (navigation privée stricte, quota...) : on
+    // dégrade silencieusement, le formulaire reste fonctionnel sans brouillon.
+  }
+}
+
+function clearDraft() {
+  if (typeof window === 'undefined') return;
+  try {
+    window.sessionStorage.removeItem(DRAFT_KEY);
+  } catch {
+    /* no-op */
+  }
+}
+
 export default function CandidatureForm() {
   const t = useTranslations('form');
   const [values, setValues] = useState(INITIAL_STATE);
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState(STATUS.IDLE);
+  const [draftRestored, setDraftRestored] = useState(false);
+  const writeTimerRef = useRef(null);
+
+  // Restauration du brouillon au montage (une seule fois).
+  useEffect(() => {
+    const draft = readDraft();
+    if (draft) {
+      setValues((prev) => ({ ...prev, ...draft }));
+      setDraftRestored(true);
+    }
+  }, []);
+
+  // Sauvegarde différée (300ms) à chaque changement, pour éviter d'écrire
+  // dans sessionStorage à chaque frappe.
+  useEffect(() => {
+    if (writeTimerRef.current) clearTimeout(writeTimerRef.current);
+    writeTimerRef.current = setTimeout(() => writeDraft(values), 300);
+    return () => clearTimeout(writeTimerRef.current);
+  }, [values]);
 
   const handleChange = (field) => (e) => {
     // KPI 1 (Taux de complétion) : marque le début de saisie, une seule
@@ -40,6 +109,15 @@ export default function CandidatureForm() {
     trackOnce('candidature_form_started');
     setValues((prev) => ({ ...prev, [field]: e.target.checked }));
     if (errors[field]) setErrors((prev) => ({ ...prev, [field]: undefined }));
+  };
+
+  const handleDismissDraftNotice = () => setDraftRestored(false);
+
+  const handleClearDraft = () => {
+    clearDraft();
+    setValues(INITIAL_STATE);
+    setErrors({});
+    setDraftRestored(false);
   };
 
   const handleSubmit = async (e) => {
@@ -70,6 +148,7 @@ export default function CandidatureForm() {
 
       setStatus(STATUS.SUCCESS);
       setValues(INITIAL_STATE);
+      clearDraft();
       // KPI 1 (Taux de complétion) : numérateur. Ratio calculé côté
       // client (dashboard Vercel) = form_submitted / form_started.
       trackEvent('candidature_form_submitted');
@@ -119,6 +198,24 @@ export default function CandidatureForm() {
       <div className="container">
         <h2 className="section-title">{t('title')}</h2>
         <p className="section-subtitle">{t('subtitle')}</p>
+
+        {draftRestored && (
+          <div className={styles.draftNotice} role="status">
+            <Icons.PenDraw size={16} />
+            <span>{t('draftRestored')}</span>
+            <button type="button" className={styles.draftClearBtn} onClick={handleClearDraft}>
+              {t('draftClear')}
+            </button>
+            <button
+              type="button"
+              className={styles.draftDismissBtn}
+              onClick={handleDismissDraftNotice}
+              aria-label={t('draftDismiss')}
+            >
+              <Icons.X size={14} />
+            </button>
+          </div>
+        )}
 
         <form className={styles.form} onSubmit={handleSubmit} noValidate>
           {/* GROUPE 1 : Informations personnelles */}

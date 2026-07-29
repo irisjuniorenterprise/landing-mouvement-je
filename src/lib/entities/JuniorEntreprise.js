@@ -15,6 +15,7 @@ export default class JuniorEntreprise {
     lat,
     lng,
     reseaux_sociaux = {},
+    logo = '',
   }) {
     this.id = id;
     this.nom = nom;
@@ -36,6 +37,7 @@ export default class JuniorEntreprise {
       instagram: reseaux_sociaux.instagram || '',
       linkedin: reseaux_sociaux.linkedin || '',
     };
+    this.logo = logo;
     this.type = 'JE';
   }
 
@@ -63,6 +65,11 @@ export default class JuniorEntreprise {
   /** Vrai si au moins un réseau social a été renseigné (pour l'affichage conditionnel). */
   get hasSocialLinks() {
     return Object.values(this.reseauxSociaux).some((url) => Boolean(url));
+  }
+
+  /** Vrai si un logo a été renseigné (permet un repli propre sur des initiales). */
+  get hasLogo() {
+    return Boolean(this.logo);
   }
 
   matchesRegion(region) {

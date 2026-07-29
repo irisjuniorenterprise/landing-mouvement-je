@@ -470,6 +470,52 @@
   animation: spin 0.7s linear infinite;
 }
 
+.draftNotice {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  max-width: 42rem;
+  margin: 0 auto 1.25rem;
+  padding: 0.75rem 1rem;
+  background: var(--color-primary-tint);
+  border: 1px solid var(--color-primary-tint-strong);
+  border-radius: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--color-secondary);
+}
+
+.draftClearBtn {
+  margin-left: auto;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.draftDismissBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  border-radius: 9999px;
+}
+
+.draftDismissBtn:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--color-secondary);
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);

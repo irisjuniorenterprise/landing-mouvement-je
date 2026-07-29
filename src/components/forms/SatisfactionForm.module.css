@@ -1,4 +1,5 @@
 .form {
+  position: relative;
   max-width: 32rem;
   margin: 0 auto;
   background: #ffffff;
@@ -9,6 +10,26 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Léger halo de fond qui apparaît quand le formulaire atteint 5/5,
+   pour prolonger la célébration au-delà du groupe d'étoiles. */
+.form::before {
+  content: '';
+  position: absolute;
+  inset: -20% -20% auto -20%;
+  height: 60%;
+  background: radial-gradient(ellipse at 50% 0%, var(--color-primary-tint) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.form:has(.ratingFieldFull)::before {
+  opacity: 1;
 }
 
 .ratingField {
@@ -17,12 +38,47 @@
   align-items: center;
   gap: 0.75rem;
   text-align: center;
+  padding-top: 0.5rem;
 }
 
 .ratingLabel {
   font-size: 0.95rem;
   font-weight: 700;
   color: var(--color-secondary);
+}
+
+.ratingCaptionSlot {
+  min-height: 1.35rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ratingCaption {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  animation: captionPop 0.25s ease;
+}
+
+.ratingCaptionFull {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+@keyframes captionPop {
+  0% {
+    opacity: 0;
+    transform: translateY(4px) scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .ratingValue {
@@ -54,12 +110,13 @@
   font-size: 0.95rem;
   font-family: inherit;
   resize: vertical;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .textarea:focus {
   outline: none;
   border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-tint);
 }
 
 .honeypot {
@@ -111,4 +168,13 @@
 
 .thankYouIcon {
   color: var(--color-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ratingCaption {
+    animation: none;
+  }
+  .form::before {
+    transition: none;
+  }
 }

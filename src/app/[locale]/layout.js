@@ -1,12 +1,13 @@
 import { Analytics } from '@vercel/analytics/next';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, getTranslations } from 'next-intl/server';
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { Montserrat } from 'next/font/google';
 import { locales } from '@/i18n/config';
 import { SITE_URL, SITE_NAME } from '@/lib/config/site';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ClientSideEffects from '@/components/ClientSideEffects';
+import { ToastProvider } from '@/components/ui/toast/ToastProvider';
 import '../globals.css';
 
 const montserrat = Montserrat({
@@ -74,11 +75,33 @@ export async function generateMetadata({ params }) {
       description,
       images: [ogImage],
     },
+    icons: {
+      icon: [
+        { url: '/favicon.ico', media: '(prefers-color-scheme: light)' },
+        { url: '/favicon-white.ico', media: '(prefers-color-scheme: dark)' },
+      ],
+    },
   };
 }
 
+// theme-color : force la couleur de la barre du navigateur (adresse mobile,
+// status bar iOS/Android) à rester blanche, quel que soit le thème clair/
+// sombre choisi par le client.
+export const viewport = {
+  themeColor: '#ffffff',
+};
+
 export default async function LocaleLayout({ children, params }) {
   const { locale } = await params;
+
+  // OBLIGATOIRE avec generateStaticParams (rendu statique) : distribue la
+  // locale courante à tous les Server Components de la requête, de façon
+  // synchrone et sans race condition. Sans cet appel, certains composants
+  // profondément imbriqués peuvent recevoir une locale non résolue
+  // (undefined), ce qui casse t.rich()/formatage ICU (voir doc next-intl :
+  // https://next-intl.dev/docs/getting-started/app-router/with-i18n-routing#static-rendering).
+  setRequestLocale(locale);
+
   const messages = await getMessages();
   const tNav = await getTranslations({ locale, namespace: 'nav' });
 
@@ -86,16 +109,18 @@ export default async function LocaleLayout({ children, params }) {
     <html lang={locale} suppressHydrationWarning>
       <body className={montserrat.variable} suppressHydrationWarning>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <a href="#main-content" className="skip-link">
-            {tNav('skipToContent')}
-          </a>
-          <Header />
-          {/* page-offset (défini dans globals.css) = var(--header-height),
-              synchronisée avec Header.module.css pour éviter que le
-              contenu (Breadcrumb, Hero...) passe sous le header fixe. */}
-          <div className="page-offset">{children}</div>
-          <Footer />
-          <ClientSideEffects />
+          <ToastProvider>
+            <a href="#main-content" className="skip-link">
+              {tNav('skipToContent')}
+            </a>
+            <Header />
+            {/* page-offset (défini dans globals.css) = var(--header-height),
+                synchronisée avec Header.module.css pour éviter que le
+                contenu (Breadcrumb, Hero...) passe sous le header fixe. */}
+            <div className="page-offset">{children}</div>
+            <Footer />
+            <ClientSideEffects />
+          </ToastProvider>
         </NextIntlClientProvider>
         {/* KPI 3 (Impact) : trafic mensuel — dashboard disponible sur
             vercel.com/<projet>/analytics. Le plan gratuit couvre l'usage

@@ -25,6 +25,11 @@ export default function SatisfactionForm() {
   const [values, setValues] = useState(INITIAL_STATE);
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState(STATUS.IDLE);
+  const [hoverRating, setHoverRating] = useState(null);
+
+  const previewRating = hoverRating ?? values.rating;
+  const captionKey = previewRating > 0 ? Math.ceil(previewRating) : null;
+  const isFullRating = previewRating === 5;
 
   const handleRatingChange = (rating) => {
     setValues((prev) => ({ ...prev, rating }));
@@ -90,9 +95,29 @@ export default function SatisfactionForm() {
         <p className="section-subtitle">{t('subtitle')}</p>
 
         <form className={styles.form} onSubmit={handleSubmit} noValidate>
-          <div className={styles.ratingField}>
+          <div className={`${styles.ratingField} ${isFullRating ? styles.ratingFieldFull : ''}`}>
             <span className={styles.ratingLabel}>{t('ratingLabel')}</span>
-            <StarRating value={values.rating} onChange={handleRatingChange} label={t('ratingLabel')} />
+
+            <StarRating
+              value={values.rating}
+              onChange={handleRatingChange}
+              onHoverChange={setHoverRating}
+              label={t('ratingLabel')}
+            />
+
+            <span className={styles.ratingCaptionSlot}>
+              {captionKey && (
+                <span
+                  key={captionKey}
+                  className={`${styles.ratingCaption} ${isFullRating ? styles.ratingCaptionFull : ''}`}
+                >
+                  {isFullRating && <span aria-hidden="true">✨</span>}
+                  {t(`ratingCaptions.${captionKey}`)}
+                  {isFullRating && <span aria-hidden="true">✨</span>}
+                </span>
+              )}
+            </span>
+
             {values.rating > 0 && (
               <span className={styles.ratingValue}>{values.rating} / 5</span>
             )}

@@ -10,7 +10,8 @@
       "en": "Junior Creation led by engineering students from ENISFax, supported as part of the CTJE's Expansion & Integration program."
     },
     "lat": 34.7405,
-    "lng": 10.7603
+    "lng": 10.7603,
+    "logo": "/images/logos/jc/iris-jc.svg"
   },
   {
     "id": 2,
@@ -23,7 +24,8 @@
       "en": "Student initiative from the Pristini School of AI, currently being structured into a fully-fledged Junior Entreprise."
     },
     "lat": 36.8065,
-    "lng": 10.1815
+    "lng": 10.1815,
+    "logo": "/images/logos/jc/pristini-jc.png"
   },
   {
     "id": 3,
@@ -36,6 +38,7 @@
       "en": "Junior Creation supported by the CTJE's Expansion Hub, led by students from ESA Mograne."
     },
     "lat": 36.4167,
-    "lng": 10.1667
+    "lng": 10.1667,
+    "logo": "/images/logos/jc/elite-jc.png"
   }
 ]

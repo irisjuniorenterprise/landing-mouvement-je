@@ -16,7 +16,8 @@
       "facebook": "https://www.facebook.com/codexjuniorentreprise/?locale=fr_FR",
       "instagram": "https://www.instagram.com/codex_je/",
       "linkedin": "https://tn.linkedin.com/company/codex-junior-entreprise"
-    }
+    },
+    "logo": "/images/logos/je/codex-junior-entreprise.png"
   },
   {
     "id": 2,
@@ -43,7 +44,8 @@
       "facebook": "https://www.facebook.com/designersJE/?locale=fr_FR",
       "instagram": "https://www.instagram.com/essted_design/",
       "linkedin": "https://tn.linkedin.com/company/designers-junior-entreprise"
-    }
+    },
+    "logo": "/images/logos/je/designers-junior-entreprise.png"
   },
   {
     "id": 3,
@@ -62,7 +64,8 @@
       "facebook": "https://www.facebook.com/ENSI.Junior.Entreprise/?locale=fr_FR",
       "instagram": "https://www.instagram.com/ensijunior/",
       "linkedin": "https://tn.linkedin.com/company/ensi-junior-entreprise"
-    }
+    },
+    "logo": "/images/logos/je/ensi-junior-entreprise.png"
   },
   {
     "id": 4,
@@ -81,7 +84,8 @@
       "facebook": "https://www.facebook.com/ENSITJE/?locale=fr_FR",
       "instagram": "https://www.instagram.com/ensit_junior_entreprise/",
       "linkedin": "https://www.linkedin.com/company/ensit-junior-entreprise"
-    }
+    },
+    "logo": "/images/logos/je/ensit-junior-entreprise.png"
   },
   {
     "id": 5,
@@ -108,7 +112,8 @@
       "facebook": "https://www.facebook.com/juniorenit/?locale=fr_FR",
       "instagram": "https://www.instagram.com/enit.juniorentreprise/",
       "linkedin": "https://www.linkedin.com/company/enitjuniorentreprise"
-    }
+    },
+    "logo": "/images/logos/je/enit-junior-entreprise.png"
   },
   {
     "id": 6,
@@ -127,7 +132,8 @@
       "facebook": "https://www.facebook.com/Junior.Entreprise.ENISo/",
       "instagram": "https://www.instagram.com/junior.entreprise.eniso/",
       "linkedin": "https://tn.linkedin.com/company/junior-entreprise-eniso"
-    }
+    },
+    "logo": "/images/logos/je/jeeniso-junior-entreprise.png"
   },
   {
     "id": 7,
@@ -146,7 +152,8 @@
       "facebook": "https://www.facebook.com/enetcomje/?locale=fr_FR",
       "instagram": "https://www.instagram.com/enetcomjunior/",
       "linkedin": "https://tn.linkedin.com/company/enetcom-junior-entreprise"
-    }
+    },
+    "logo": "/images/logos/je/enet-com-junior-entreprise.png"
   },
   {
     "id": 8,
@@ -167,13 +174,14 @@
     },
     "email": "junior-entreprisegcem@esprit.tn",
     "dateCreation": "2015",
-    "lat": 36.85375299971749,
-    "lng": 10.207597671164363,
+    "lat": 36.85373582995112,  
+    "lng": 10.20762985767128 ,
     "reseaux_sociaux": {
       "facebook": "https://www.facebook.com/esprojuniorentreprise/?locale=fr_FR",
       "instagram": "https://www.instagram.com/espro_je/",
       "linkedin": "https://tn.linkedin.com/company/espro-junior-entreprise"
-    }
+    },
+    "logo": "/images/logos/je/espro-junior-entreprise.png"
   },
   {
     "id": 9,
@@ -198,7 +206,8 @@
       "facebook": "https://www.facebook.com/ETCJuniorEntreprise/",
       "instagram": "https://www.instagram.com/etcjuniorentreprise/",
       "linkedin": "https://tn.linkedin.com/company/etc-je"
-    }
+    },
+    "logo": "/images/logos/je/etc-junior-entreprise.png"
   },
   {
     "id": 10,
@@ -217,7 +226,8 @@
       "facebook": "https://www.facebook.com/INAT.Junior.Entreprise",
       "instagram": "https://www.instagram.com/inat_junior_entreprise/",
       "linkedin": "https://www.linkedin.com/in/inatjuniorentreprise/"
-    }
+    },
+    "logo": "/images/logos/je/inat-junior-entreprise.png"
   },
   {
     "id": 11,
@@ -236,7 +246,8 @@
       "facebook": "https://www.facebook.com/InceptumJuniorEntreprise/?locale=fr_FR",
       "instagram": "https://www.instagram.com/inceptumje/",
       "linkedin": "https://tn.linkedin.com/company/inceptumje"
-    }
+    },
+    "logo": "/images/logos/je/inceptum-junior-entreprise.png"
   },
   {
     "id": 12,
@@ -255,7 +266,8 @@
       "facebook": "https://www.facebook.com/junior.entreprise.insat/?locale=fr_FR",
       "instagram": "https://www.instagram.com/junior_entreprise_insat/?hl=fr",
       "linkedin": "https://tn.linkedin.com/company/junior-entreprise-insat"
-    }
+    },
+    "logo": "/images/logos/je/insat-junior-entreprise.png"
   },
   {
     "id": 13,
@@ -274,7 +286,8 @@
       "facebook": "https://www.facebook.com/ISGGabesJE/",
       "instagram": "https://www.instagram.com/isggabes_junior_entreprise/",
       "linkedin": ""
-    }
+    },
+    "logo": "/images/logos/je/isg-gabes-junior-entreprise.png"
   },
   {
     "id": 14,
@@ -293,7 +306,8 @@
       "facebook": "https://www.facebook.com/ISG.Conseil.JE/",
       "instagram": "https://www.instagram.com/isgconseil/",
       "linkedin": "https://tn.linkedin.com/in/isg-conseil-junior-entreprise-7321a8196"
-    }
+    },
+    "logo": "/images/logos/je/isg-conseil-junior-entreprise.png"
   },
   {
     "id": 15,
@@ -312,7 +326,8 @@
       "facebook": "https://www.facebook.com/marketup.Junior.Entreprise/",
       "instagram": "https://www.instagram.com/marketup_junior_entreprise/",
       "linkedin": "https://tn.linkedin.com/company/marketup-junior-entreprise"
-    }
+    },
+    "logo": "/images/logos/je/marketup-junior-entreprise.png"
   },
   {
     "id": 16,
@@ -331,7 +346,8 @@
       "facebook": "https://www.facebook.com/Enicarthage.Junior.Entreprise/?locale=fr_FR",
       "instagram": "https://www.instagram.com/melkart_junior_entreprise/",
       "linkedin": "https://tn.linkedin.com/company/melkart-je"
-    }
+    },
+    "logo": "/images/logos/je/melkart-junior-entreprise.png"
   },
   {
     "id": 17,
@@ -350,7 +366,8 @@
       "facebook": "https://www.facebook.com/MMT.JE.IHEC.Carthage/?locale=fr_FR",
       "instagram": "https://www.instagram.com/marketingmed_tunisie/",
       "linkedin": "https://tn.linkedin.com/company/marketing-m%C3%A9diterran%C3%A9e-tunisie"
-    }
+    },
+    "logo": "/images/logos/je/mmt-junior-entreprise.png"
   },
   {
     "id": 18,
@@ -369,7 +386,8 @@
       "facebook": "https://www.facebook.com/metisje/?locale=fr_FR",
       "instagram": "https://www.instagram.com/metis.juniorentreprise/",
       "linkedin": "https://tn.linkedin.com/company/m-tis-junior-entreprise"
-    }
+    },
+    "logo": "/images/logos/je/metis-junior-entreprise.png"
   },
   {
     "id": 19,
@@ -388,7 +406,8 @@
       "facebook": "https://www.facebook.com/nmcje/?locale=fr_FR",
       "instagram": "https://www.instagram.com/nmc_junior_entreprise/",
       "linkedin": "https://tn.linkedin.com/company/neapolis-marketing-consulting-junior-entreprise"
-    }
+    },
+    "logo": "/images/logos/je/neapolis-marketing-consulting-junior-entreprise.png"
   },
   {
     "id": 20,
@@ -407,7 +426,8 @@
       "facebook": "https://www.facebook.com/OrendaJE/?locale=fr_FR",
       "instagram": "https://www.instagram.com/orenda_je/",
       "linkedin": "https://tn.linkedin.com/company/orendaje"
-    }
+    },
+    "logo": "/images/logos/je/orenda-junior-entreprise.png"
   },
   {
     "id": 21,
@@ -426,7 +446,8 @@
       "facebook": "https://www.facebook.com/optimajuniorentreprise/?locale=fr_FR",
       "instagram": "https://www.instagram.com/optimajuniorentreprise/",
       "linkedin": "https://tn.linkedin.com/company/optima-junior-entreprise"
-    }
+    },
+    "logo": "/images/logos/je/optima-junior-entreprise.png"
   },
   {
     "id": 22,
@@ -445,7 +466,8 @@
       "facebook": "https://www.facebook.com/phoenixconsultingje/?locale=fr_FR",
       "instagram": "https://www.instagram.com/phoenix_consulting_je/",
       "linkedin": "https://tn.linkedin.com/company/phoenix-consulting-je"
-    }
+    },
+    "logo": "/images/logos/je/phoenix-consulting-junior-entreprise.png"
   },
   {
     "id": 23,
@@ -464,7 +486,8 @@
       "facebook": "https://www.facebook.com/SMA.JuniorEntreprise/photos/",
       "instagram": "https://www.instagram.com/smart_marketing_advisors/",
       "linkedin": "https://tn.linkedin.com/company/smaje"
-    }
+    },
+    "logo": "/images/logos/je/sma-consulting-junior-entreprise.png"
   },
   {
     "id": 24,
@@ -483,7 +506,8 @@
       "facebook": "https://www.facebook.com/SupComJuniorEntrepriseSJE/?locale=fr_FR",
       "instagram": "https://www.instagram.com/junior_supcom/",
       "linkedin": "https://tn.linkedin.com/company/supcomjuniorentreprise"
-    }
+    },
+    "logo": "/images/logos/je/sup-com-junior-entreprise.png"
   },
   {
     "id": 25,
@@ -502,7 +526,8 @@
       "facebook": "https://www.facebook.com/TBSJuniorEnterprise/?locale=fr_FR",
       "instagram": "https://www.instagram.com/tbsjuniorenterprise/",
       "linkedin": "https://tn.linkedin.com/company/tbs-junior-enterprise"
-    }
+    },
+    "logo": "/images/logos/je/tbs-junior-entreprise.png"
   },
   {
     "id": 26,
@@ -521,7 +546,8 @@
       "facebook": "https://www.facebook.com/TYM.JE.ESC.Mannouba/?locale=fr_FR",
       "instagram": "https://www.instagram.com/tunisian_youth_marketers/",
       "linkedin": "https://tn.linkedin.com/company/tunisian-youth-marketers-tym"
-    }
+    },
+    "logo": "/images/logos/je/tym-junior-entreprise.png"
   },
   {
     "id": 27,
@@ -544,13 +570,14 @@
     },
     "email": "mitcomjuniorentreprise@gmail.com",
     "dateCreation": "2025",
-    "lat": 36.89109269250638,
-    "lng": 10.184338757515821,
+    "lat": 36.890406,  
+    "lng": 10.184264,
     "reseaux_sociaux": {
       "facebook": "https://www.facebook.com/profile.php?id=61573779980446&locale=fr_FR",
       "instagram": "https://www.instagram.com/mitcom.junior_entreprise/",
       "linkedin": "https://tn.linkedin.com/in/mit%E2%80%99com-junior-entreprise-640b03367"
-    }
+    },
+    "logo": "/images/logos/je/mit-com-junior-entreprise.png"
   },
   {
     "id": 28,
@@ -581,7 +608,8 @@
       "facebook": "https://www.facebook.com/p/Fortum-Junior-Entreprise-61571879052297/",
       "instagram": "https://www.instagram.com/fortum.je/",
       "linkedin": "https://www.linkedin.com/company/fortum-junior-enterprise"
-    }
+    },
+    "logo": "/images/logos/je/fortum-junior-entreprise.png"
   },
   {
     "id": 29,
@@ -608,7 +636,8 @@
       "facebook": "https://www.facebook.com/p/Sesame-Junior-Entreprise-61584094822774/",
       "instagram": "https://www.instagram.com/sesame_junior_entreprise/",
       "linkedin": "https://www.linkedin.com/company/sesame-junior-entreprise"
-    }
+    },
+    "logo": "/images/logos/je/sesame-junior-entreprise.png"
   },
   {
     "id": 30,
@@ -633,6 +662,7 @@
       "facebook": "https://www.facebook.com/p/Biotech-JE-61572870249028/",
       "instagram": "https://www.instagram.com/biotech_junior_entreprise/",
       "linkedin": "https://tn.linkedin.com/in/biotech-junior-entreprise-7b0910364"
-    }
+    },
+    "logo": "/images/logos/je/biotech-junior-entreprise.png"
   }
 ]

@@ -12,7 +12,7 @@
   border: 1px solid var(--color-border);
   border-radius: 1.25rem;
   padding: 1.85rem 1.75rem 1.75rem;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 20px -6px var(--color-shadow);
+  box-shadow: var(--shadow-card);
   overflow: hidden;
   isolation: isolate;
   transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
@@ -51,21 +51,50 @@
 .mvCard:hover::before { transform: scaleX(1); }
 .mvCard:hover::after { opacity: 1; }
 
-.mvIcon {
-  width: 3rem;
-  height: 3rem;
-  margin: 0 auto 1rem;
-  border-radius: 9999px;
-  background: rgba(200, 16, 46, 0.08);
-  color: var(--color-primary);
+/* --- Icône Mission/Vision : même badge "placeholder" que le panneau de
+   détails du réseau (carte) — cercle teinté + anneau qui pulse doucement,
+   pour une cohérence visuelle avec le reste du site. --- */
+.mvIconWrap {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 3.75rem;
+  height: 3.75rem;
+  border-radius: 9999px;
+  background: var(--color-primary-tint);
+  margin: 0 auto 1.25rem;
   transition: background 0.25s ease;
 }
 
-.mvCard:hover .mvIcon {
-  background: rgba(200, 16, 46, 0.14);
+.mvCard:hover .mvIconWrap {
+  background: var(--color-primary-tint-strong);
+}
+
+.mvIcon {
+  position: relative;
+  z-index: 1;
+  color: var(--color-primary);
+}
+
+.mvIconPing {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: var(--color-primary-tint-strong);
+  animation: mv-icon-ping 2.4s cubic-bezier(0.2, 0.7, 0.4, 1) infinite;
+}
+
+@keyframes mv-icon-ping {
+  0% {
+    transform: scale(0.85);
+    opacity: 1;
+  }
+  70%,
+  100% {
+    transform: scale(1.65);
+    opacity: 0;
+  }
 }
 
 .mvTitle {
@@ -82,35 +111,55 @@
   margin: 0;
 }
 
+/* --- Titres de sous-section : centrés, clairs, avec accent de marque --- */
 .subheading {
-  font-size: 1.25rem;
-  font-weight: 700;
+  position: relative;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
   color: var(--color-secondary);
-  margin: 2rem 0 1rem;
+  max-width: 32rem;
+  margin: 3.5rem auto 2rem;
+  padding-bottom: 0.9rem;
 }
 
-/* --- Cards Valeurs : même hover que les cards JE/JC --- */
+.subheading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3.5rem;
+  height: 0.25rem;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+}
+
+/* --- Cards Valeurs --- */
 .valuesGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0.85rem;
+  gap: 1rem;
   margin-bottom: 1rem;
 }
 
 .valueCard {
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.6rem;
+  text-align: center;
+  gap: 0.4rem;
   min-width: 0;
   background: #ffffff;
   border: 1px solid var(--color-border);
-  border-radius: 0.85rem;
-  padding: 0.9rem 1rem;
+  border-radius: 1.25rem;
+  padding: 1.85rem 1.25rem 1.5rem;
   font-weight: 600;
   font-size: 0.9rem;
   color: var(--color-secondary);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 20px -6px var(--color-shadow);
+  box-shadow: var(--shadow-card);
   overflow: hidden;
   isolation: isolate;
   transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
@@ -131,7 +180,7 @@
 @media (min-width: 381px) {
   .valueCard {
     font-size: 1rem;
-    padding: 1rem 1.1rem;
+    padding: 2rem 1.5rem 1.75rem;
   }
 }
 
@@ -148,22 +197,56 @@
   transition: transform 0.35s ease;
 }
 
+.valueCard::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 60% at 50% 0%, rgba(200, 16, 46, 0.06), transparent 65%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: -1;
+}
+
 .valueCard:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04), 0 24px 44px -14px rgba(200, 16, 46, 0.2);
   border-color: rgba(200, 16, 46, 0.22);
 }
 
 .valueCard:hover::before { transform: scaleX(1); }
+.valueCard:hover::after { opacity: 1; }
 
-.valueCard svg {
-  color: var(--color-primary);
+/* Badge d'icône : reste statique au repos, "respire" uniquement au survol
+   (voir .valueCard:hover .valueIconWrap) — évite d'empiler trop de
+   boucles d'animation infinies sur la page en même temps. */
+.valueIconWrap {
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 9999px;
+  margin-bottom: 0.9rem;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
-  transition: transform 0.3s ease;
+  box-shadow: 0 6px 16px -4px rgba(200, 16, 46, 0.45);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.valueCard:hover svg {
-  transform: scale(1.1);
+@keyframes valuePulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 6px 16px -4px rgba(200, 16, 46, 0.45), 0 0 0 0 rgba(200, 16, 46, 0.3);
+  }
+  50% {
+    transform: scale(1.14);
+    box-shadow: 0 8px 20px -4px rgba(200, 16, 46, 0.55), 0 0 0 10px rgba(200, 16, 46, 0);
+  }
+}
+
+.valueCard:hover .valueIconWrap {
+  animation: valuePulse 1.4s ease-in-out infinite;
 }
 
 .howBlock {
@@ -187,30 +270,39 @@
   color: var(--color-text-muted);
   line-height: 1.65;
   margin: 0;
+  text-align: center;
+  max-width: 42rem;
+  margin-inline: auto;
 }
 
-/* --- Cards Domaines d'activité : même hover que les cards JE/JC --- */
+/* --- Cards Domaines d'activité : centrées, même hover que les cards JE/JC --- */
 .domainsGrid {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 0.85rem;
 }
 
 .domainCard {
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
+  justify-content: center;
+  text-align: center;
+  gap: 0.6rem;
+  flex: 1 1 15rem;
+  max-width: 20rem;
   background: #ffffff;
   border: 1px solid var(--color-border);
   border-radius: 0.85rem;
-  padding: 0.9rem 1.1rem;
+  padding: 1.5rem 1.25rem;
   color: var(--color-secondary);
   font-weight: 500;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 20px -6px var(--color-shadow);
+  box-shadow: var(--shadow-card);
   overflow: hidden;
   isolation: isolate;
   transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
@@ -256,20 +348,22 @@
   .valuesGrid {
     grid-template-columns: repeat(4, 1fr);
   }
-
-  .domainsGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .mvCard, .mvCard::before, .mvCard::after,
-  .valueCard, .valueCard::before, .valueCard svg,
+  .mvIconPing,
+  .valueCard, .valueCard::before, .valueCard::after,
+  .valueIconWrap,
   .domainCard, .domainCard::before, .domainCard svg,
   .howBlock {
     transition: none;
+    animation: none;
   }
   .mvCard:hover, .valueCard:hover, .domainCard:hover {
     transform: none;
+  }
+  .mvIconPing {
+    opacity: 0;
   }
 }

@@ -28,42 +28,15 @@
     "title": "Histoire du mouvement",
     "subtitle": "Une aventure commencée en 1967 en France, aujourd'hui déployée dans le monde entier et en Tunisie.",
     "items": [
-      {
-        "year": "1967",
-        "text": "Création de la première JE au sein d'ESSEC Paris."
-      },
-      {
-        "year": "1969",
-        "text": "Création de la CNJE (Confédération Nationale des JE françaises)."
-      },
-      {
-        "year": "1988",
-        "text": "Stratégie de développement massif des JE sur plus de 10 ans."
-      },
-      {
-        "year": "1992",
-        "text": "Création de JADE (Junior Enterprises Europe)."
-      },
-      {
-        "year": "2006",
-        "text": "Accord de coopération global Europe–Brésil, création du JEWC."
-      },
-      {
-        "year": "2012",
-        "text": "Création de la CTJE, annonce parue au JORT n°59 du 16/05/2013."
-      },
-      {
-        "year": "2016",
-        "text": "Création du JE Global Council lors du Global Forum."
-      },
-      {
-        "year": "2020–2021",
-        "text": "Finalisation du projet juridique de la CTJE."
-      },
-      {
-        "year": "2022",
-        "text": "Certification ISO 9001:2015 de la CTJE dans 4 prestations de service."
-      }
+      { "year": "1967", "text": "Création de la première JE au sein d'ESSEC Paris." },
+      { "year": "1969", "text": "Création de la CNJE (Confédération Nationale des JE françaises)." },
+      { "year": "1988", "text": "Stratégie de développement massif des JE sur plus de 10 ans." },
+      { "year": "1992", "text": "Création de JADE (Junior Enterprises Europe)." },
+      { "year": "2006", "text": "Accord de coopération global Europe–Brésil, création du JEWC." },
+      { "year": "2012", "text": "Création de la CTJE, annonce parue au JORT n°59 du 16/05/2013." },
+      { "year": "2016", "text": "Création du JE Global Council lors du Global Forum." },
+      { "year": "2020–2021", "text": "Finalisation du projet juridique de la CTJE." },
+      { "year": "2022", "text": "Certification ISO 9001:2015 de la CTJE dans 4 prestations de service." }
     ]
   },
   "about": {
@@ -74,12 +47,7 @@
     "visionTitle": "Vision",
     "vision": "Être un mouvement de référence qui œuvre pour l'accompagnement des jeunes étudiants dans leur intégration à la vie active en créant de la valeur dans leur écosystème professionnel ou entrepreneurial.",
     "valuesTitle": "Valeurs",
-    "values": [
-      "Engagement",
-      "Professionnalisme",
-      "Intégrité",
-      "Diversité"
-    ],
+    "values": ["Engagement", "Professionnalisme", "Intégrité", "Diversité"],
     "howTitle": "Fonctionnement",
     "how": "Les Junior Entreprises sont des associations étudiantes à but non lucratif fonctionnant selon le modèle des cabinets de conseil professionnels. Elles mettent les compétences de leurs membres au service de clients réels à travers des prestations compétitives, permettant aux étudiants d'acquérir une expérience pratique valorisante dès leur cursus universitaire.",
     "domainsTitle": "Domaines d'activité de la CTJE",
@@ -106,7 +74,21 @@
     "selectPlaceholder": "Toutes les régions",
     "viewSheet": "Voir la fiche",
     "legalText": "Données cartographiques ©",
-    "legalLink": "contributeurs OpenStreetMap"
+    "legalLink": "contributeurs OpenStreetMap",
+    "detailsPanelLabel": "Détails de la Junior sélectionnée",
+    "panelPlaceholderTitle": "Explorez le réseau",
+    "panelPlaceholder": "Survolez ou cliquez un marqueur sur la carte pour afficher ses informations ici.",
+    "entitySelectLabel": "Rechercher une Junior",
+    "entitySelectPlaceholder": "Toutes les Juniors",
+    "entitySelectEmpty": "Aucune Junior dans cette région",
+    "toastEmptyRegion": "Aucune Junior Entreprise ou Junior Création n'est encore implantée à {region}. Essayez une autre région, ou explorez la carte entière.",
+    "toastHint": "Astuce : survolez ou cliquez un marqueur pour voir sa fiche, et utilisez les filtres pour zoomer directement sur une région ou une Junior précise.",
+    "typeSelectLabel": "Filtrer par catégorie",
+    "typeSelectPlaceholder": "JE et JC",
+    "toastEmptyType": "Aucune Junior ne correspond à cette combinaison de filtres. Essayez d'élargir votre recherche.",
+    "filteredByType": "Catégorie sélectionnée : {type}",
+    "filteredByBoth": "{type} à {region}"
+    
   },
   "je": {
     "title": "Les Juniors Entreprises",
@@ -171,7 +153,10 @@
       "invalidEmail": "Merci de saisir une adresse email valide",
       "tooShort": "Merci de fournir une réponse plus détaillée (10 caractères minimum)",
       "requiredCheckbox": "Merci d'accepter les conditions pour continuer"
-    }
+    },
+    "draftRestored": "Brouillon retrouvé : vos réponses précédentes ont été restaurées.",
+    "draftClear": "Effacer",
+    "draftDismiss": "Fermer cette notification"
   },
   "satisfaction": {
     "title": "Votre avis compte",
@@ -187,6 +172,13 @@
       "required": "Merci de sélectionner une note avant d'envoyer",
       "invalidRating": "Note invalide",
       "tooLong": "Commentaire trop long (1000 caractères maximum)"
+    },
+    "ratingCaptions": {
+      "1": "Décevant",
+      "2": "Peut mieux faire",
+      "3": "Correct",
+      "4": "Très satisfait",
+      "5": "Excellent !"
     }
   },
   "notFound": {

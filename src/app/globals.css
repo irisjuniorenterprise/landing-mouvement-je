@@ -7,7 +7,7 @@
    ============================================================ */
 
 :root {
-  /* Couleurs institutionnelles */
+  /* Couleurs institutionnelles (fixes, ne pas modifier) */
   --color-primary: #C8102E;
   --color-primary-hover: #A00D24;
   --color-secondary: #1A1A1A;
@@ -16,6 +16,18 @@
   --color-text-muted: #6B7280;
   --color-border: #E5E7EB;
   --color-shadow: rgba(0, 0, 0, 0.08);
+
+  /* Teintes dérivées du rouge/noir institutionnels, utilisées uniquement
+     pour donner du rythme aux fonds de section (alternance) sans jamais
+     sortir de la charte graphique fixée par le client. */
+  --color-primary-tint: #FBEEF0;        /* rosé très clair */
+  --color-primary-tint-strong: #F7DEE2; /* rosé un peu plus soutenu (CTA) */
+  --color-dark-alt: #22141A;            /* noir à sous-ton bordeaux, pour les bandes sombres */
+  --color-dark-alt-soft: #2E1D24;
+  --color-on-dark: #FFFFFF;
+  --color-on-dark-muted: rgba(255, 255, 255, 0.72);
+
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 20px -6px var(--color-shadow);
 }
 
 /* ============================================================
@@ -45,11 +57,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Paragraphes justifiés dans toute la page (les titres/sous-titres de
-   section restent centrés via .section-title / .section-subtitle qui
-   ont une spécificité supérieure et ne sont donc pas affectés). */
 p {
-  text-align: justify;
+  text-align: left;
   text-justify: inter-word;
   hyphens: auto;
 }
@@ -65,7 +74,7 @@ p {
 }
 
 .section-padding {
-  padding: 4rem 0;
+  padding: 8rem 0;
 }
 
 .section-title {
@@ -83,6 +92,49 @@ p {
   max-width: 640px;
   margin: 0.5rem auto 2.5rem auto;
   font-size: 1.125rem;
+}
+
+/* ============================================================
+   ALTERNANCE DES FONDS DE SECTION
+   ============================================================ */
+
+.section-tint {
+  background: linear-gradient(180deg, var(--color-primary-tint) 0%, #FFFFFF 100%);
+}
+
+.section-tint-strong {
+  background: linear-gradient(160deg, var(--color-primary-tint-strong) 0%, var(--color-primary-tint) 100%);
+}
+
+.section-alt {
+  background: #FAF6F5;
+}
+
+.section-dark {
+  background: radial-gradient(120% 140% at 15% 0%, var(--color-dark-alt-soft) 0%, var(--color-dark-alt) 55%, #140B0E 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.section-dark::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(60% 50% at 85% 10%, rgba(200, 16, 46, 0.22), transparent 70%);
+  pointer-events: none;
+}
+
+.section-dark .section-title,
+.section-dark .section-subtitle {
+  color: var(--color-on-dark);
+}
+
+.section-dark .section-subtitle {
+  color: var(--color-on-dark-muted);
+}
+
+.section-divider-top {
+  box-shadow: inset 0 6px 16px -12px rgba(0, 0, 0, 0.18);
 }
 
 /* ============================================================
@@ -148,7 +200,6 @@ p {
   transform: translateY(0);
 }
 
-/* Variante secondaire pour fond clair */
 .btn-secondary-light {
   display: inline-flex;
   align-items: center;
@@ -179,34 +230,23 @@ p {
    ANIMATIONS & TRANSITIONS
    ============================================================ */
 
-/* Classe pour les animations GSAP au scroll (départ caché) */
 .section-animate {
   opacity: 0;
   transform: translateY(40px);
 }
 
-/* Animation de spin pour le loader */
 @keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .animate-spin {
   animation: spin 1s linear infinite;
 }
 
-/* Animation fade-in pour la modale */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .animate-fadeIn {
@@ -217,14 +257,12 @@ p {
    LEAFLET – Ajustements pour Next.js
    ============================================================ */
 
-/* Assurer que la carte n'a pas de bordure inattendue */
 .leaflet-container {
   width: 100%;
   height: 100%;
   z-index: 10;
 }
 
-/* Personnalisation des tooltips Leaflet pour qu'ils correspondent à la charte */
 .leaflet-tooltip {
   font-family: var(--font-montserrat), sans-serif;
   background: var(--color-secondary);
@@ -241,7 +279,6 @@ p {
   border-top-color: var(--color-secondary) !important;
 }
 
-/* Popup Leaflet */
 .leaflet-popup-content-wrapper {
   border-radius: 0.75rem !important;
   font-family: var(--font-montserrat), sans-serif;
@@ -259,31 +296,16 @@ p {
    ============================================================ */
 
 @media (max-width: 1024px) {
-  .section-padding {
-    padding: 3rem 0;
-  }
-  .section-title {
-    font-size: 2rem;
-  }
-  .container {
-    padding: 0 1.25rem;
-  }
+  .section-padding { padding: 6rem 0; }
+  .section-title { font-size: 2rem; }
+  .container { padding: 0 1.25rem; }
 }
 
 @media (max-width: 768px) {
-  .section-padding {
-    padding: 2.5rem 0;
-  }
-  .section-title {
-    font-size: 1.75rem;
-  }
-  .section-subtitle {
-    font-size: 1rem;
-    padding: 0 1rem;
-  }
-  .container {
-    padding: 0 1rem;
-  }
+  .section-padding { padding: 4.5rem 0; }
+  .section-title { font-size: 1.75rem; }
+  .section-subtitle { font-size: 1rem; padding: 0 1rem; }
+  .container { padding: 0 1rem; }
   .btn-primary,
   .btn-secondary,
   .btn-secondary-light {
@@ -295,15 +317,9 @@ p {
 }
 
 @media (max-width: 480px) {
-  .section-padding {
-    padding: 2rem 0;
-  }
-  .section-title {
-    font-size: 1.5rem;
-  }
-  .container {
-    padding: 0 0.75rem;
-  }
+  .section-padding { padding: 3.5rem 0; }
+  .section-title { font-size: 1.5rem; }
+  .container { padding: 0 0.75rem; }
 }
 
 /* ============================================================
@@ -322,20 +338,15 @@ p {
   border-color: var(--color-border);
 }
 
-/* Focus visible pour l'accessibilité */
 *:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
 
-/* Suppression du contour par défaut sur les boutons */
 button:focus:not(:focus-visible) {
   outline: none;
 }
 
-/* Skip link : lien "Aller au contenu principal", premier élément
-   focusable de la page. Caché visuellement mais accessible au clavier ;
-   redevient visible dès qu'il reçoit le focus (Tab). */
 .skip-link {
   position: absolute;
   top: -100px;
@@ -356,16 +367,11 @@ button:focus:not(:focus-visible) {
   outline-offset: 2px;
 }
 
-/* À ajouter dans app/globals.css — nécessaire pour MapClient.jsx (divIcon) */
 .custom-marker-icon {
   background: transparent;
   border: none;
 }
 
-/* À ajouter dans :root de app/globals.css — source unique de vérité pour
-   la hauteur du header, utilisée à la fois par Header.module.css et par
-   le décalage du contenu dans layout.js (évite le chevauchement
-   Breadcrumb/Hero sous le header fixe). */
 :root {
   --header-height: 6rem;
 }
@@ -376,7 +382,6 @@ button:focus:not(:focus-visible) {
 
 /* ============================================================
    REVEAL EN CASCADE — grilles de cards / KPIs
-   (piloté par ClientSideEffects.jsx via GSAP ScrollTrigger)
    ============================================================ */
 
 .stagger-grid > * {
@@ -384,28 +389,17 @@ button:focus:not(:focus-visible) {
   transform: translateY(24px) scale(0.97);
 }
 
-/* Variante pour un élément unique isolé (ex: encart carte)
-   qui n'est pas une section complète ni une grille */
 .fade-in-item {
   opacity: 0;
   transform: translateY(24px);
 }
 
-/* Variante fade simple sans translation, utile pour les éléments
-   larges (bandeaux) où un déplacement vertical serait trop marqué */
 .fade-in-soft {
   opacity: 0;
 }
 
 /* ============================================================
-   FOOTER — fondu géré en CSS pur (transition), déclenché une seule
-   fois par un IntersectionObserver natif dans ClientSideEffects.jsx.
-   Volontairement DÉCOUPLÉ de GSAP/ScrollTrigger : contrairement aux
-   sections qui peuvent se rejouer en scrollant de haut en bas, le
-   footer n'a besoin d'apparaître qu'une fois, jamais de se recacher.
-   Ce choix élimine par construction tout risque de blocage lié à un
-   recalcul de coordonnées de trigger obsolètes après un resize (bug
-   historique : le footer restait invisible/bloqué jusqu'au reload).
+   FOOTER
    ============================================================ */
 
 .footer-reveal {

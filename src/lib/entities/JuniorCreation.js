@@ -3,7 +3,7 @@
  * étudiante en cours de structuration en vue de devenir une JE.
  */
 export default class JuniorCreation {
-  constructor({ id, nom, region, etablissement, email, description = {}, lat, lng }) {
+  constructor({ id, nom, region, etablissement, email, description = {}, lat, lng, logo = '' }) {
     this.id = id;
     this.nom = nom;
     this.region = region;
@@ -17,7 +17,13 @@ export default class JuniorCreation {
         : { fr: description.fr || '', en: description.en || '' };
     this.lat = lat;
     this.lng = lng;
+    this.logo = logo;
     this.type = 'JC';
+  }
+
+  /** Vrai si un logo a été renseigné (permet un repli propre sur des initiales). */
+  get hasLogo() {
+    return Boolean(this.logo);
   }
 
   /** Description dans la langue demandée (repli sur le français). */
