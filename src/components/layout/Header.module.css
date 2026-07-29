@@ -9,8 +9,6 @@
   -webkit-backdrop-filter: blur(14px) saturate(180%);
   border-bottom: 1px solid var(--color-border);
   transition: box-shadow 0.3s ease;
-
-  /* Animation d'apparition au chargement */
   animation: slideFadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
@@ -28,14 +26,13 @@
 .inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0.75rem 1.5rem; /* ajout de padding vertical */
-  min-height: var(--header-height); /* hauteur minimale conservée */
+  padding: 0.75rem 1.5rem;
+  min-height: var(--header-height);
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-/* --- Logo --- */
 .logo {
   display: flex;
   align-items: center;
@@ -43,16 +40,15 @@
 }
 
 .logoImage {
-  height: 4.2rem; /* agrandi */
+  height: 4.2rem;
   width: auto;
   transition: transform 0.3s ease;
 }
 
 .logo:hover .logoImage {
-  transform: scale(1.08); /* zoom uniquement */
+  transform: scale(1.08);
 }
 
-/* --- Navigation desktop --- */
 .nav {
   display: none;
   align-items: center;
@@ -116,7 +112,6 @@
   box-shadow: 0 10px 24px rgba(200, 16, 46, 0.35);
 }
 
-/* --- Mobile --- */
 .mobileActions {
   display: flex;
   align-items: center;
@@ -148,7 +143,27 @@
   border-color: var(--color-primary);
 }
 
+/* Fond cliquable derrière le menu mobile, pour fermer au clic extérieur
+   — même pattern que .sheetBackdrop dans NetworkEntityPanel. */
+.mobileNavBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: rgba(0, 0, 0, 0.25);
+  border: none;
+  padding: 0;
+  cursor: default;
+  animation: backdropFadeIn 0.2s ease;
+}
+
+@keyframes backdropFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 .mobileNav {
+  position: relative;
+  z-index: 50;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
@@ -183,11 +198,14 @@
   color: var(--color-primary);
 }
 
-/* Respect des préférences de mouvement réduit */
 @media (prefers-reduced-motion: reduce) {
   .header {
     animation: none;
     opacity: 1;
     transform: none;
+  }
+  .mobileNavBackdrop,
+  .mobileNav {
+    animation: none;
   }
 }

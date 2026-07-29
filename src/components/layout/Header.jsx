@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
@@ -12,6 +12,30 @@ export default function Header() {
   const t = useTranslations('nav');
   const locale = useLocale();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const firstMobileLinkRef = useRef(null);
+
+  const closeMenu = () => setIsMenuOpen(false);
+
+  // Échap pour fermer + verrouillage du scroll de fond + focus sur le
+  // premier lien à l'ouverture, pour un menu mobile clavier-accessible
+  // (le reste du site gère déjà ce pattern via NetworkEntityPanel).
+  useEffect(() => {
+    if (!isMenuOpen) return undefined;
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') closeMenu();
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    firstMobileLinkRef.current?.focus();
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isMenuOpen]);
 
   return (
     <header className={styles.header}>
@@ -50,7 +74,7 @@ export default function Header() {
           <LanguageSwitcher currentLocale={locale} />
           <button
             className={styles.menuBtn}
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            onClick={() => setIsMenuOpen((prev) => !prev)}
             aria-label={isMenuOpen ? t('closeMenu') : t('openMenu')}
             aria-expanded={isMenuOpen}
             aria-controls="mobile-menu"
@@ -61,43 +85,36 @@ export default function Header() {
       </div>
 
       {isMenuOpen && (
-        <nav id="mobile-menu" className={styles.mobileNav} aria-label={t('mobileNavigation')}>
-          <a
-            href="#history"
-            onClick={() => setIsMenuOpen(false)}
-            className={styles.mobileNavLink}
-          >
-            {t('history')}
-          </a>
-          <a
-            href="#about"
-            onClick={() => setIsMenuOpen(false)}
-            className={styles.mobileNavLink}
-          >
-            {t('about')}
-          </a>
-          <a
-            href="#map"
-            onClick={() => setIsMenuOpen(false)}
-            className={styles.mobileNavLink}
-          >
-            {t('map')}
-          </a>
-          <a
-            href="#kpis"
-            onClick={() => setIsMenuOpen(false)}
-            className={styles.mobileNavLink}
-          >
-            {t('kpis')}
-          </a>
-          <a
-            href="#apply"
-            onClick={() => setIsMenuOpen(false)}
-            className={styles.mobileNavLink}
-          >
-            {t('apply')}
-          </a>
-        </nav>
+        <>
+          <button
+            type="button"
+            className={styles.mobileNavBackdrop}
+            aria-label={t('closeMenu')}
+            onClick={closeMenu}
+          />
+          <nav id="mobile-menu" className={styles.mobileNav} aria-label={t('mobileNavigation')}>
+            <a
+              ref={firstMobileLinkRef}
+              href="#history"
+              onClick={closeMenu}
+              className={styles.mobileNavLink}
+            >
+              {t('history')}
+            </a>
+            <a href="#about" onClick={closeMenu} className={styles.mobileNavLink}>
+              {t('about')}
+            </a>
+            <a href="#map" onClick={closeMenu} className={styles.mobileNavLink}>
+              {t('map')}
+            </a>
+            <a href="#kpis" onClick={closeMenu} className={styles.mobileNavLink}>
+              {t('kpis')}
+            </a>
+            <a href="#apply" onClick={closeMenu} className={styles.mobileNavLink}>
+              {t('apply')}
+            </a>
+          </nav>
+        </>
       )}
     </header>
   );
