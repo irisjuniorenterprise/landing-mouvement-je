@@ -1,26 +1,106 @@
 .hero {
   position: relative;
-  background: linear-gradient(160deg, var(--color-secondary) 0%, #262626 100%);
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(160deg, #0d0d0d 0%, #050505 100%);
   color: #ffffff;
   overflow: hidden;
-  padding: 6rem 0 8.5rem;
+  padding: 8rem 0 10.5rem;
+}
+
+/* --- Effet "aurora" : au repos, les deux nappes sont figées (aucune
+   animation), pour un Hero calme au chargement de la page. Le scintillement
+   (opacité + légère respiration d'échelle) ne se déclenche qu'au survol de
+   la section — un geste volontaire de l'utilisateur, pas une boucle
+   perpétuelle imposée. --- */
+.hero::before,
+.hero::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.55;
+  transform: scale(1);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  will-change: opacity, transform;
 }
 
 .hero::before {
-  content: '';
-  position: absolute;
-  top: -20%;
+  top: -15%;
   right: -10%;
   width: 42rem;
   height: 42rem;
-  border-radius: 9999px;
-  background: radial-gradient(circle, rgba(200, 16, 46, 0.35) 0%, rgba(200, 16, 46, 0) 70%);
+  background: radial-gradient(
+    circle,
+    rgba(200, 16, 46, 0.45) 0%,
+    rgba(200, 16, 46, 0.12) 55%,
+    rgba(200, 16, 46, 0) 75%
+  );
+}
+
+.hero::after {
+  bottom: -22%;
+  left: -12%;
+  width: 34rem;
+  height: 34rem;
+  opacity: 0.4;
+  background: radial-gradient(
+    circle,
+    rgba(255, 90, 110, 0.32) 0%,
+    rgba(200, 16, 46, 0.08) 55%,
+    rgba(200, 16, 46, 0) 75%
+  );
+}
+
+.hero:hover::before {
+  animation: auroraShimmer1 15s ease-in-out infinite alternate;
+}
+
+.hero:hover::after {
+  animation: auroraShimmer2 19s ease-in-out infinite alternate;
+  animation-delay: -6s;
+}
+
+@keyframes auroraShimmer1 {
+  0% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.9;
+    transform: scale(1.07);
+  }
+}
+
+@keyframes auroraShimmer2 {
+  0% {
+    opacity: 0.4;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0.75;
+    transform: scale(0.96);
+  }
+}
+
+.heroImageWrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
   pointer-events: none;
+}
+
+.heroImage {
+  object-fit: fill;
+  opacity: 0.18;
 }
 
 .inner {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   max-width: 44rem;
 }
 
@@ -67,7 +147,8 @@
 
 @media (max-width: 768px) {
   .hero {
-    padding: 5rem 0 6rem;
+    min-height: 80vh;
+    padding: 6rem 0 7rem;
   }
   .title {
     font-size: 2.25rem;
@@ -75,13 +156,33 @@
   .subtitle {
     font-size: 1rem;
   }
+  .hero::before {
+    width: 30rem;
+    height: 30rem;
+  }
+  .hero::after {
+    width: 24rem;
+    height: 24rem;
+  }
 }
 
 @media (max-width: 400px) {
   .hero {
-    padding: 4rem 0 4.75rem;
+    min-height: 75vh;
+    padding: 5rem 0 5.5rem;
   }
   .title {
     font-size: 1.85rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero::before,
+  .hero::after {
+    transition: none;
+  }
+  .hero:hover::before,
+  .hero:hover::after {
+    animation: none;
   }
 }

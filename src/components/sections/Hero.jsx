@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import Button from '@/components/ui/Button';
 import { Icons } from '@/components/icons/Icons';
@@ -8,6 +9,16 @@ export default function Hero() {
 
   return (
     <section className={`${styles.hero} section-animate`}>
+      <div className={styles.heroImageWrapper} aria-hidden="true">
+        <Image
+          src="/images/hero-img.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className={styles.heroImage}
+        />
+      </div>
       <div className={`container ${styles.inner}`}>
         <span className={styles.eyebrow}>
           <span className={styles.eyebrowDot} aria-hidden="true" />
