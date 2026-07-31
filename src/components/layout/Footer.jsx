@@ -1,4 +1,3 @@
-// Footer.jsx
 import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
@@ -7,6 +6,7 @@ import styles from './Footer.module.css';
 
 export default function Footer() {
   const t = useTranslations('footer');
+  const tCommon = useTranslations('common');
   const year = new Date().getFullYear();
 
   return (
@@ -36,15 +36,10 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.contactItem}
-                aria-label="Website"
+                aria-label={`Website ${tCommon('opensNewTab')}`}
               >
                 <Icons.Globe size={16} /> www.jetunisie.com
               </a>
-
-              {/* CTA */}
-              {/* <Link href="#apply" className={styles.ctaFooter}>
-                {t('linkApply')}
-              </Link> */}
             </div>
 
             {/* ================= SECTIONS (LANDING) ================= */}
@@ -94,10 +89,6 @@ export default function Footer() {
               </h3>
 
               <div className={styles.linkList}>
-                {/* href="tel:" doit être un numéro "brut" (sans espaces ni
-                    séparateurs) pour être valide au sens W3C/HTML — le
-                    texte affiché, lui, garde le format lisible fourni par
-                    la traduction (avec espaces). */}
                 <a href={`tel:${t('phone').replace(/\s+/g, '')}`} className={styles.contactItem}>
                   <Icons.Phone size={16} /> {t('phone')}
                 </a>
@@ -122,17 +113,17 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.socialLink}
-                    aria-label="LinkedIn"
+                    aria-label={`LinkedIn ${tCommon('opensNewTab')}`}
                   >
                     <Icons.Linkedin size={20} />
                   </a>
+
                   <a
-                  
                     href="https://www.instagram.com/je.tunisia?igsh=ZHBqcG44NWlrejA3"
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.socialLink}
-                    aria-label="Instagram"
+                    aria-label={`Instagram ${tCommon('opensNewTab')}`}
                   >
                     <Icons.Instagram size={20} />
                   </a>
@@ -142,7 +133,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.socialLink}
-                    aria-label="Facebook"
+                    aria-label={`Facebook ${tCommon('opensNewTab')}`}
                   >
                     <Icons.Facebook size={20} />
                   </a>

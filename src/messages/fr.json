@@ -87,7 +87,8 @@
     "typeSelectPlaceholder": "JE et JC",
     "toastEmptyType": "Aucune Junior ne correspond à cette combinaison de filtres. Essayez d'élargir votre recherche.",
     "filteredByType": "Catégorie sélectionnée : {type}",
-    "filteredByBoth": "{type} à {region}"
+    "filteredByBoth": "{type} à {region}",
+    "a11yDescription": "Carte interactive des Juniors Entreprises et Junior Créations en Tunisie. Utilisez le sélecteur de région et la liste ci-dessous pour une navigation au clavier."
     
   },
   "je": {
@@ -156,7 +157,8 @@
     },
     "draftRestored": "Brouillon retrouvé : vos réponses précédentes ont été restaurées.",
     "draftClear": "Effacer",
-    "draftDismiss": "Fermer cette notification"
+    "draftDismiss": "Fermer cette notification",
+    "newTabWarning": "(ouvre dans un nouvel onglet)"
   },
   "satisfaction": {
     "title": "Votre avis compte",
@@ -208,5 +210,11 @@
     "termsTitle": "Conditions Générales d'Utilisation",
     "privacyTitle": "Politique de Confidentialité",
     "placeholder": "Ce texte est en cours de finalisation avec notre partenaire juridique et sera mis à jour prochainement."
+  },
+  "toast": {
+    "close": "Fermer la notification"
+  },
+  "common": {
+    "opensNewTab": "(ouvre dans un nouvel onglet)"
   }
 }

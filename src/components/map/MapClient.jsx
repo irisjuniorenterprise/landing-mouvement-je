@@ -196,6 +196,25 @@ export default function MapClient({
     const name = feature.properties?.gouv_fr || '';
     const isCovered = coveredRegions.has(normalizeRegionName(name));
     layer.bindTooltip(name, { direction: 'center', className: 'font-sans text-xs' });
+
+    // Accessibilité : Leaflet ne donne aucun nom accessible à ses polygones
+    // SVG générés dynamiquement, alors qu'ils sont cliquables (sélection de
+    // région) — on l'ajoute nous-mêmes dès que l'élément DOM existe, sur le
+    // même principe que les marqueurs (voir plus bas dans ce fichier).
+    const el = layer.getElement?.();
+    if (el) {
+      el.setAttribute('role', 'button');
+      el.setAttribute('tabindex', '0');
+      el.setAttribute('aria-label', `${name}${isCovered ? '' : ' — non couverte'}`);
+      el.addEventListener('keydown', (evt) => {
+        if (evt.key === 'Enter' || evt.key === ' ') {
+          evt.preventDefault();
+          trackOnce('map_interaction', { trigger: 'region_click' });
+          onRegionSelect && onRegionSelect(name);
+        }
+      });
+    }
+
     layer.on({
       mouseover: (e) => {
         e.target.setStyle({

@@ -9,7 +9,7 @@ import styles from './NetworkEntityPanel.module.css';
  * Contenu détaillé d'une JE/JC — factorisé pour être identique dans le
  * panneau desktop et la fiche mobile (seul le conteneur change).
  */
-function EntityDetails({ entity, locale, tMap, tJE, tJC }) {
+function EntityDetails({ entity, locale, tMap, tJE, tJC, tCommon }) {
   const isJE = entity.type === 'JE';
   const categoryLabel = isJE ? tMap('legendJE') : tMap('legendJC');
 
@@ -54,17 +54,17 @@ function EntityDetails({ entity, locale, tMap, tJE, tJC }) {
             {entity.hasSocialLinks && (
               <div className={styles.socialRow}>
                 {entity.reseauxSociaux.facebook && (
-                  <a href={entity.reseauxSociaux.facebook} target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="Facebook">
+                  <a href={entity.reseauxSociaux.facebook} target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label={`Facebook ${tCommon('opensNewTab')}`}>
                     <Icons.Facebook size={16} />
                   </a>
                 )}
                 {entity.reseauxSociaux.instagram && (
-                  <a href={entity.reseauxSociaux.instagram} target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="Instagram">
+                  <a href={entity.reseauxSociaux.instagram} target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label={`Instagram ${tCommon('opensNewTab')}`}>
                     <Icons.Instagram size={16} />
                   </a>
                 )}
                 {entity.reseauxSociaux.linkedin && (
-                  <a href={entity.reseauxSociaux.linkedin} target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="LinkedIn">
+                  <a href={entity.reseauxSociaux.linkedin} target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label={`LinkedIn ${tCommon('opensNewTab')}`}>
                     <Icons.Linkedin size={16} />
                   </a>
                 )}
@@ -108,13 +108,14 @@ export default function NetworkEntityPanel({ entity, onClose }) {
   const tMap = useTranslations('map');
   const tJE = useTranslations('je');
   const tJC = useTranslations('jc');
+  const tCommon = useTranslations('common');
 
   return (
     <>
       {/* --- Desktop : panneau latéral, toujours présent --- */}
       <aside className={styles.desktopPanel} aria-label={tMap('detailsPanelLabel')}>
         {entity ? (
-          <EntityDetails entity={entity} locale={locale} tMap={tMap} tJE={tJE} tJC={tJC} />
+          <EntityDetails entity={entity} locale={locale} tMap={tMap} tJE={tJE} tJC={tJC} tCommon={tCommon} />
         ) : (
           <div className={styles.placeholder}>
             <span className={styles.placeholderIconWrap} aria-hidden="true">
@@ -142,7 +143,7 @@ export default function NetworkEntityPanel({ entity, onClose }) {
               <Icons.X size={18} />
             </button>
             <div className={styles.sheetContent}>
-              <EntityDetails entity={entity} locale={locale} tMap={tMap} tJE={tJE} tJC={tJC} />
+              <EntityDetails entity={entity} locale={locale} tMap={tMap} tJE={tJE} tJC={tJC} tCommon={tCommon} />
             </div>
           </div>
         </>

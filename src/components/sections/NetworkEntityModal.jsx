@@ -116,35 +116,18 @@ export default function NetworkEntityModal({ selection, onClose }) {
                 <h4 className={styles.sectionTitle}>{tJE('modal.socialTitle')}</h4>
                 <div className={styles.socialRow}>
                   {entity.reseauxSociaux.facebook && (
-                    <a
-                      href={entity.reseauxSociaux.facebook}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.socialLink}
-                      aria-label="Facebook"
-                    >
+                    <a href={entity.reseauxSociaux.facebook} target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label={`Facebook ${t('common.opensNewTab')}`}>
+
                       <Icons.Facebook size={18} />
                     </a>
                   )}
                   {entity.reseauxSociaux.instagram && (
-                    <a
-                      href={entity.reseauxSociaux.instagram}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.socialLink}
-                      aria-label="Instagram"
-                    >
+                    <a href={entity.reseauxSociaux.instagram} target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label={`Instagram ${t('common.opensNewTab')}`}>
                       <Icons.Instagram size={18} />
                     </a>
                   )}
                   {entity.reseauxSociaux.linkedin && (
-                    <a
-                      href={entity.reseauxSociaux.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.socialLink}
-                      aria-label="LinkedIn"
-                    >
+                    <a href={entity.reseauxSociaux.linkedin} target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label={`LinkedIn ${t('common.opensNewTab')}`}>
                       <Icons.Linkedin size={18} />
                     </a>
                   )}

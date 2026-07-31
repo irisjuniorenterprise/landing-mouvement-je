@@ -94,12 +94,6 @@ export const viewport = {
 export default async function LocaleLayout({ children, params }) {
   const { locale } = await params;
 
-  // OBLIGATOIRE avec generateStaticParams (rendu statique) : distribue la
-  // locale courante à tous les Server Components de la requête, de façon
-  // synchrone et sans race condition. Sans cet appel, certains composants
-  // profondément imbriqués peuvent recevoir une locale non résolue
-  // (undefined), ce qui casse t.rich()/formatage ICU (voir doc next-intl :
-  // https://next-intl.dev/docs/getting-started/app-router/with-i18n-routing#static-rendering).
   setRequestLocale(locale);
 
   const messages = await getMessages();
@@ -114,17 +108,13 @@ export default async function LocaleLayout({ children, params }) {
               {tNav('skipToContent')}
             </a>
             <Header />
-            {/* page-offset (défini dans globals.css) = var(--header-height),
-                synchronisée avec Header.module.css pour éviter que le
-                contenu (Breadcrumb, Hero...) passe sous le header fixe. */}
-            <div className="page-offset">{children}</div>
+            <main id="main-content" tabIndex={-1} className="page-offset">
+              {children}
+            </main>
             <Footer />
             <ClientSideEffects />
           </ToastProvider>
         </NextIntlClientProvider>
-        {/* KPI 3 (Impact) : trafic mensuel — dashboard disponible sur
-            vercel.com/<projet>/analytics. Le plan gratuit couvre l'usage
-            attendu de cette landing page. */}
         <Analytics />
       </body>
     </html>

@@ -1,6 +1,7 @@
 'use client';
 
 import { createContext, useCallback, useContext, useRef, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { Icons } from '@/components/icons/Icons';
 import styles from './Toast.module.css';
 
@@ -19,6 +20,7 @@ let idCounter = 0;
  * Types disponibles : 'info' (par défaut) et 'warning'.
  */
 export function ToastProvider({ children }) {
+  const t = useTranslations('toast');
   const [toasts, setToasts] = useState([]);
   const timers = useRef({});
 
@@ -55,7 +57,7 @@ export function ToastProvider({ children }) {
               type="button"
               className={styles.closeBtn}
               onClick={() => dismiss(toast.id)}
-              aria-label="Fermer la notification"
+              aria-label={t('close')}
             >
               <Icons.X size={15} />
             </button>

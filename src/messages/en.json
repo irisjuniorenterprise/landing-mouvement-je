@@ -87,7 +87,8 @@
     "typeSelectPlaceholder": "JE and JC",
     "toastEmptyType": "No Junior matches this filter combination. Try widening your search.",
     "filteredByType": "Selected category: {type}",
-    "filteredByBoth": "{type} in {region}"
+    "filteredByBoth": "{type} in {region}",
+    "a11yDescription": "Interactive map of Junior Entreprises and Junior Créations across Tunisia. Use the region selector and the list below for keyboard navigation."
   },
   "je": {
     "title": "Junior Enterprises",
@@ -155,7 +156,8 @@
     },
     "draftRestored": "Draft found: your previous answers have been restored.",
     "draftClear": "Clear",
-    "draftDismiss": "Dismiss this notification"
+    "draftDismiss": "Dismiss this notification",
+    "newTabWarning": "(opens in a new tab)"
   },
   "satisfaction": {
     "title": "Your feedback matters",
@@ -207,5 +209,11 @@
     "termsTitle": "Terms of Use",
     "privacyTitle": "Privacy Policy",
     "placeholder": "This text is being finalized with our legal partner and will be updated soon."
+  },
+  "toast": {
+    "close": "Close notification"
+  },
+  "common": {
+    "opensNewTab": "(opens in a new tab)"
   }
 }

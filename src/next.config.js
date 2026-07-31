@@ -9,6 +9,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 const nextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
+    qualities: [35, 75],
   },
 };
 

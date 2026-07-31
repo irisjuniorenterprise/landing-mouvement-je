@@ -178,6 +178,7 @@ export default function CandidatureForm() {
         return (
           <Link key={i} href="/mentions-legales" target="_blank" rel="noopener noreferrer" className={styles.consentLink}>
             {termsMatch[1]}
+            <span className="sr-only"> {t('newTabWarning')}</span>
           </Link>
         );
       }
@@ -186,6 +187,7 @@ export default function CandidatureForm() {
         return (
           <Link key={i} href="/politique-confidentialite" target="_blank" rel="noopener noreferrer" className={styles.consentLink}>
             {privacyMatch[1]}
+            <span className="sr-only"> {t('newTabWarning')}</span>
           </Link>
         );
       }
