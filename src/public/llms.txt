@@ -1,0 +1,31 @@
+# CTJE — Confédération Tunisienne des Junior Entreprises
+
+> Réseau national des Juniors Entreprises (JE) et Junior Créations (JC)
+> tunisiennes : associations étudiantes à but non lucratif qui réalisent
+> des missions professionnelles réelles pour des entreprises et
+> organisations, tout en formant leurs membres à l'entrepreneuriat.
+
+## Pages principales
+
+- [Accueil](https://www.jetunisie.com/): mission, vision, valeurs de la
+  confédération, carte interactive du réseau JE/JC en Tunisie, KPIs du
+  mouvement, formulaire de candidature pour rejoindre une Junior
+  Entreprise, formulaire de satisfaction UX du site.
+- [Mentions légales](https://www.jetunisie.com/mentions-legales)
+- [Politique de confidentialité](https://www.jetunisie.com/politique-confidentialite)
+- [Conditions d'utilisation](https://www.jetunisie.com/terms)
+
+## Contact
+
+- Site : https://www.jetunisie.com
+- LinkedIn : https://www.linkedin.com/company/jet-junior-enterprises-tunisia/
+- Instagram : https://www.instagram.com/je.tunisia
+- Facebook : https://www.facebook.com/JuniorEnterprisesOfTunisia
+
+## Notes pour les agents
+
+Le contenu du site est disponible en français (par défaut) et en anglais
+(`/en`). La carte interactive nécessite JavaScript ; une alternative
+accessible (liste déroulante des Juniors Entreprises/Junior Créations)
+est disponible dans la même section pour la navigation sans souris ni
+rendu de carte.
