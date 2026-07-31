@@ -112,7 +112,7 @@ export default function StarRating({
       aria-valuemin={0.25}
       aria-valuemax={max}
       aria-valuenow={value}
-      aria-valuetext={value ? `${value} / ${max}` : undefined}
+      aria-valuetext={`${value} / ${max}`}
       aria-disabled={disabled}
       tabIndex={disabled ? -1 : 0}
       onKeyDown={handleKeyDown}

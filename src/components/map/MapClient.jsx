@@ -197,10 +197,11 @@ export default function MapClient({
     const isCovered = coveredRegions.has(normalizeRegionName(name));
     layer.bindTooltip(name, { direction: 'center', className: 'font-sans text-xs' });
 
-    // Accessibilité : Leaflet ne donne aucun nom accessible à ses polygones
-    // SVG générés dynamiquement, alors qu'ils sont cliquables (sélection de
-    // région) — on l'ajoute nous-mêmes dès que l'élément DOM existe, sur le
-    // même principe que les marqueurs (voir plus bas dans ce fichier).
+    // Accessibilité : Leaflet ne donne aucun nom accessible ni aucune
+    // sémantique à ses polygones SVG générés dynamiquement, alors qu'ils
+    // sont cliquables (sélection de région). On les enrichit nous-mêmes
+    // dès que l'élément DOM existe — même principe que pour les marqueurs
+    // un peu plus bas dans ce fichier.
     const el = layer.getElement?.();
     if (el) {
       el.setAttribute('role', 'button');
@@ -270,10 +271,6 @@ export default function MapClient({
             position={[p.lat, p.lng]}
             icon={getMarkerIcon(p.type, isActive)}
             eventHandlers={{
-              // Rend le marqueur atteignable/activable au clavier : Leaflet
-              // ne le fait pas nativement pour un divIcon. On attache un
-              // tabindex + role + label + un handler Entrée/Espace dès que
-              // le DOM du marqueur est créé, et on nettoie à sa suppression.
               add: (e) => {
                 const el = e.target.getElement();
                 if (!el) return;
