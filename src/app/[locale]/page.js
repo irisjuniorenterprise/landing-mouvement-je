@@ -11,29 +11,33 @@ import Breadcrumb from '@/components/ui/Breadcrumb';
 export default async function HomePage({ params }) {
   const { locale } = await params;
 
-  // OBLIGATOIRE avec generateStaticParams (rendu statique) : voir le
-  // commentaire équivalent dans app/[locale]/layout.js. À répéter dans
-  // chaque page, l'appel fait dans le layout parent n'est pas hérité.
   setRequestLocale(locale);
 
-  // Dans un composant serveur async, on utilise getTranslations (version
-  // async de next-intl/server) et non useTranslations (hook React réservé
-  // aux composants synchrones / Client Components) — voir
-  // https://next-intl.dev/docs/environments/server-client-components#async-components
   const tBreadcrumb = await getTranslations({ locale, namespace: 'breadcrumb' });
 
   return (
     <main id="main-content">
       <div className="container">
-        <Breadcrumb items={[{ label: tBreadcrumb('home') }]} />
+        <Breadcrumb
+          items={[{ label: tBreadcrumb('home') }]}
+          ariaLabel={tBreadcrumb('ariaLabel')}
+        />
       </div>
+
       <Hero />
+      <div className="section-seam" style={{ '--seam-from': '#050505', '--seam-to': '#FBEEF0' }} aria-hidden="true" />
+
       <History />
       <About />
+      <div className="section-seam" style={{ '--seam-from': '#FFFFFF', '--seam-to': '#2E1D24' }} aria-hidden="true" />
+
       <KPIs />
+      <div className="section-seam" style={{ '--seam-from': '#140B0E', '--seam-to': '#FFFFFF' }} aria-hidden="true" />
+
       <NetworkExplorer />
       <CandidatureForm />
       <SatisfactionForm />
+      <div className="section-seam" style={{ '--seam-from': '#F4F4F4', '--seam-to': '#1A1A1A' }} aria-hidden="true" />
     </main>
   );
 }

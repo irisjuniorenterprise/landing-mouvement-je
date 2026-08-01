@@ -62,7 +62,7 @@ export async function generateMetadata({ params }) {
       alternateLocale: alternateOgLocale,
       images: [
         {
-          url: ogImage,
+          url: `${SITE_URL}/images/og-image-${locale}.png`,
           width: 1200,
           height: 630,
           alt: title,
@@ -108,9 +108,14 @@ export default async function LocaleLayout({ children, params }) {
               {tNav('skipToContent')}
             </a>
             <Header />
-            <main id="main-content" tabIndex={-1} className="page-offset">
+            {/* Le landmark <main id="main-content"> sémantique vit dans
+                page.js — ce wrapper ne sert qu'à décaler le contenu sous
+                le header fixe (.page-offset) et à porter la cible de
+                focus du skip link (tabIndex). Pas de second <main> ici,
+                pour éviter un id dupliqué + deux landmarks "main". */}
+            <div id="main-content" tabIndex={-1} className="page-offset">
               {children}
-            </main>
+            </div>
             <Footer />
             <ClientSideEffects />
           </ToastProvider>

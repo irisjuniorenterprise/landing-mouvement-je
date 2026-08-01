@@ -15,7 +15,8 @@
     "skipToContent": "Skip to main content"
   },
   "breadcrumb": {
-    "home": "Home"
+    "home": "Home",
+    "ariaLabel": "Breadcrumb"
   },
   "hero": {
     "eyebrow": "Tunisian Confederation of Junior Enterprises",

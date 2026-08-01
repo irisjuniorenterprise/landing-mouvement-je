@@ -15,7 +15,8 @@
     "skipToContent": "Aller au contenu principal"
   },
   "breadcrumb": {
-    "home": "Accueil"
+    "home": "Accueil",
+    "ariaLabel": "Fil d'Ariane"
   },
   "hero": {
     "eyebrow": "Confédération Tunisienne des Juniors Entreprises",
