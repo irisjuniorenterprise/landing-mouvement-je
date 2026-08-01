@@ -2,7 +2,7 @@
   {
     "id": 1,
     "nom": "Codex Junior Entreprise",
-    "region": "Tunis",
+    "region": "Ariana",
     "etablissement": "Institut Supérieur d'Informatique",
     "prestations": {
       "fr": ["Développement Web", "Développement mobile", "Développement desktop"],
@@ -232,7 +232,7 @@
   {
     "id": 11,
     "nom": "INCEPTUM Junior Entreprise",
-    "region": "Tunis",
+    "region": "Ariana",
     "etablissement": "École Supérieure Privée d'Ingénierie et de Technologies",
     "prestations": {
       "fr": ["Développement mobile", "Développement web", "Développement desktop", "Graphic design", "Community management"],
@@ -299,7 +299,7 @@
       "en": ["Feasibility study", "Satisfaction study", "Business plan"]
     },
     "email": "isg.conseil.je@gmail.com",
-    "dateCreation": "",
+    "dateCreation": "2019",
     "lat": 36.804637503304626,
     "lng": 10.151194528282808,
     "reseaux_sociaux": {
@@ -492,7 +492,7 @@
   {
     "id": 24,
     "nom": "SUP'COM Junior Entreprise",
-    "region": "Tunis",
+    "region": "Ariana",
     "etablissement": "SUP'COM",
     "prestations": {
       "fr": ["Développement web", "Développement mobile"],
@@ -512,7 +512,7 @@
   {
     "id": 25,
     "nom": "TBS Junior Entreprise",
-    "region": "Tunis",
+    "region": "Ben Arous",
     "etablissement": "Tunis Business School",
     "prestations": {
       "fr": ["Étude de marché", "Étude de potentiel", "Étude de Positionnement", "Étude de Notoriété et d'Image de Marque", "Étude de Satisfaction", "Étude Du Benchmarking", "Étude Documentaire"],
@@ -539,7 +539,7 @@
       "en": ["Community management", "Graphic design", "Brand awareness study", "Feasibility study", "Satisfaction study", "Perception study", "Impact study"]
     },
     "email": "tymjuniorentreprise@gmail.com",
-    "dateCreation": "",
+    "dateCreation": "2017",
     "lat": 36.81419867603551,
     "lng": 10.062160882164024,
     "reseaux_sociaux": {
@@ -552,7 +552,7 @@
   {
     "id": 27,
     "nom": "MIT'COM Junior Entreprise",
-    "region": "Tunis",
+    "region": "Ariana",
     "etablissement": "ISET'Com",
     "prestations": {
       "fr": [
@@ -614,7 +614,7 @@
   {
     "id": 29,
     "nom": "Sesame Junior Entreprise",
-    "region": "Tunis",
+    "region": "Ariana",
     "etablissement": "Université SESAME",
     "prestations": {
       "fr": [
@@ -655,7 +655,7 @@
       ]
     },
     "email": "biotechjuniorentreprise@gmail.com",
-    "dateCreation": "",
+    "dateCreation": "2024",
     "lat": 36.80082692164171,
     "lng": 10.160409641292302,
     "reseaux_sociaux": {
