@@ -85,6 +85,18 @@ export async function generateMetadata({ params }) {
         { url: '/favicon-white.ico', media: '(prefers-color-scheme: dark)' },
       ],
     },
+    // fb:app_id : requis par le Facebook Sharing Debugger uniquement si vous
+    // voulez rattacher les partages de cette page aux Insights d'une App
+    // Facebook. Sans NEXT_PUBLIC_FB_APP_ID défini, la balise n'est tout
+    // simplement pas générée (le site reste valide pour Facebook/LinkedIn).
+    // Pour l'ajouter : créez une App sur https://developers.facebook.com/apps,
+    // copiez son "App ID", et mettez NEXT_PUBLIC_FB_APP_ID=xxxxxxxxxx dans
+    // .env.local (et dans les variables d'environnement de production).
+    ...(process.env.NEXT_PUBLIC_FB_APP_ID && {
+      other: {
+        'fb:app_id': process.env.NEXT_PUBLIC_FB_APP_ID,
+      },
+    }),
   };
 }
 
