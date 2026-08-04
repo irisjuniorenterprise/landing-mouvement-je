@@ -83,8 +83,17 @@ export async function generateMetadata({ params }) {
       icon: [
         { url: '/favicon.ico', media: '(prefers-color-scheme: light)' },
         { url: '/favicon-white.ico', media: '(prefers-color-scheme: dark)' },
+        { url: '/icons/icon-192.png', sizes: '192x192', type: 'image/png' },
+        { url: '/icons/icon-512.png', sizes: '512x512', type: 'image/png' },
       ],
+      // apple-touch-icon.png est généré automatiquement par Next.js à partir
+      // de app/apple-icon.png (convention de fichier native de l'App Router),
+      // pas besoin de le déclarer ici.
     },
+    // manifest.json : rend le site "installable" (PWA) sur mobile/desktop,
+    // avec l'icône JE (monogramme aux couleurs de la marque, dérivé de
+    // public/images/logo.png) comme icône d'application.
+    manifest: '/manifest.json',
     // fb:app_id : requis par le Facebook Sharing Debugger uniquement si vous
     // voulez rattacher les partages de cette page aux Insights d'une App
     // Facebook. Sans NEXT_PUBLIC_FB_APP_ID défini, la balise n'est tout
