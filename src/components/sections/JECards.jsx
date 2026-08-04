@@ -12,7 +12,8 @@ import styles from './JECards.module.css';
 /**
  * Grille des fiches synthétiques de Juniors Entreprises, filtrable par
  * région (pilotée par la carte via NetworkExplorer). Chaque fiche ouvre
- * une modale détaillée listant l'ensemble des prestations et le contact.
+ * une modale détaillée listant établissement, description, prestations
+ * et contact.
  */
 export default function JECards({ region }) {
   const t = useTranslations('je');
@@ -72,6 +73,18 @@ export default function JECards({ region }) {
               <span aria-hidden="true">·</span>
               <Icons.Calendar size={14} /> {t('since')} {selected.dateCreation}
             </p>
+
+            {selected.etablissement && (
+              <>
+                <h4 className={styles.modalSectionTitle}>{t('establishment')}</h4>
+                <p className={styles.modalEstablishment}>
+                  <Icons.Building size={15} /> {selected.etablissement}
+                </p>
+              </>
+            )}
+            {selected.hasDescription && (
+              <p className={styles.modalDescription}>{selected.getDescription(locale)}</p>
+            )}
 
             <h4 className={styles.modalSectionTitle}>{t('modal.servicesTitle')}</h4>
             <div className={styles.modalTags}>

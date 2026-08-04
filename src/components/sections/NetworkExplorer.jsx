@@ -76,16 +76,39 @@ export default function NetworkExplorer() {
   const resolveEntity = (key) => (key ? allEntities.find((e) => e.type === key.type && e.id === key.id) : null);
   const displayedEntity = resolveEntity(hoveredEntity) || resolveEntity(lockedEntity);
 
-  // Astuce d'utilisation de la carte : affichée une seule fois, peu
-  // après le montage (le temps que la carte ait fini d'apparaître).
+  // Astuce d'utilisation de la carte : affichée une seule fois par
+  // chargement de page, et seulement quand la section Map devient
+  // réellement visible à l'écran — pas dès le montage du composant,
+  // qui a lieu bien avant que l'utilisateur n'ait scrollé jusqu'ici.
+  const sectionRef = useRef(null);
   const hintShownRef = useRef(false);
   useEffect(() => {
-    if (hintShownRef.current) return;
-    hintShownRef.current = true;
-    const timer = setTimeout(() => {
-      showToast({ type: 'info', message: t('toastHint'), duration: 7000 });
-    }, 1400);
-    return () => clearTimeout(timer);
+    const sectionEl = sectionRef.current;
+    if (!sectionEl || hintShownRef.current) return;
+
+    // Repli pour les très anciens navigateurs sans IntersectionObserver :
+    // on garde l'ancien comportement plutôt que de ne jamais afficher
+    // l'astuce.
+    if (typeof IntersectionObserver === 'undefined') {
+      hintShownRef.current = true;
+      const timer = setTimeout(() => {
+        showToast({ type: 'info', message: t('toastHint'), duration: 7000 });
+      }, 1400);
+      return () => clearTimeout(timer);
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting || hintShownRef.current) return;
+        hintShownRef.current = true;
+        showToast({ type: 'info', message: t('toastHint'), duration: 7000 });
+        observer.disconnect();
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(sectionEl);
+    return () => observer.disconnect();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -141,7 +164,7 @@ export default function NetworkExplorer() {
   };
 
   return (
-    <section id="map" className={`section-padding section-animate section-alt ${styles.mapSection}`}>
+    <section id="map" ref={sectionRef} className={`section-padding section-animate section-alt ${styles.mapSection}`}>
       <div className="container">
         <h2 className="section-title">{t('title')}</h2>
         <p className="section-subtitle">{t('subtitle')}</p>

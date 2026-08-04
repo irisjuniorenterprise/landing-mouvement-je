@@ -89,3 +89,18 @@
 .modalContact:hover {
   color: var(--color-primary);
 }
+.modalEstablishment {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8125rem;
+  color: var(--color-secondary);
+  margin-bottom: 0.75rem;
+}
+
+.modalDescription {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+}

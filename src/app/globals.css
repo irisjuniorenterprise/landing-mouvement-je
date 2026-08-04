@@ -133,6 +133,23 @@ p {
   color: var(--color-on-dark-muted);
 }
 
+/* Bande de transition en dégradé entre deux sections de couleurs
+   différentes. Les couleurs sont fournies par instance via les
+   variables CSS --seam-from / --seam-to (voir page.js), afin de
+   réutiliser un seul bloc de style pour toutes les transitions du site. */
+.section-seam {
+  width: 100%;
+  height: 64px;
+  background: linear-gradient(180deg, var(--seam-from, transparent) 0%, var(--seam-to, transparent) 100%);
+  pointer-events: none;
+}
+
+@media (max-width: 480px) {
+  .section-seam {
+    height: 40px;
+  }
+}
+
 .section-divider-top {
   box-shadow: inset 0 6px 16px -12px rgba(0, 0, 0, 0.18);
 }

@@ -18,7 +18,7 @@ function EntityDetails({ entity, locale, tMap, tJE, tJC, tCommon }) {
       {/* Bloc du haut : identité de la Junior — reste ancré en haut du panneau. */}
       <div className={styles.topBlock}>
         <div className={styles.header}>
-          <EntityLogo name={entity.nom} logo={entity.logo} size={52} />
+          <EntityLogo name={entity.nom} logo={entity.logo} size={64} />
           <div>
             <span className={`${styles.badge} ${isJE ? styles.badgeJE : styles.badgeJC}`}>
               {categoryLabel}
@@ -44,6 +44,15 @@ function EntityDetails({ entity, locale, tMap, tJE, tJC, tCommon }) {
       <div className={styles.middleBlock}>
         {isJE ? (
           <>
+            {entity.etablissement && (
+              <p className={styles.establishment}>
+                <Icons.Building size={15} /> {entity.etablissement}
+              </p>
+            )}
+            {entity.hasDescription && (
+              <p className={styles.description}>{entity.getDescription(locale)}</p>
+            )}
+
             <h4 className={styles.sectionTitle}>{tJE('modal.servicesTitle')}</h4>
             <div className={styles.tags}>
               {entity.getPrestations(locale).map((p) => (

@@ -9,6 +9,7 @@ export default class JuniorEntreprise {
     nom,
     region,
     etablissement = '',
+    description = {},
     prestations = {},
     email,
     dateCreation,
@@ -21,6 +22,12 @@ export default class JuniorEntreprise {
     this.nom = nom;
     this.region = region;
     this.etablissement = etablissement;
+    // Description bilingue ({ fr, en }), même format que JuniorCreation.
+    // On accepte aussi l'ancien format (chaîne simple) par sécurité.
+    this.descriptionByLocale =
+      typeof description === 'string'
+        ? { fr: description, en: '' }
+        : { fr: description.fr || '', en: description.en || '' };
     // Les prestations sont bilingues ({ fr: [...], en: [...] }) dans
     // je.json. On accepte aussi l'ancien format (tableau simple, toujours
     // en français) par sécurité, pour ne pas casser si une donnée n'a pas
@@ -57,6 +64,16 @@ export default class JuniorEntreprise {
     return this.getPrestations(locale).slice(0, 2);
   }
 
+  /** Description dans la langue demandée (repli sur le français). */
+  getDescription(locale = 'fr') {
+    return this.descriptionByLocale[locale] || this.descriptionByLocale.fr;
+  }
+
+  /** Vrai si une description a été renseignée (permet un affichage conditionnel, le temps que toutes les JE soient migrées). */
+  get hasDescription() {
+    return Boolean(this.descriptionByLocale.fr || this.descriptionByLocale.en);
+  }
+  
   /** Coordonnées géographiques au format [lat, lng] attendu par Leaflet. */
   get position() {
     return [this.lat, this.lng];

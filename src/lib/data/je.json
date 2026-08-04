@@ -17,7 +17,11 @@
       "instagram": "https://www.instagram.com/codex_je/",
       "linkedin": "https://tn.linkedin.com/company/codex-junior-entreprise"
     },
-    "logo": "/images/logos/je/codex-junior-entreprise.png"
+    "logo": "/images/logos/je/codex-junior-entreprise.png",
+    "description": {
+      "fr": "Codex junior entreprise est une association estudiantine à but non lucratif rattachée à l'Institut Supérieur d'Informatique et au mouvement international des Junior Entreprises. Codex a pour objectif de familiariser les étudiants à la vie professionnelle en réalisant des projets dans différents domaines tels que : Site Web, Applications Web, Applications Mobile et Application Desktop. Elle a été fondée le 01 Septembre 2018 et a obtenu le titre d’association le 3 Décembre 2021.",
+      "en": "Codex Junior Entreprise is a non-profit student association affiliated with the Higher Institute of Computer Science and the international Junior Enterprises movement. Its goal is to familiarize students with professional life by carrying out projects in various fields such as websites, web applications, mobile apps, and desktop applications. It was founded on September 1, 2018, and obtained association status on December 3, 2021."
+    }
   },
   {
     "id": 2,
@@ -45,7 +49,11 @@
       "instagram": "https://www.instagram.com/essted_design/",
       "linkedin": "https://tn.linkedin.com/company/designers-junior-entreprise"
     },
-    "logo": "/images/logos/je/designers-junior-entreprise.png"
+    "logo": "/images/logos/je/designers-junior-entreprise.png",
+    "description": {
+      "fr": "Designers Junior Entreprise est établie à l'École Supérieure des Sciences et Technologies du Design depuis novembre 2015 et fait partie du réseau international des Junior Entreprises. Cette organisation à vocation pédagogique propose des services dans le domaine du design, incluant le design d'image, d'espace et de produit. Notre Junior Entreprise est l'une des 27 Junior Entreprises en Tunisie, toutes sous l'égide de la Confédération Tunisienne des Junior Entreprises.",
+      "en": "Designers Junior Entreprise has been established at the Higher School of Design Sciences and Technologies since November 2015 and is part of the international Junior Enterprises network. This educational organization offers services in the field of design, including image, space, and product design. Our Junior Enterprise is one of 27 Junior Enterprises in Tunisia, all under the umbrella of the Tunisian Confederation of Junior Enterprises."
+    }
   },
   {
     "id": 3,
@@ -65,7 +73,11 @@
       "instagram": "https://www.instagram.com/ensijunior/",
       "linkedin": "https://tn.linkedin.com/company/ensi-junior-entreprise"
     },
-    "logo": "/images/logos/je/ensi-junior-entreprise.png"
+    "logo": "/images/logos/je/ensi-junior-entreprise.png",
+    "description": {
+      "fr": "ENSI Junior Entreprise est une association étudiante affiliée à l'école nationale des sciences de l'informatique (ENSI), fondée en 2006. Sa mission est de préparer les étudiants au monde de l'entreprise en leur offrant des formations, des projets techniques et des événements. Grâce à une expertise variée et au soutien de partenaires, l'association vise à garantir la satisfaction de ses membres et à favoriser leur réussite.",
+      "en": "ENSI Junior Entreprise is a student association affiliated with the National School of Computer Science (ENSI), founded in 2006. Its mission is to prepare students for the business world by offering training, technical projects, and events. Thanks to varied expertise and partner support, the association aims to ensure member satisfaction and foster their success."
+    }
   },
   {
     "id": 4,
@@ -85,7 +97,11 @@
       "instagram": "https://www.instagram.com/ensit_junior_entreprise/",
       "linkedin": "https://www.linkedin.com/company/ensit-junior-entreprise"
     },
-    "logo": "/images/logos/je/ensit-junior-entreprise.png"
+    "logo": "/images/logos/je/ensit-junior-entreprise.png",
+    "description": {
+      "fr": "ENSIT junior Entreprise a été créé en février 2013, est une organisation à vocation économique et pédagogique, implantée au sein de l'école nationale supérieure d'ingénieurs de Tunis permettant aux étudiants de mettre en pratique l'enseignement théorique. Notre structure a pour objectif d'initier l'esprit entrepreneurial ainsi que le développement personnel au sein de notre école. Ces objectifs permettent aux étudiants d'appliquer leur savoir académique, de développer une expertise professionnelle et de nouer des contacts dans le secteur professionnel.",
+      "en": "ENSIT Junior Entreprise was created in February 2013; it is an economic and educational organization based at the National Higher School of Engineers of Tunis, allowing students to apply theoretical teaching. Our structure aims to foster entrepreneurial spirit and personal development within our school. These goals enable students to apply academic knowledge, develop professional expertise, and build contacts in the professional sector."
+    }
   },
   {
     "id": 5,
@@ -113,7 +129,11 @@
       "instagram": "https://www.instagram.com/enit.juniorentreprise/",
       "linkedin": "https://www.linkedin.com/company/enitjuniorentreprise"
     },
-    "logo": "/images/logos/je/enit-junior-entreprise.png"
+    "logo": "/images/logos/je/enit-junior-entreprise.png",
+    "description": {
+      "fr": "ENIT Junior Entreprise est une association à but non lucratif créée en Mai 1999 et instaurée au sein de l'Ecole Nationale d'Ingénieurs de Tunis. Exclusivement constituée et administrée par des étudiants de diverses disciplines, l'ENIT Junior Entreprise opte à offrir un marché gagnant-gagnant entre des étudiants avides de mettre leurs compétences académiques au service des industriels et des professionnels. Sur le plan national, et avec la collaboration des Junior Entreprises locales, une confédération de Junior Entreprises Tunisiennes (JET) a été fondée pour rassembler les Juniors propres à chaque école supérieure et université.",
+      "en": "ENIT Junior Entreprise is a non-profit association created in May 1999 and based at the National School of Engineers of Tunis. Exclusively composed and managed by students from various disciplines, ENIT Junior Entreprise offers a win-win market between students eager to put their academic skills at the service of industrialists and professionals. Nationally, with the collaboration of local Junior Enterprises, a confederation of Tunisian Junior Enterprises (JET) was founded to bring together the Juniors specific to each higher school and university."
+    }
   },
   {
     "id": 6,
@@ -133,7 +153,11 @@
       "instagram": "https://www.instagram.com/junior.entreprise.eniso/",
       "linkedin": "https://tn.linkedin.com/company/junior-entreprise-eniso"
     },
-    "logo": "/images/logos/je/jeeniso-junior-entreprise.png"
+    "logo": "/images/logos/je/jeeniso-junior-entreprise.png",
+    "description": {
+      "fr": "JEENISo, fondée en 2011, est une Junior Entreprise dynamique et innovante, intégrée au sein de l'Ecole nationale d'ingénieurs de Sousse. Notre organisation a pour vocation de relier la théorie à la pratique, permettant ainsi aux étudiants de mettre en œuvre leurs connaissances académiques dans des projets concrets. Nous visons à encourager l'esprit entrepreneurial et le développement personnel, en offrant aux étudiants l'opportunité d'acquérir une expertise professionnelle tout en établissant des liens précieux avec le secteur industriel. Grâce à notre engagement envers la qualité et la créativité, nous proposons des services variés allant de la conception mécanique et électronique au développement web et mobile, ainsi qu'au prototypage.",
+      "en": "JEENISo, founded in 2011, is a dynamic and innovative Junior Enterprise within the National School of Engineers of Sousse. Our organization's vocation is to bridge theory and practice, enabling students to apply academic knowledge in concrete projects. We aim to encourage entrepreneurial spirit and personal development, offering students the opportunity to gain professional expertise while building valuable connections with the industrial sector. Through our commitment to quality and creativity, we offer a variety of services ranging from mechanical and electronic design to web and mobile development, as well as prototyping."
+    }
   },
   {
     "id": 7,
@@ -153,7 +177,11 @@
       "instagram": "https://www.instagram.com/enetcomjunior/",
       "linkedin": "https://tn.linkedin.com/company/enetcom-junior-entreprise"
     },
-    "logo": "/images/logos/je/enet-com-junior-entreprise.png"
+    "logo": "/images/logos/je/enet-com-junior-entreprise.png",
+    "description": {
+      "fr": "L'ENET'COM Junior Entreprise allie esprit entrepreneurial et scientifique en permettant aux étudiants de réaliser des projets industriels pratiques. En tant que membre de la JET (Junior Entreprise of Tunisia), elle regroupe des étudiants de divers niveaux, valorisant l'esprit d'équipe, l'enthousiasme, la discipline, le professionnalisme, la générosité, la motivation et le respect. Cela leur permet d'appliquer leurs connaissances théoriques et de se rapprocher de la vie professionnelle et de l'entrepreneuriat.",
+      "en": "ENET'COM Junior Entreprise combines entrepreneurial and scientific spirit by enabling students to carry out practical industrial projects. As a member of JET (Junior Entreprise of Tunisia), it brings together students of various levels, valuing teamwork, enthusiasm, discipline, professionalism, generosity, motivation, and respect. This allows them to apply theoretical knowledge and get closer to professional life and entrepreneurship."
+    }
   },
   {
     "id": 8,
@@ -174,14 +202,18 @@
     },
     "email": "junior-entreprisegcem@esprit.tn",
     "dateCreation": "2015",
-    "lat": 36.85373582995112,  
-    "lng": 10.20762985767128 ,
+    "lat": 36.85373582995112,
+    "lng": 10.20762985767128,
     "reseaux_sociaux": {
       "facebook": "https://www.facebook.com/esprojuniorentreprise/?locale=fr_FR",
       "instagram": "https://www.instagram.com/espro_je/",
       "linkedin": "https://tn.linkedin.com/company/espro-junior-entreprise"
     },
-    "logo": "/images/logos/je/espro-junior-entreprise.png"
+    "logo": "/images/logos/je/espro-junior-entreprise.png",
+    "description": {
+      "fr": "ESPRO Junior Entreprise est une organisation à but non lucratif de l'université ESPRIT, située à Charguia 2. Fondée en 2015/2016 par de jeunes ingénieurs, elle se concentre sur l'expertise, le professionnalisme, la générosité et la motivation. L'entreprise offre aux étudiants l'opportunité d'appliquer leurs connaissances à travers divers services en ingénierie, notamment dans les domaines de l'électromécanique et du génie civil. ESPRO JE réalise des projets en électronique, mécanique, électrique, électromécanique, ainsi que des entretiens de machines et des installations électriques, tout en menant des études de projets, financières et de marché.",
+      "en": "ESPRO Junior Entreprise is a non-profit organization of ESPRIT University, located in Charguia 2. Founded in 2015/2016 by young engineers, it focuses on expertise, professionalism, generosity, and motivation. The company offers students the opportunity to apply their knowledge through various engineering services, particularly in electromechanics and civil engineering. ESPRO JE carries out projects in electronics, mechanics, electrical, electromechanics, as well as machine maintenance and electrical installations, while conducting project, financial, and market studies."
+    }
   },
   {
     "id": 9,
@@ -207,7 +239,11 @@
       "instagram": "https://www.instagram.com/etcjuniorentreprise/",
       "linkedin": "https://tn.linkedin.com/company/etc-je"
     },
-    "logo": "/images/logos/je/etc-junior-entreprise.png"
+    "logo": "/images/logos/je/etc-junior-entreprise.png",
+    "description": {
+      "fr": "ETC Junior Entreprise, fondée en 2018, est une organisation à vocation économique et pédagogique, intégrée à l'École Nationale des Sciences et Technologies Avancées de Borj Cédria. Notre mission est de permettre aux étudiants de mettre en pratique leur enseignement théorique dans les domaines du génie industriel, des systèmes embarqués et des systèmes énergétiques. Nous visons à encourager la passion, l'innovation et l'excellence, tout en offrant aux étudiants l'opportunité de développer leur expertise professionnelle et de nouer des contacts dans le secteur. Grâce à nos services variés, nous accompagnons nos clients dans la mise en œuvre de solutions innovantes et durables.",
+      "en": "ETC Junior Entreprise, founded in 2018, is an economic and educational organization integrated into the National School of Advanced Sciences and Technologies of Borj Cédria. Our mission is to allow students to apply theoretical teaching in the fields of industrial engineering, embedded systems, and energy systems. We aim to encourage passion, innovation, and excellence, while offering students the opportunity to develop professional expertise and build contacts in the sector. Through our varied services, we support our clients in implementing innovative and sustainable solutions."
+    }
   },
   {
     "id": 10,
@@ -227,7 +263,11 @@
       "instagram": "https://www.instagram.com/inat_junior_entreprise/",
       "linkedin": "https://www.linkedin.com/in/inatjuniorentreprise/"
     },
-    "logo": "/images/logos/je/inat-junior-entreprise.png"
+    "logo": "/images/logos/je/inat-junior-entreprise.png",
+    "description": {
+      "fr": "L'INAT Junior Entreprise est une association à but non lucratif implantée à l'Institut National Agronomique de Tunisie (INAT) depuis 2012, qui fonctionne sur le modèle d'une entreprise à services agronomiques. Nos volets principaux sont les formations, les événements et la réalisation de projets.",
+      "en": "INAT Junior Entreprise is a non-profit association based at the National Agronomic Institute of Tunisia (INAT) since 2012, operating on the model of an agronomic services company. Our main areas are training, events, and project implementation."
+    }
   },
   {
     "id": 11,
@@ -247,7 +287,11 @@
       "instagram": "https://www.instagram.com/inceptumje/",
       "linkedin": "https://tn.linkedin.com/company/inceptumje"
     },
-    "logo": "/images/logos/je/inceptum-junior-entreprise.png"
+    "logo": "/images/logos/je/inceptum-junior-entreprise.png",
+    "description": {
+      "fr": "INCEPTUM est une junior entreprise fondée en 2015 à l'école Supérieure Privée d'Ingénierie et de Technologies. Elle se spécialise dans l'informatique, offrant des services tels que le développement web, le référencement SEO, et la conception graphique. Avec cinq départements, INCEPTUM accompagne ses clients de la conception au déploiement, garantissant un suivi complet pour assurer une transition numérique réussie.",
+      "en": "INCEPTUM is a junior enterprise founded in 2015 at the Private Higher School of Engineering and Technology. It specializes in IT, offering services such as web development, SEO, and graphic design. With five departments, INCEPTUM supports its clients from design to deployment, ensuring complete follow-up for a successful digital transition."
+    }
   },
   {
     "id": 12,
@@ -267,7 +311,11 @@
       "instagram": "https://www.instagram.com/junior_entreprise_insat/?hl=fr",
       "linkedin": "https://tn.linkedin.com/company/junior-entreprise-insat"
     },
-    "logo": "/images/logos/je/insat-junior-entreprise.png"
+    "logo": "/images/logos/je/insat-junior-entreprise.png",
+    "description": {
+      "fr": "La Junior Entreprise INSAT est une association à but non lucratif fondée en 2005 et a rejoint la Confédération Nationale des Juniors Entreprises JET en 2012. La mission de la Junior Entreprise INSAT est de former les différents étudiants dans le domaine de l'entreprenariat et leur faciliter de ce fait l'intégration dans la vie professionnelle.",
+      "en": "INSAT Junior Entreprise is a non-profit association founded in 2005 and joined the National Confederation of Junior Enterprises JET in 2012. Its mission is to train students in entrepreneurship and thus facilitate their integration into professional life."
+    }
   },
   {
     "id": 13,
@@ -287,7 +335,11 @@
       "instagram": "https://www.instagram.com/isggabes_junior_entreprise/",
       "linkedin": ""
     },
-    "logo": "/images/logos/je/isg-gabes-junior-entreprise.png"
+    "logo": "/images/logos/je/isg-gabes-junior-entreprise.png",
+    "description": {
+      "fr": "Les Junior-Entreprises (J.E.) sont des associations à vocation économique et pédagogique, à but non lucratif. Associations étudiantes implantées dans les établissements d’enseignement supérieur, les Junior-Entreprises se définissent comme un vecteur d’employabilité et d’engagement des étudiants. En leur permettant de mettre en pratique l’enseignement théorique qu’ils reçoivent, les Junior-Entreprises constituent une passerelle entre les études et l’entreprise, au service de l’insertion professionnelle des étudiants.",
+      "en": "Junior Enterprises are non-profit economic and educational student associations based in higher education institutions. They serve as a vector for student employability and engagement. By allowing students to put theoretical teaching into practice, Junior Enterprises bridge the gap between studies and the professional world, facilitating students' career integration."
+    }
   },
   {
     "id": 14,
@@ -307,7 +359,11 @@
       "instagram": "https://www.instagram.com/isgconseil/",
       "linkedin": "https://tn.linkedin.com/in/isg-conseil-junior-entreprise-7321a8196"
     },
-    "logo": "/images/logos/je/isg-conseil-junior-entreprise.png"
+    "logo": "/images/logos/je/isg-conseil-junior-entreprise.png",
+    "description": {
+      "fr": "ISG Conseil junior entreprise est un cabinet de conseil spécialisé dans le marketing, qui offre des services tels que : les études de faisabilité, les études de satisfaction et le business plan.",
+      "en": "ISG Conseil Junior Entreprise is a consulting firm specialized in marketing, offering services such as feasibility studies, satisfaction surveys, and business plans."
+    }
   },
   {
     "id": 15,
@@ -327,7 +383,11 @@
       "instagram": "https://www.instagram.com/marketup_junior_entreprise/",
       "linkedin": "https://tn.linkedin.com/company/marketup-junior-entreprise"
     },
-    "logo": "/images/logos/je/marketup-junior-entreprise.png"
+    "logo": "/images/logos/je/marketup-junior-entreprise.png",
+    "description": {
+      "fr": "Marketup est la Junior Entreprise de l’Institut des Hautes Études Commerciales de Sfax, agissant comme un cabinet d'études marketing. Elle permet aux étudiants de mettre en pratique leurs connaissances en réalisant des études pour des clients variés, favorisant ainsi leur expérience professionnelle avant l'entrée sur le marché du travail.",
+      "en": "Marketup is the Junior Enterprise of the Higher Institute of Commercial Studies of Sfax, acting as a marketing research firm. It allows students to put their knowledge into practice by conducting studies for various clients, thus enhancing their professional experience before entering the job market."
+    }
   },
   {
     "id": 16,
@@ -347,7 +407,11 @@
       "instagram": "https://www.instagram.com/melkart_junior_entreprise/",
       "linkedin": "https://tn.linkedin.com/company/melkart-je"
     },
-    "logo": "/images/logos/je/melkart-junior-entreprise.png"
+    "logo": "/images/logos/je/melkart-junior-entreprise.png",
+    "description": {
+      "fr": "La MELKART Junior Entreprise, fondée en 2012, est une association d'étudiants de l'École Nationale d'Ingénieurs de Carthage. Son objectif est d'initier les étudiants à la vie professionnelle en mettant l'accent sur des valeurs telles que le travail d'équipe et le leadership. Elle offre aux étudiants l'opportunité de mettre en pratique leurs connaissances théoriques en réalisant des projets pour des professionnels, en étant rémunérés pour leur travail. Les services proposés couvrent les domaines d'activité enseignés par l'École, notamment l'informatique, la mécatronique et l'ingénierie industrielle.",
+      "en": "MELKART Junior Entreprise, founded in 2012, is a student association of the National School of Engineers of Carthage. Its aim is to introduce students to professional life, emphasizing values such as teamwork and leadership. It offers students the opportunity to apply theoretical knowledge by carrying out projects for professionals, being compensated for their work. The services offered cover the fields taught by the School, including computer science, mechatronics, and industrial engineering."
+    }
   },
   {
     "id": 17,
@@ -367,7 +431,11 @@
       "instagram": "https://www.instagram.com/marketingmed_tunisie/",
       "linkedin": "https://tn.linkedin.com/company/marketing-m%C3%A9diterran%C3%A9e-tunisie"
     },
-    "logo": "/images/logos/je/mmt-junior-entreprise.png"
+    "logo": "/images/logos/je/mmt-junior-entreprise.png",
+    "description": {
+      "fr": "Marketing Méditerranée Tunisie est la Junior-Entreprise d’IHEC Carthage. Créée en 2005, il s’agit d’un cabinet de junior-consultants qui exerce une activité de conseil auprès des entreprises, des collectivités locales et des porteurs de projet. Forte d’une expérience de plus de 15 ans, Marketing Méditerranée capitalise et développe ses savoir-faire au fil des années. La Junior Entreprise se place aujourd’hui parmi les meilleures en Tunisie et est une référence dans le monde des Junior Entreprises.",
+      "en": "Marketing Méditerranée Tunisie is the Junior Enterprise of IHEC Carthage. Created in 2005, it is a junior consulting firm providing advisory services to companies, local authorities, and project holders. With more than 15 years of experience, it capitalizes and develops its expertise over the years. The Junior Enterprise is now among the best in Tunisia and a reference in the Junior Enterprise world."
+    }
   },
   {
     "id": 18,
@@ -387,7 +455,11 @@
       "instagram": "https://www.instagram.com/metis.juniorentreprise/",
       "linkedin": "https://tn.linkedin.com/company/m-tis-junior-entreprise"
     },
-    "logo": "/images/logos/je/metis-junior-entreprise.png"
+    "logo": "/images/logos/je/metis-junior-entreprise.png",
+    "description": {
+      "fr": "Métis Junior Entreprise est un cabinet de conseil, fondé en octobre 2020 à la Faculté des Sciences Economiques et de Gestion de Tunis, faisant partie du mouvement des Junior Entreprises.",
+      "en": "Métis Junior Entreprise is a consulting firm, founded in October 2020 at the Faculty of Economic and Management Sciences of Tunis, and is part of the Junior Enterprises movement."
+    }
   },
   {
     "id": 19,
@@ -407,7 +479,11 @@
       "instagram": "https://www.instagram.com/nmc_junior_entreprise/",
       "linkedin": "https://tn.linkedin.com/company/neapolis-marketing-consulting-junior-entreprise"
     },
-    "logo": "/images/logos/je/neapolis-marketing-consulting-junior-entreprise.png"
+    "logo": "/images/logos/je/neapolis-marketing-consulting-junior-entreprise.png",
+    "description": {
+      "fr": "Neapolis marketing consulting (NMC) Junior entreprise est un cabinet de conseil situé dans la faculté des sciences économiques et de gestion de Nabeul fondé en 31 août 2018 dirigé par des étudiants à but non lucratif qui a pour rôle l'intégration des étudiants dans la vie professionnelle et la réalisation des projets.",
+      "en": "Neapolis Marketing Consulting (NMC) Junior Entreprise is a consulting firm based at the Faculty of Economics and Management of Nabeul, founded on August 31, 2018, and run by non-profit students. Its role is to integrate students into professional life and carry out projects."
+    }
   },
   {
     "id": 20,
@@ -427,7 +503,11 @@
       "instagram": "https://www.instagram.com/orenda_je/",
       "linkedin": "https://tn.linkedin.com/company/orendaje"
     },
-    "logo": "/images/logos/je/orenda-junior-entreprise.png"
+    "logo": "/images/logos/je/orenda-junior-entreprise.png",
+    "description": {
+      "fr": "Orenda Junior Enterprise est une association à but non lucratif fondée en 2018 à l'ISAMM, intégrée au mouvement Junior Entreprise. Elle propose trois services principaux : le design graphique, incluant la création d'identités visuelles pour des projets offline et online ; le développement web, avec des compétences en développement front-end et back-end ; et le montage vidéo, spécialisé dans les effets spéciaux.",
+      "en": "Orenda Junior Enterprise is a non-profit association founded in 2018 at ISAMM, part of the Junior Enterprise movement. It offers three main services: graphic design, including visual identity creation for offline and online projects; web development, with front-end and back-end skills; and video editing, specializing in special effects."
+    }
   },
   {
     "id": 21,
@@ -447,7 +527,11 @@
       "instagram": "https://www.instagram.com/optimajuniorentreprise/",
       "linkedin": "https://tn.linkedin.com/company/optima-junior-entreprise"
     },
-    "logo": "/images/logos/je/optima-junior-entreprise.png"
+    "logo": "/images/logos/je/optima-junior-entreprise.png",
+    "description": {
+      "fr": "Optima, fondée en 2013 par des élèves ingénieurs de la faculté des sciences de Tunis, est un cabinet de conseil en informatique reconnu. Avec plus de 50 collaborateurs, elle offre divers services en développement web, mobile et logiciel, utilisant plus de 20 langages de programmation. Optima propose également des services en marketing numérique et design, aidant ses clients à s'adapter au monde digital. L'entreprise a réalisé plus de 15 projets et a été nommée meilleure junior entreprise en réalisation de projets pour le mandat 2016-2017, remportant 3 prix.",
+      "en": "Optima, founded in 2013 by engineering students from the Faculty of Sciences of Tunis, is a recognized IT consulting firm. With more than 50 collaborators, it offers various services in web, mobile, and software development, using over 20 programming languages. Optima also provides digital marketing and design services, helping clients adapt to the digital world. The company has completed more than 15 projects and was named best junior enterprise in project execution for the 2016-2017 term, winning 3 awards."
+    }
   },
   {
     "id": 22,
@@ -467,7 +551,11 @@
       "instagram": "https://www.instagram.com/phoenix_consulting_je/",
       "linkedin": "https://tn.linkedin.com/company/phoenix-consulting-je"
     },
-    "logo": "/images/logos/je/phoenix-consulting-junior-entreprise.png"
+    "logo": "/images/logos/je/phoenix-consulting-junior-entreprise.png",
+    "description": {
+      "fr": "Phoenix Consulting Junior Entreprise est un club à vocation économique et pédagogique, implanté à l'institut supérieur de comptabilité et d'administration d'entreprise. Agissant en tant que véritable cabinet de conseil géré exclusivement par des étudiants, il offre des services correspondant aux domaines de compétences de son école, pour des clients très variés.",
+      "en": "Phoenix Consulting Junior Entreprise is a club with economic and educational purposes, based at the Higher Institute of Accounting and Business Administration. Acting as a genuine consulting firm managed exclusively by students, it offers services matching the school's areas of expertise, catering to a wide variety of clients."
+    }
   },
   {
     "id": 23,
@@ -487,7 +575,11 @@
       "instagram": "https://www.instagram.com/smart_marketing_advisors/",
       "linkedin": "https://tn.linkedin.com/company/smaje"
     },
-    "logo": "/images/logos/je/sma-consulting-junior-entreprise.png"
+    "logo": "/images/logos/je/sma-consulting-junior-entreprise.png",
+    "description": {
+      "fr": "La Junior Entreprise Smart Marketing Advisors est une association à but non lucratif, implantée au sein de l'Institut Supérieur de Gestion de Tunis depuis le 25 Décembre 2015. Gérée par des étudiants, elle agit en tant que bureau d'études spécialisé en Marketing et en IT dans une vocation économique et pédagogique. Son but principal est l'initiation de ses consultants à la vie socioprofessionnelle.",
+      "en": "Smart Marketing Advisors Junior Entreprise is a non-profit association based at the Higher Institute of Management of Tunis since December 25, 2015. Managed by students, it acts as a study office specialized in Marketing and IT, with an economic and educational purpose. Its main goal is to introduce its consultants to socio-professional life."
+    }
   },
   {
     "id": 24,
@@ -507,7 +599,11 @@
       "instagram": "https://www.instagram.com/junior_supcom/",
       "linkedin": "https://tn.linkedin.com/company/supcomjuniorentreprise"
     },
-    "logo": "/images/logos/je/sup-com-junior-entreprise.png"
+    "logo": "/images/logos/je/sup-com-junior-entreprise.png",
+    "description": {
+      "fr": "La SUP'COM Junior-Entreprise (SJE) offre aux élèves-ingénieurs de SUP'COM l'opportunité de se développer dans un cadre professionnel en mobilisant des compétences en ingénierie, informatique et marketing. Depuis sa création en 2013, ce club permet aux membres de mettre en pratique leur enseignement théorique à travers des études dans des domaines tels que les réseaux, les télécoms et le développement mobile, au service d'entrepreneurs, de startups, de PME et d'associations. Les formations proposées incluent la gestion d'entreprise et le management d'équipe, offrant ainsi aux intervenants une première expérience professionnelle concrète. Les clients bénéficient de l'innovation, du dynamisme et des compétences des étudiants, soutenus par les enseignants et chercheurs de l'école.",
+      "en": "SUP'COM Junior-Entreprise (SJE) offers SUP'COM engineering students the opportunity to develop in a professional environment by mobilizing skills in engineering, IT, and marketing. Since its creation in 2013, this club allows members to apply theoretical teaching through studies in areas such as networks, telecoms, and mobile development, serving entrepreneurs, startups, SMEs, and associations. The training offered includes business management and team management, giving participants a first concrete professional experience. Clients benefit from the innovation, dynamism, and skills of students, supported by the school's teachers and researchers."
+    }
   },
   {
     "id": 25,
@@ -527,7 +623,11 @@
       "instagram": "https://www.instagram.com/tbsjuniorenterprise/",
       "linkedin": "https://tn.linkedin.com/company/tbs-junior-enterprise"
     },
-    "logo": "/images/logos/je/tbs-junior-entreprise.png"
+    "logo": "/images/logos/je/tbs-junior-entreprise.png",
+    "description": {
+      "fr": "TBS Junior Enterprise est un cabinet de conseil en marketing géré par des étudiants de la Tunis Business School, établi le 8 septembre 2017. Il est spécialisé dans les études de marché, y compris les études de potentiel, de benchmarking, de positionnement, de notoriété, documentaires et de satisfaction. Officiellement reconnue comme association, elle a été publiée au JORT le 23 mars 2022. TBS JE fait partie du mouvement 'Junior Enterprise Global' et collabore avec un réseau de Junior Enterprises dans diverses universités tunisiennes.",
+      "en": "TBS Junior Enterprise is a student-managed marketing consulting firm at Tunis Business School, established on September 8, 2017. It specializes in market research services, including potential studies, benchmarking, positioning, notoriety, documentary, and satisfaction studies. Officially recognized as an association, it was published in the JORT on March 23, 2022. TBS JE is part of the 'Junior Enterprise Global' movement and collaborates with a network of Junior Enterprises across various universities in Tunisia."
+    }
   },
   {
     "id": 26,
@@ -547,7 +647,11 @@
       "instagram": "https://www.instagram.com/tunisian_youth_marketers/",
       "linkedin": "https://tn.linkedin.com/company/tunisian-youth-marketers-tym"
     },
-    "logo": "/images/logos/je/tym-junior-entreprise.png"
+    "logo": "/images/logos/je/tym-junior-entreprise.png",
+    "description": {
+      "fr": "Tunisian Youth Marketers est un cabinet de conseil spécialisé, comme son nom l'indique, en Marketing qui réalise des études de faisabilité, de notoriété et de satisfaction ainsi que le community management.",
+      "en": "Tunisian Youth Marketers is a specialized consulting firm, as its name suggests, in Marketing, conducting feasibility, awareness, and satisfaction studies as well as community management."
+    }
   },
   {
     "id": 27,
@@ -570,14 +674,18 @@
     },
     "email": "mitcomjuniorentreprise@gmail.com",
     "dateCreation": "2025",
-    "lat": 36.890406,  
+    "lat": 36.890406,
     "lng": 10.184264,
     "reseaux_sociaux": {
       "facebook": "https://www.facebook.com/profile.php?id=61573779980446&locale=fr_FR",
       "instagram": "https://www.instagram.com/mitcom.junior_entreprise/",
       "linkedin": "https://tn.linkedin.com/in/mit%E2%80%99com-junior-entreprise-640b03367"
     },
-    "logo": "/images/logos/je/mit-com-junior-entreprise.png"
+    "logo": "/images/logos/je/mit-com-junior-entreprise.png",
+    "description": {
+      "fr": "MIT'COM Junior Entreprise est une jeune association étudiante de l'ISET'Com, spécialisée dans le branding, l'analyse de données, la sécurisation et l'optimisation des infrastructures IT, ainsi que le développement web. Elle vise à offrir aux étudiants une expérience pratique dans les métiers du numérique.",
+      "en": "MIT'COM Junior Entreprise is a young student association from ISET'Com, specializing in branding, data analysis, IT infrastructure security and optimization, and web development. It aims to provide students with hands-on experience in digital professions."
+    }
   },
   {
     "id": 28,
@@ -609,7 +717,11 @@
       "instagram": "https://www.instagram.com/fortum.je/",
       "linkedin": "https://www.linkedin.com/company/fortum-junior-enterprise"
     },
-    "logo": "/images/logos/je/fortum-junior-entreprise.png"
+    "logo": "/images/logos/je/fortum-junior-entreprise.png",
+    "description": {
+      "fr": "Fortum Junior Entreprise, fondée en 2024 à Tek-Up University, est spécialisée dans le développement d'applications mobiles et web, les tests d'intrusion, la cybersécurité et le conseil. Elle offre aux étudiants l'opportunité de se former et de travailler sur des projets concrets dans le domaine de la sécurité informatique et du développement.",
+      "en": "Fortum Junior Entreprise, founded in 2024 at Tek-Up University, specializes in mobile and web application development, penetration testing, cybersecurity, and consulting. It offers students the opportunity to train and work on concrete projects in IT security and development."
+    }
   },
   {
     "id": 29,
@@ -637,7 +749,11 @@
       "instagram": "https://www.instagram.com/sesame_junior_entreprise/",
       "linkedin": "https://www.linkedin.com/company/sesame-junior-entreprise"
     },
-    "logo": "/images/logos/je/sesame-junior-entreprise.png"
+    "logo": "/images/logos/je/sesame-junior-entreprise.png",
+    "description": {
+      "fr": "Sesame Junior Entreprise, créée en 2025 à l'Université SESAME, est un cabinet de conseil en stratégie, design graphique et transformation digitale. Elle permet aux étudiants de mettre en pratique leurs compétences en accompagnant des entreprises dans leur évolution numérique et stratégique.",
+      "en": "Sesame Junior Entreprise, created in 2025 at SESAME University, is a consulting firm in strategy, graphic design, and digital transformation. It allows students to apply their skills by supporting companies in their digital and strategic evolution."
+    }
   },
   {
     "id": 30,
@@ -647,7 +763,7 @@
     "prestations": {
       "fr": [
         "Développement Mobile – Santé",
-        "Développement Web – Santéx"
+        "Développement Web – Santé"
       ],
       "en": [
         "Mobile Development – Health",
@@ -663,6 +779,10 @@
       "instagram": "https://www.instagram.com/biotech_junior_entreprise/",
       "linkedin": "https://tn.linkedin.com/in/biotech-junior-entreprise-7b0910364"
     },
-    "logo": "/images/logos/je/biotech-junior-entreprise.png"
+    "logo": "/images/logos/je/biotech-junior-entreprise.png",
+    "description": {
+      "fr": "BioTech Junior Entreprise, fondée en 2024 à l'ISTMT, est spécialisée dans le développement d'applications mobiles et web dédiées au secteur de la santé. Elle offre aux étudiants en biotechnologie et informatique l'opportunité de travailler sur des projets innovants alliant technologie et santé.",
+      "en": "BioTech Junior Entreprise, founded in 2024 at ISTMT, specializes in the development of mobile and web applications dedicated to the healthcare sector. It offers students in biotechnology and computer science the opportunity to work on innovative projects combining technology and health."
+    }
   }
 ]
