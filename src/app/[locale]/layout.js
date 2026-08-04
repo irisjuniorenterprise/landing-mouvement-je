@@ -7,6 +7,7 @@ import { SITE_URL, SITE_NAME } from '@/lib/config/site';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ClientSideEffects from '@/components/ClientSideEffects';
+import VisitorPing from '@/components/analytics/VisitorPing';
 import { ToastProvider } from '@/components/ui/toast/ToastProvider';
 import '../globals.css';
 
@@ -118,6 +119,7 @@ export default async function LocaleLayout({ children, params }) {
             </div>
             <Footer />
             <ClientSideEffects />
+            <VisitorPing />
           </ToastProvider>
         </NextIntlClientProvider>
         <Analytics />

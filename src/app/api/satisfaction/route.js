@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server';
 import { validateSatisfaction } from '@/lib/utils/validation';
 import { sendSatisfactionEmail } from '@/lib/utils/email';
 import { appendSatisfactionEntry } from '@/lib/utils/satisfactionLog';
+import KPIMetricsService from '@/lib/services/KPIMetricsService';
+import { FieldValue } from 'firebase-admin/firestore';
 
 const MAX_COMMENT_LENGTH = 1000;
 
@@ -38,6 +40,12 @@ export async function POST(request) {
   // réponse même en cas d'échec (voir lib/utils/satisfactionLog.js).
   appendSatisfactionEntry({ rating: data.rating, comment: data.comment, page: data.page });
 
+  // KPI 4 (Taux de satisfaction UX/UI) — stockage temps réel dans Firestore.
+  // Best-effort, comme le journal local.
+  recordSatisfactionKPI(data.rating).catch((error) => {
+    console.warn('[satisfaction] échec écriture KPI Firestore:', error.message);
+  });
+
   try {
     await sendSatisfactionEmail(data);
     return NextResponse.json({ success: true });
@@ -45,4 +53,12 @@ export async function POST(request) {
     console.error('[satisfaction] Échec envoi email:', error);
     return NextResponse.json({ success: false, error: 'email_failed' }, { status: 502 });
   }
+}
+
+async function recordSatisfactionKPI(rating) {
+  const period = KPIMetricsService.currentPeriod();
+  await KPIMetricsService.incrementCounter(period, {
+    satisfactionSum: FieldValue.increment(Number(rating)),
+    satisfactionCount: FieldValue.increment(1),
+  });
 }

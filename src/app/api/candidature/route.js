@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { validateCandidature } from '@/lib/utils/validation';
 import { sendCandidatureEmail } from '@/lib/utils/email';
+import KPIMetricsService from '@/lib/services/KPIMetricsService';
 
 // Limite basique de payload pour éviter les abus (le formulaire est public).
 const MAX_FIELD_LENGTH = 5000;
@@ -41,9 +42,23 @@ export async function POST(request) {
 
   try {
     await sendCandidatureEmail(data);
+
+    // KPI 1 (Taux de complétion) — numérateur, comptabilisé côté serveur.
+    // Best-effort : ne doit jamais faire échouer la réponse au visiteur.
+    recordFormSubmitted().catch((error) => {
+      console.warn('[candidature] échec écriture KPI Firestore:', error.message);
+    });
+
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error('[candidature] Échec envoi email:', error);
     return NextResponse.json({ success: false, error: 'email_failed' }, { status: 502 });
   }
+}
+
+async function recordFormSubmitted() {
+  const period = KPIMetricsService.currentPeriod();
+  await KPIMetricsService.incrementCounter(period, {
+    formSubmitted: (await import('firebase-admin/firestore')).FieldValue.increment(1),
+  });
 }

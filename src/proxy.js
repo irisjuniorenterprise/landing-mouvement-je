@@ -7,5 +7,5 @@ export const config = {
   // Applique le middleware à toutes les routes sauf les assets statiques,
   // les fichiers internes Next.js, et les routes API (qui n'ont pas besoin
   // de résolution de locale).
-  matcher: ['/((?!api|_next|_vercel|.*\\..*).*)'],
+  matcher: ['/((?!api|dashboard|_next|_vercel|.*\\..*).*)'],
 };
