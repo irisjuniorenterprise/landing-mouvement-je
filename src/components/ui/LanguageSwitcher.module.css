@@ -34,7 +34,10 @@
   letter-spacing: 0.04em;
   padding: 0.3rem 0.7rem;
   border-radius: 9999px;
-  color: var(--color-text-muted);
+  /* était var(--color-text-muted) #6B7280 -> ratio ~4.39:1, sous le seuil
+     AA (4.5:1) requis pour du texte normal. #4B5563 donne ~7:1 sur le
+     fond --color-surface #F4F4F4, tout en restant visuellement discret. */
+  color: #4B5563;
   transition: color 0.25s ease;
   min-width: 2.1rem;
 }

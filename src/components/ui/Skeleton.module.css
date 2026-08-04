@@ -1,0 +1,37 @@
+.block {
+  background: linear-gradient(
+    90deg,
+    var(--color-surface, #f4f4f4) 25%,
+    #eaeaea 37%,
+    var(--color-surface, #f4f4f4) 63%
+  );
+  background-size: 400% 100%;
+  animation: skeleton-shimmer 1.4s ease infinite;
+}
+
+@keyframes skeleton-shimmer {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.formSkeleton {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.mb { margin-bottom: 1.5rem; }
+.mt { margin-top: 1.5rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .block {
+    animation: none;
+    background: var(--color-surface, #f4f4f4);
+  }
+}

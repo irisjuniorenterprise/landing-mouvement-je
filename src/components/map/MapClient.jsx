@@ -247,8 +247,9 @@ export default function MapClient({
       className="w-full h-full"
     >
       <TileLayer
-        url="https://tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="https://www.openstreetmap.fr/">OpenStreetMap France</a>'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        subdomains={['a', 'b', 'c']}
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
       />
       <MapReadyBridge onReady={notifyReady} />
       <RegionFocus geoData={geoData} selectedRegion={selectedRegion} defaultZoom={zoom} />

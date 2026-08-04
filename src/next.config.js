@@ -11,6 +11,10 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
     qualities: [35, 75],
   },
+  experimental: {
+    optimizeCss: true,
+    optimizePackageImports: ['gsap', 'leaflet', 'react-leaflet'],
+  },
 };
 
 module.exports = withBundleAnalyzer(withNextIntl(nextConfig));

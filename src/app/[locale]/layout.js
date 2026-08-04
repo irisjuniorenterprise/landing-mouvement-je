@@ -47,7 +47,10 @@ export async function generateMetadata({ params }) {
     ],
     alternates: {
       canonical: path,
-      languages: Object.fromEntries(locales.map((l) => [l, l === 'fr' ? '/' : `/${l}`])),
+      languages: {
+        ...Object.fromEntries(locales.map((l) => [l, l === 'fr' ? '/' : `/${l}`])),
+        'x-default': '/',
+      },
     },
     robots: {
       index: true,
