@@ -545,6 +545,19 @@
   border: 1px solid rgba(200, 16, 46, 0.35);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation: none;
+    /* Repli visuel simple pour indiquer l'état "en cours" sans rotation */
+    opacity: 0.6;
+  }
+}
+
+.fieldset:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
 /* ============================================================
    RESPONSIVE
    ============================================================ */
