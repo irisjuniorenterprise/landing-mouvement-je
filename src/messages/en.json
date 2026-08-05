@@ -83,6 +83,7 @@
     "entitySelectPlaceholder": "All Juniors",
     "entitySelectEmpty": "No Junior in this region",
     "toastEmptyRegion": "No Junior Enterprise or Junior Creation is established in {region} yet. Try another region, or explore the whole map.",
+    "toastEmptyRegionForType": "No {type} is established in {region}. Try another region, or switch category.",
     "toastHint": "Tip: hover or click a marker to see its profile, and use the filters to jump straight to a region or a specific Junior.",
     "typeSelectLabel": "Filter by category",
     "typeSelectPlaceholder": "JE and JC",

@@ -83,6 +83,7 @@
     "entitySelectPlaceholder": "Toutes les Juniors",
     "entitySelectEmpty": "Aucune Junior dans cette région",
     "toastEmptyRegion": "Aucune Junior Entreprise ou Junior Création n'est encore implantée à {region}. Essayez une autre région, ou explorez la carte entière.",
+    "toastEmptyRegionForType": "Aucune {type} n'est implantée à {region}. Essayez une autre région, ou changez de catégorie.",
     "toastHint": "Astuce : survolez ou cliquez un marqueur pour voir sa fiche, et utilisez les filtres pour zoomer directement sur une région ou une Junior précise.",
     "typeSelectLabel": "Filtrer par catégorie",
     "typeSelectPlaceholder": "JE et JC",

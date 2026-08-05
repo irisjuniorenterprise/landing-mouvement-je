@@ -115,17 +115,36 @@ export default function NetworkExplorer() {
   // Prévient l'utilisateur quand la combinaison région + catégorie
   // choisie ne compte aucune Junior, plutôt que de le laisser face à
   // une carte vide sans explication.
+  //
+  // Trois cas, selon le filtre catégorie (selectedType) actif :
+  //  - Aucune catégorie choisie (JE/JC) : si la région ne contient
+  //    aucune Junior (ni JE ni JC), message générique "région vide".
+  //  - JC (resp. JE) seule choisie et absente de la région (qu'il y
+  //    ait ou non des Juniors de l'autre catégorie) : message ciblé
+  //    "aucune JC (resp. JE) dans cette région".
+  //  - Aucune région choisie, seulement une catégorie, et cette
+  //    catégorie n'existe nulle part sur la carte : message générique
+  //    "aucune Junior ne correspond à ce filtre".
   useEffect(() => {
     if (!selectedRegion && !selectedType) return;
     const hasAny = allEntities.some(
       (e) => e.matchesRegion(selectedRegion) && (!selectedType || e.type === selectedType)
     );
     if (!hasAny) {
+      let message;
+      if (selectedRegion && selectedType) {
+        message = t('toastEmptyRegionForType', {
+          region: selectedRegion,
+          type: t(selectedType === 'JE' ? 'legendJE' : 'legendJC'),
+        });
+      } else if (selectedRegion) {
+        message = t('toastEmptyRegion', { region: selectedRegion });
+      } else {
+        message = t('toastEmptyType');
+      }
       showToast({
         type: 'warning',
-        message: selectedRegion
-          ? t('toastEmptyRegion', { region: selectedRegion })
-          : t('toastEmptyType'),
+        message,
         duration: 6000,
       });
     }
