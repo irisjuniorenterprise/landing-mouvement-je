@@ -25,47 +25,49 @@ export default function KPIs() {
   ];
 
   return (
-    <section id="kpis" className="section-padding section-animate section-dark">
-      <div className="container">
-        <h2 className="section-title">{t('title')}</h2>
-        <p className="section-subtitle">{t('subtitle')}</p>
+    <div className={styles.kpisShadowWrap}>
+      <section id="kpis" className="section-padding section-animate section-dark">
+        <div className="container">
+          <h2 className="section-title">{t('title')}</h2>
+          <p className="section-subtitle">{t('subtitle')}</p>
 
-        <h3 className={styles.blockTitle}>{t('worldTitle')}</h3>
-        <div className={`${styles.grid} stagger-grid`}>
-          {worldStats.map(({ icon: Icon, value, suffix, label }, index) => (
-            <div key={label} className={styles.stat}>
-              <div className={styles.iconWrap}>
-                <Icon size={22} />
+          <h3 className={styles.blockTitle}>{t('worldTitle')}</h3>
+          <div className={`${styles.grid} stagger-grid`}>
+            {worldStats.map(({ icon: Icon, value, suffix, label }, index) => (
+              <div key={label} className={styles.stat}>
+                <div className={styles.iconWrap}>
+                  <Icon size={22} />
+                </div>
+                <AnimatedCounter
+                  value={value}
+                  suffix={suffix}
+                  duration={1400 + index * 150}
+                  className={styles.value}
+                />
+                <div className={styles.label}>{label}</div>
               </div>
-              <AnimatedCounter
-                value={value}
-                suffix={suffix}
-                duration={1400 + index * 150}
-                className={styles.value}
-              />
-              <div className={styles.label}>{label}</div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        <h3 className={styles.blockTitle}>{t('tunisiaTitle')}</h3>
-        <div className={`${styles.grid} stagger-grid`}>
-          {tunisiaStats.map(({ icon: Icon, value, suffix, label }, index) => (
-            <div key={label} className={styles.stat}>
-              <div className={styles.iconWrap}>
-                <Icon size={22} />
+          <h3 className={styles.blockTitle}>{t('tunisiaTitle')}</h3>
+          <div className={`${styles.grid} stagger-grid`}>
+            {tunisiaStats.map(({ icon: Icon, value, suffix, label }, index) => (
+              <div key={label} className={styles.stat}>
+                <div className={styles.iconWrap}>
+                  <Icon size={22} />
+                </div>
+                <AnimatedCounter
+                  value={value}
+                  suffix={suffix}
+                  duration={1400 + index * 150}
+                  className={styles.value}
+                />
+                <div className={styles.label}>{label}</div>
               </div>
-              <AnimatedCounter
-                value={value}
-                suffix={suffix}
-                duration={1400 + index * 150}
-                className={styles.value}
-              />
-              <div className={styles.label}>{label}</div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }

@@ -1,3 +1,9 @@
+.heroShadowWrap {
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 -26px 44px -26px rgba(0, 0, 0, 0.35), 0 26px 44px -26px rgba(0, 0, 0, 0.35);
+}
+
 .hero {
   position: relative;
   min-height: 90vh;
@@ -9,11 +15,6 @@
   padding: 8rem 0 10.5rem;
 }
 
-/* --- Effet "aurora" : au repos, les deux nappes sont figées (aucune
-   animation), pour un Hero calme au chargement de la page. Le scintillement
-   (opacité + légère respiration d'échelle) ne se déclenche qu'au survol de
-   la section — un geste volontaire de l'utilisateur, pas une boucle
-   perpétuelle imposée. --- */
 .hero::before,
 .hero::after {
   content: '';
