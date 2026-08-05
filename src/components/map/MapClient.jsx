@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { MapContainer, TileLayer, GeoJSON, Marker, useMap } from 'react-leaflet';
+import { MapContainer, GeoJSON, Marker, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import jeData from '@/lib/data/je.json';
@@ -10,6 +10,9 @@ import { trackOnce } from '@/lib/utils/analytics';
 
 const DEFAULT_CENTER = [34.5, 9.8];
 const BREAKPOINT = 800;
+// Fond neutre affiché autour/derrière la silhouette de la Tunisie, en
+// l'absence de tout fond de carte du monde (voir MapContainer plus bas).
+const MAP_BACKGROUND = '#F3F4F6';
 
 function MapReadyBridge({ onReady }) {
   const map = useMap();
@@ -54,7 +57,49 @@ function useResponsiveZoom() {
   return zoom;
 }
 
-function RegionFocus({ geoData, selectedRegion, defaultZoom }) {
+// Sans fond de carte du monde, le cadrage doit rester proche de la Tunisie
+// pour éviter qu'un dézoom excessif ne laisse un immense vide autour d'une
+// toute petite silhouette. On verrouille donc la vue sur l'emprise réelle
+// du GeoJSON (déjà limité à la Tunisie).
+function TunisiaBoundsController({ tunisiaBounds }) {
+  const map = useMap();
+  const fittedRef = useRef(false);
+
+  useEffect(() => {
+    if (!tunisiaBounds?.isValid()) return;
+
+    const padded = tunisiaBounds.pad(0.1);
+    map.setMaxBounds(padded);
+
+    const applyMinZoom = () => {
+      const boundsZoom = map.getBoundsZoom(tunisiaBounds);
+      map.setMinZoom(boundsZoom);
+      if (map.getZoom() < boundsZoom) {
+        map.setZoom(boundsZoom);
+      }
+    };
+
+    if (!fittedRef.current) {
+      map.fitBounds(tunisiaBounds, { padding: [24, 24] });
+      fittedRef.current = true;
+    }
+
+    const timer = setTimeout(applyMinZoom, 300);
+    const container = map.getContainer();
+    const resizeObserver = new ResizeObserver(applyMinZoom);
+    resizeObserver.observe(container);
+
+    return () => {
+      clearTimeout(timer);
+      resizeObserver.disconnect();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tunisiaBounds, map]);
+
+  return null;
+}
+
+function RegionFocus({ geoData, selectedRegion, defaultZoom, tunisiaBounds }) {
   const map = useMap();
 
   useEffect(() => {
@@ -71,9 +116,13 @@ function RegionFocus({ geoData, selectedRegion, defaultZoom }) {
         }
       }
     }
-    map.setView(DEFAULT_CENTER, defaultZoom);
+    if (tunisiaBounds?.isValid()) {
+      map.fitBounds(tunisiaBounds, { padding: [24, 24] });
+    } else {
+      map.setView(DEFAULT_CENTER, defaultZoom);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedRegion, geoData, map, defaultZoom]);
+  }, [selectedRegion, geoData, map, defaultZoom, tunisiaBounds]);
 
   return null;
 }
@@ -160,6 +209,12 @@ export default function MapClient({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const tunisiaBounds = useMemo(() => {
+    if (!geoData?.features?.length) return null;
+    const bounds = L.geoJSON(geoData).getBounds();
+    return bounds.isValid() ? bounds : null;
+  }, [geoData]);
+
   const allPoints = useMemo(
     () => [
       ...jeData.map((p) => ({ ...p, type: 'JE' })),
@@ -178,6 +233,10 @@ export default function MapClient({
   const REGION_OPACITY_DEFAULT = 0.22;
   const REGION_OPACITY_HOVER = 0.5;
   const REGION_OPACITY_SELECTED = 0.6;
+  // Sur fond de tuiles OSM, des frontières blanches tranchaient bien. Sur
+  // fond neutre clair (MAP_BACKGROUND), il faut une teinte foncée pour que
+  // les lignes de frontières restent nettement visibles.
+  const REGION_BORDER = '#1F2937';
 
   const styleFeature = (feature) => {
     const name = feature?.properties?.gouv_fr || '';
@@ -187,8 +246,8 @@ export default function MapClient({
     return {
       fillColor: isCovered ? REGION_RED : REGION_NEUTRAL,
       fillOpacity: isSelected ? REGION_OPACITY_SELECTED : REGION_OPACITY_DEFAULT,
-      color: '#FFFFFF',
-      weight: 2,
+      color: REGION_BORDER,
+      weight: 1.5,
     };
   };
 
@@ -197,11 +256,6 @@ export default function MapClient({
     const isCovered = coveredRegions.has(normalizeRegionName(name));
     layer.bindTooltip(name, { direction: 'center', className: 'font-sans text-xs' });
 
-    // Accessibilité : Leaflet ne donne aucun nom accessible ni aucune
-    // sémantique à ses polygones SVG générés dynamiquement, alors qu'ils
-    // sont cliquables (sélection de région). On les enrichit nous-mêmes
-    // dès que l'élément DOM existe — même principe que pour les marqueurs
-    // un peu plus bas dans ce fichier.
     const el = layer.getElement?.();
     if (el) {
       el.setAttribute('role', 'button');
@@ -244,15 +298,18 @@ export default function MapClient({
       zoom={zoom}
       scrollWheelZoom={false}
       attributionControl={false}
+      maxBoundsViscosity={1.0}
+      style={{ background: MAP_BACKGROUND }}
       className="w-full h-full"
     >
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        subdomains={['a', 'b', 'c']}
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-      />
       <MapReadyBridge onReady={notifyReady} />
-      <RegionFocus geoData={geoData} selectedRegion={selectedRegion} defaultZoom={zoom} />
+      <TunisiaBoundsController tunisiaBounds={tunisiaBounds} />
+      <RegionFocus
+        geoData={geoData}
+        selectedRegion={selectedRegion}
+        defaultZoom={zoom}
+        tunisiaBounds={tunisiaBounds}
+      />
       <EntityFocus focusEntity={focusEntity} points={allPoints} defaultZoom={zoom} />
       {geoData?.features?.length > 0 && (
         <GeoJSON
