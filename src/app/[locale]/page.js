@@ -4,8 +4,8 @@ import History from '@/components/sections/History';
 import About from '@/components/sections/About';
 import NetworkExplorer from '@/components/sections/NetworkExplorer';
 import KPIs from '@/components/sections/KPIs';
-import CandidatureForm from '@/components/forms/CandidatureForm';
-import SatisfactionForm from '@/components/forms/SatisfactionForm';
+import CandidatureForm from '@/components/forms/CandidatureForm.lazy';
+import SatisfactionForm from '@/components/forms/SatisfactionForm.lazy';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 
 export default async function HomePage({ params }) {
