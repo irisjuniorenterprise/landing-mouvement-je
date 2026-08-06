@@ -46,7 +46,7 @@ export default function Header() {
             alt="CTJE Logo"
             width={2376}
             height={1323}
-            priority
+            loading="eager"
             sizes="120px"
             className={styles.logoImage}
           />

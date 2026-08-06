@@ -22,7 +22,8 @@ export default function Hero() {
             src="/images/hero-img.jpg"
             alt=""
             fill
-            priority
+            loading="eager"
+            fetchPriority="high"
             sizes="100vw"
             quality={35}
             className={styles.heroImage}
