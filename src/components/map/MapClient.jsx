@@ -12,7 +12,7 @@ const DEFAULT_CENTER = [34.5, 9.8];
 const BREAKPOINT = 800;
 // Fond neutre affiché autour/derrière la silhouette de la Tunisie, en
 // l'absence de tout fond de carte du monde (voir MapContainer plus bas).
-const MAP_BACKGROUND = '#F3F4F6';
+const MAP_BACKGROUND = '#e5e5e6';
 
 function MapReadyBridge({ onReady }) {
   const map = useMap();
@@ -229,14 +229,14 @@ export default function MapClient({
   );
 
   const REGION_RED = '#C8102E';
-  const REGION_NEUTRAL = '#D1D5DB';
+  const REGION_NEUTRAL = '#6B7280';
   const REGION_OPACITY_DEFAULT = 0.22;
   const REGION_OPACITY_HOVER = 0.5;
   const REGION_OPACITY_SELECTED = 0.6;
   // Sur fond de tuiles OSM, des frontières blanches tranchaient bien. Sur
   // fond neutre clair (MAP_BACKGROUND), il faut une teinte foncée pour que
   // les lignes de frontières restent nettement visibles.
-  const REGION_BORDER = '#1F2937';
+  const REGION_BORDER = '#FFFFFF';
 
   const styleFeature = (feature) => {
     const name = feature?.properties?.gouv_fr || '';
