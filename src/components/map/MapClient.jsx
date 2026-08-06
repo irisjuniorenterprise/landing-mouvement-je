@@ -61,7 +61,13 @@ function useResponsiveZoom() {
 // pour éviter qu'un dézoom excessif ne laisse un immense vide autour d'une
 // toute petite silhouette. On verrouille donc la vue sur l'emprise réelle
 // du GeoJSON (déjà limité à la Tunisie).
-function TunisiaBoundsController({ tunisiaBounds }) {
+//
+// IMPORTANT : le zoom minimum ne doit jamais dépasser le zoom responsive
+// voulu (`defaultZoom` : 5 sur mobile, 6 sur desktop). Sinon, sur un petit
+// écran, `map.getBoundsZoom` peut renvoyer un zoom plus fort que 5 pour
+// que toute la Tunisie tienne dans le conteneur, et écraser silencieusement
+// le zoom réduit qu'on souhaite sur mobile (voir Map.jsx / useResponsiveZoom).
+function TunisiaBoundsController({ tunisiaBounds, defaultZoom }) {
   const map = useMap();
   const fittedRef = useRef(false);
 
@@ -71,22 +77,28 @@ function TunisiaBoundsController({ tunisiaBounds }) {
     const padded = tunisiaBounds.pad(0.1);
     map.setMaxBounds(padded);
 
-    const applyMinZoom = () => {
+    const applyZoomConstraints = () => {
       const boundsZoom = map.getBoundsZoom(tunisiaBounds);
-      map.setMinZoom(boundsZoom);
-      if (map.getZoom() < boundsZoom) {
-        map.setZoom(boundsZoom);
+      // Plafonné par defaultZoom : jamais plus haut que le zoom
+      // responsive voulu, seulement plus bas si le GeoJSON tient déjà
+      // largement dans le conteneur à ce zoom.
+      const effectiveMinZoom = Math.min(boundsZoom, defaultZoom);
+      map.setMinZoom(effectiveMinZoom);
+
+      if (!fittedRef.current) {
+        // Premier cadrage : on centre sur la Tunisie au zoom responsive
+        // souhaité plutôt que de laisser fitBounds choisir un zoom plus
+        // fort pour "coller" exactement aux contours.
+        map.setView(tunisiaBounds.getCenter(), defaultZoom);
+        fittedRef.current = true;
+      } else if (map.getZoom() < effectiveMinZoom) {
+        map.setZoom(effectiveMinZoom);
       }
     };
 
-    if (!fittedRef.current) {
-      map.fitBounds(tunisiaBounds, { padding: [24, 24] });
-      fittedRef.current = true;
-    }
-
-    const timer = setTimeout(applyMinZoom, 300);
+    const timer = setTimeout(applyZoomConstraints, 300);
     const container = map.getContainer();
-    const resizeObserver = new ResizeObserver(applyMinZoom);
+    const resizeObserver = new ResizeObserver(applyZoomConstraints);
     resizeObserver.observe(container);
 
     return () => {
@@ -94,7 +106,7 @@ function TunisiaBoundsController({ tunisiaBounds }) {
       resizeObserver.disconnect();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tunisiaBounds, map]);
+  }, [tunisiaBounds, defaultZoom, map]);
 
   return null;
 }
@@ -117,7 +129,10 @@ function RegionFocus({ geoData, selectedRegion, defaultZoom, tunisiaBounds }) {
       }
     }
     if (tunisiaBounds?.isValid()) {
-      map.fitBounds(tunisiaBounds, { padding: [24, 24] });
+      // Retour à la vue d'ensemble : on respecte le zoom responsive plutôt
+      // que de laisser fitBounds recalculer un zoom potentiellement plus
+      // fort (même logique que TunisiaBoundsController).
+      map.setView(tunisiaBounds.getCenter(), defaultZoom);
     } else {
       map.setView(DEFAULT_CENTER, defaultZoom);
     }
@@ -303,7 +318,7 @@ export default function MapClient({
       className="w-full h-full"
     >
       <MapReadyBridge onReady={notifyReady} />
-      <TunisiaBoundsController tunisiaBounds={tunisiaBounds} />
+      <TunisiaBoundsController tunisiaBounds={tunisiaBounds} defaultZoom={zoom} />
       <RegionFocus
         geoData={geoData}
         selectedRegion={selectedRegion}
