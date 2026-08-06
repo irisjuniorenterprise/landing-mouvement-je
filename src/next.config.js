@@ -1,3 +1,4 @@
+const path = require('path');
 const createNextIntlPlugin = require('next-intl/plugin');
 const withNextIntl = createNextIntlPlugin('./i18n/request.js');
 
@@ -10,6 +11,9 @@ const nextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
     qualities: [35, 75],
+  },
+  turbopack: {
+    root: path.join(__dirname),
   },
   experimental: {
     optimizeCss: true,
