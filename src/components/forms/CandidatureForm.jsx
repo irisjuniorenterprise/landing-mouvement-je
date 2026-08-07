@@ -81,8 +81,13 @@ export default function CandidatureForm() {
 
   // Restauration du brouillon au montage (une seule fois).
   useEffect(() => {
+    // readDraft() renvoie toujours null côté serveur (garde `typeof window`),
+    // donc ce setState doit rester dans un effet : le faire au rendu (ex. via
+    // un initialiseur useState) créerait un mismatch d'hydratation dès qu'un
+    // visiteur a un brouillon en session.
     const draft = readDraft();
     if (draft) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setValues((prev) => ({ ...prev, ...draft }));
       setDraftRestored(true);
     }

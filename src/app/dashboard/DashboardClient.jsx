@@ -164,6 +164,10 @@ export default function DashboardClient() {
   // visible (économie de lectures Firestore et de batterie), et relancé
   // immédiatement dès que l'utilisateur revient dessus.
   useEffect(() => {
+    // fetchKPIs est async et tous ses setState surviennent après un await ;
+    // le linter le signale à tort comme un setState synchrone dans l'effet
+    // (faux positif documenté : facebook/react#34905).
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchKPIs(selectedPeriod);
 
     const startPolling = () => {

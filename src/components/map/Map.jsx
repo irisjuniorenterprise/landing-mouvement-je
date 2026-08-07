@@ -42,6 +42,11 @@ export default function Map({
     // on monte directement la carte plutôt que de la garder invisible
     // pour toujours.
     if (typeof IntersectionObserver === 'undefined') {
+      // Map.jsx est importé statiquement (rendu côté serveur), où
+      // IntersectionObserver n'existe jamais : ce setState doit rester dans
+      // l'effet (donc après hydratation) pour ne pas produire un rendu
+      // différent entre serveur et client.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setShouldMount(true);
       return;
     }

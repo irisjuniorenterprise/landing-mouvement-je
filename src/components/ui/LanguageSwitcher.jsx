@@ -32,7 +32,7 @@ export default function LanguageSwitcher({ currentLocale }) {
           onClick={() => switchTo(l)}
           className={`${styles.option} ${l === currentLocale ? styles.optionActive : ''}`}
           aria-current={l === currentLocale ? 'true' : undefined}
-          aria-label={`${l.toUpperCase()} — ${LOCALE_LABELS[l] ?? l}`}
+          aria-label={LOCALE_LABELS[l] ?? l}
         >
           <span aria-hidden="true">{l.toUpperCase()}</span>
         </button>

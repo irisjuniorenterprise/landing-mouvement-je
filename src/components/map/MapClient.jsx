@@ -105,7 +105,6 @@ function TunisiaBoundsController({ tunisiaBounds, defaultZoom }) {
       clearTimeout(timer);
       resizeObserver.disconnect();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tunisiaBounds, defaultZoom, map]);
 
   return null;
@@ -136,7 +135,6 @@ function RegionFocus({ geoData, selectedRegion, defaultZoom, tunisiaBounds }) {
     } else {
       map.setView(DEFAULT_CENTER, defaultZoom);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedRegion, geoData, map, defaultZoom, tunisiaBounds]);
 
   return null;

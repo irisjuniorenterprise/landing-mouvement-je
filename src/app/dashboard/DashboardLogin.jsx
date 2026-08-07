@@ -1,6 +1,7 @@
 'use client';
 
 import { useId, useState } from 'react';
+import Link from 'next/link';
 import { Icons } from '@/components/icons/Icons';
 import styles from './dashboard.module.css';
 
@@ -120,9 +121,9 @@ export default function DashboardLogin() {
           </button>
         </form>
 
-        <a href="/" className={styles.backLink}>
+        <Link href="/" className={styles.backLink}>
           ← Retour au site
-        </a>
+        </Link>
       </div>
     </div>
   );
