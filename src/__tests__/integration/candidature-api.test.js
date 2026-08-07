@@ -6,7 +6,21 @@
  * Next.js ne sont pas disponibles sous jsdom. On force par ailleurs le
  * transport nodemailer en mode "jsonTransport" (aucune variable SMTP_*
  * définie) afin de valider le flux complet sans envoyer de véritable email.
+ *
+ * KPIMetricsService est mocké : l'écriture KPI vers Firestore est
+ * "best-effort" et non attendue par la route (voir route.js), donc sans ce
+ * mock elle tente réellement d'appeler Firestore en arrière-plan et échoue
+ * (pas de credentials en local), ce qui pollue les logs de test avec un
+ * console.warn sans rapport avec ce que ce test vérifie.
  */
+jest.mock('@/lib/services/KPIMetricsService', () => ({
+  __esModule: true,
+  default: {
+    currentPeriod: jest.fn(() => '2026-08'),
+    incrementCounter: jest.fn().mockResolvedValue(undefined),
+  },
+}));
+
 import { POST } from '@/app/api/candidature/route';
 
 function buildRequest(body) {
